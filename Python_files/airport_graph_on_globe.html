@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.0.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 0,
+    "latitude": 20.0,
+    "longitude": 0.0,
+    "pitch": 50,
+    "zoom": 1
+  },
+  "layers": [
+    {
+      "@@type": "ScatterplotLayer",
+      "autoHighlight": true,
+      "data": [
+        {
+          "latitude": 33.43429946899414,
+          "longitude": -112.01200103759766,
+          "name": "Phoenix Sky Harbor International Airport"
+        },
+        {
+          "latitude": 19.4363,
+          "longitude": -99.072098,
+          "name": "Licenciado Benito Juarez International Airport"
+        },
+        {
+          "latitude": 39.861698150635,
+          "longitude": -104.672996521,
+          "name": "Denver International Airport"
+        },
+        {
+          "latitude": 41.9786,
+          "longitude": -87.9048,
+          "name": "Chicago O'Hare International Airport"
+        },
+        {
+          "latitude": 29.98439979553223,
+          "longitude": -95.34140014648438,
+          "name": "George Bush Intercontinental Houston Airport"
+        },
+        {
+          "latitude": 25.79319953918457,
+          "longitude": -80.29060363769531,
+          "name": "Miami International Airport"
+        },
+        {
+          "latitude": -12.0219,
+          "longitude": -77.114305,
+          "name": "Jorge Ch\u00e1vez International Airport"
+        },
+        {
+          "latitude": 52.308601,
+          "longitude": 4.76389,
+          "name": "Amsterdam Airport Schiphol"
+        },
+        {
+          "latitude": 6.5773701667785645,
+          "longitude": 3.321160078048706,
+          "name": "Murtala Muhammed International Airport"
+        },
+        {
+          "latitude": -1.31923997402,
+          "longitude": 36.9277992249,
+          "name": "Jomo Kenyatta International Airport"
+        }
+      ],
+      "getFillColor": [
+        255,
+        0,
+        0
+      ],
+      "getPosition": "@@=[longitude, latitude]",
+      "getRadius": 50000,
+      "id": "3c936f40-3b94-440d-b348-b097476bc149",
+      "pickable": true
+    },
+    {
+      "@@type": "LineLayer",
+      "autoHighlight": true,
+      "data": [
+        {
+          "latitude1": 33.43429946899414,
+          "latitude2": 19.4363,
+          "longitude1": -112.01200103759766,
+          "longitude2": -99.072098,
+          "node1": "Phoenix Sky Harbor International Airport",
+          "node2": "Licenciado Benito Juarez International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 33.43429946899414,
+          "latitude2": 41.9786,
+          "longitude1": -112.01200103759766,
+          "longitude2": -87.9048,
+          "node1": "Phoenix Sky Harbor International Airport",
+          "node2": "Chicago O'Hare International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 33.43429946899414,
+          "latitude2": 39.861698150635,
+          "longitude1": -112.01200103759766,
+          "longitude2": -104.672996521,
+          "node1": "Phoenix Sky Harbor International Airport",
+          "node2": "Denver International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 33.43429946899414,
+          "latitude2": 25.79319953918457,
+          "longitude1": -112.01200103759766,
+          "longitude2": -80.29060363769531,
+          "node1": "Phoenix Sky Harbor International Airport",
+          "node2": "Miami International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 19.4363,
+          "latitude2": 29.98439979553223,
+          "longitude1": -99.072098,
+          "longitude2": -95.34140014648438,
+          "node1": "Licenciado Benito Juarez International Airport",
+          "node2": "George Bush Intercontinental Houston Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 19.4363,
+          "latitude2": 33.43429946899414,
+          "longitude1": -99.072098,
+          "longitude2": -112.01200103759766,
+          "node1": "Licenciado Benito Juarez International Airport",
+          "node2": "Phoenix Sky Harbor International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 19.4363,
+          "latitude2": 52.308601,
+          "longitude1": -99.072098,
+          "longitude2": 4.76389,
+          "node1": "Licenciado Benito Juarez International Airport",
+          "node2": "Amsterdam Airport Schiphol",
+          "weight": 1
+        },
+        {
+          "latitude1": 19.4363,
+          "latitude2": -12.0219,
+          "longitude1": -99.072098,
+          "longitude2": -77.114305,
+          "node1": "Licenciado Benito Juarez International Airport",
+          "node2": "Jorge Ch\u00e1vez International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 19.4363,
+          "latitude2": 25.79319953918457,
+          "longitude1": -99.072098,
+          "longitude2": -80.29060363769531,
+          "node1": "Licenciado Benito Juarez International Airport",
+          "node2": "Miami International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 19.4363,
+          "latitude2": 41.9786,
+          "longitude1": -99.072098,
+          "longitude2": -87.9048,
+          "node1": "Licenciado Benito Juarez International Airport",
+          "node2": "Chicago O'Hare International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 39.861698150635,
+          "latitude2": 25.79319953918457,
+          "longitude1": -104.672996521,
+          "longitude2": -80.29060363769531,
+          "node1": "Denver International Airport",
+          "node2": "Miami International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 39.861698150635,
+          "latitude2": 33.43429946899414,
+          "longitude1": -104.672996521,
+          "longitude2": -112.01200103759766,
+          "node1": "Denver International Airport",
+          "node2": "Phoenix Sky Harbor International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 41.9786,
+          "latitude2": 29.98439979553223,
+          "longitude1": -87.9048,
+          "longitude2": -95.34140014648438,
+          "node1": "Chicago O'Hare International Airport",
+          "node2": "George Bush Intercontinental Houston Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 41.9786,
+          "latitude2": 52.308601,
+          "longitude1": -87.9048,
+          "longitude2": 4.76389,
+          "node1": "Chicago O'Hare International Airport",
+          "node2": "Amsterdam Airport Schiphol",
+          "weight": 1
+        },
+        {
+          "latitude1": 29.98439979553223,
+          "latitude2": 33.43429946899414,
+          "longitude1": -95.34140014648438,
+          "longitude2": -112.01200103759766,
+          "node1": "George Bush Intercontinental Houston Airport",
+          "node2": "Phoenix Sky Harbor International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 29.98439979553223,
+          "latitude2": -12.0219,
+          "longitude1": -95.34140014648438,
+          "longitude2": -77.114305,
+          "node1": "George Bush Intercontinental Houston Airport",
+          "node2": "Jorge Ch\u00e1vez International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 25.79319953918457,
+          "latitude2": 39.861698150635,
+          "longitude1": -80.29060363769531,
+          "longitude2": -104.672996521,
+          "node1": "Miami International Airport",
+          "node2": "Denver International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 25.79319953918457,
+          "latitude2": 52.308601,
+          "longitude1": -80.29060363769531,
+          "longitude2": 4.76389,
+          "node1": "Miami International Airport",
+          "node2": "Amsterdam Airport Schiphol",
+          "weight": 1
+        },
+        {
+          "latitude1": 25.79319953918457,
+          "latitude2": 29.98439979553223,
+          "longitude1": -80.29060363769531,
+          "longitude2": -95.34140014648438,
+          "node1": "Miami International Airport",
+          "node2": "George Bush Intercontinental Houston Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 25.79319953918457,
+          "latitude2": 33.43429946899414,
+          "longitude1": -80.29060363769531,
+          "longitude2": -112.01200103759766,
+          "node1": "Miami International Airport",
+          "node2": "Phoenix Sky Harbor International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 25.79319953918457,
+          "latitude2": 19.4363,
+          "longitude1": -80.29060363769531,
+          "longitude2": -99.072098,
+          "node1": "Miami International Airport",
+          "node2": "Licenciado Benito Juarez International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 25.79319953918457,
+          "latitude2": -12.0219,
+          "longitude1": -80.29060363769531,
+          "longitude2": -77.114305,
+          "node1": "Miami International Airport",
+          "node2": "Jorge Ch\u00e1vez International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": -12.0219,
+          "latitude2": 25.79319953918457,
+          "longitude1": -77.114305,
+          "longitude2": -80.29060363769531,
+          "node1": "Jorge Ch\u00e1vez International Airport",
+          "node2": "Miami International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": -12.0219,
+          "latitude2": 19.4363,
+          "longitude1": -77.114305,
+          "longitude2": -99.072098,
+          "node1": "Jorge Ch\u00e1vez International Airport",
+          "node2": "Licenciado Benito Juarez International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": -12.0219,
+          "latitude2": 52.308601,
+          "longitude1": -77.114305,
+          "longitude2": 4.76389,
+          "node1": "Jorge Ch\u00e1vez International Airport",
+          "node2": "Amsterdam Airport Schiphol",
+          "weight": 1
+        },
+        {
+          "latitude1": 52.308601,
+          "latitude2": 19.4363,
+          "longitude1": 4.76389,
+          "longitude2": -99.072098,
+          "node1": "Amsterdam Airport Schiphol",
+          "node2": "Licenciado Benito Juarez International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 52.308601,
+          "latitude2": 29.98439979553223,
+          "longitude1": 4.76389,
+          "longitude2": -95.34140014648438,
+          "node1": "Amsterdam Airport Schiphol",
+          "node2": "George Bush Intercontinental Houston Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 52.308601,
+          "latitude2": 41.9786,
+          "longitude1": 4.76389,
+          "longitude2": -87.9048,
+          "node1": "Amsterdam Airport Schiphol",
+          "node2": "Chicago O'Hare International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 52.308601,
+          "latitude2": -12.0219,
+          "longitude1": 4.76389,
+          "longitude2": -77.114305,
+          "node1": "Amsterdam Airport Schiphol",
+          "node2": "Jorge Ch\u00e1vez International Airport",
+          "weight": 1
+        },
+        {
+          "latitude1": 6.5773701667785645,
+          "latitude2": 52.308601,
+          "longitude1": 3.321160078048706,
+          "longitude2": 4.76389,
+          "node1": "Murtala Muhammed International Airport",
+          "node2": "Amsterdam Airport Schiphol",
+          "weight": 1
+        }
+      ],
+      "getColor": [
+        0,
+        255,
+        0
+      ],
+      "getSourcePosition": "@@=[longitude1, latitude1]",
+      "getTargetPosition": "@@=[longitude2, latitude2]",
+      "getWidth": "@@=weight",
+      "id": "7d57bbe7-f3e2-4bc3-86e9-72abf6354718",
+      "pickable": true,
+      "tooltip": {
+        "text": "Poids: {weight}, Connexion: {node1} - {node2}"
+      }
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = {'text': '{name}'};
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>

@@ -1,6 +1,9 @@
 import random
 import networkx as nx
 import pandas as pd
+import math
+from create_graphe import haversine
+
 
 def create_airport_graph(airports_csv, routes_csv):
     # Charger les données des fichiers CSV
@@ -12,11 +15,27 @@ def create_airport_graph(airports_csv, routes_csv):
     
     # Ajouter les nœuds (aéroports) avec leurs attributs
     for index, row in airports.iterrows():
-        G.add_node(row['ID'], name=row['name'], city=row['city'], country=row['country'], latitude=row['latitude'], longitude=row['longitude'])
+        G.add_node(row['ID'], 
+                   name=row['name'], 
+                   city=row['city'], 
+                   country=row['country'], 
+                   latitude=row['latitude'], 
+                   longitude=row['longitude'])
     
-    # Ajouter les arêtes (connexions) avec les attributs si disponibles (ici j'ai supposé qu'il n'y en a pas dans le fichier CSV)
+    # Ajouter les arêtes (connexions) avec l'attribut distance
     for index, row in routes.iterrows():
-        G.add_edge(row['ID_start'], row['ID_end'])
+        start_node = row['ID_start']
+        end_node = row['ID_end']
+        
+        # Obtenir les coordonnées des deux nœuds
+        lat1, lon1 = G.nodes[start_node]['latitude'], G.nodes[start_node]['longitude']
+        lat2, lon2 = G.nodes[end_node]['latitude'], G.nodes[end_node]['longitude']
+        
+        # Calculer la distance entre les deux nœuds
+        distance = haversine(lat1, lon1, lat2, lon2)
+        
+        # Ajouter l'arête avec la distance comme attribut
+        G.add_edge(start_node, end_node, distance=distance)
     
     return G
 
@@ -61,9 +80,12 @@ def create_random_subgraph(G, n, m):
         for key, value in G.nodes[node].items():
             subgraph.nodes[node][key] = value
 
-    # Ajouter les arêtes (sans attributs) au sous-graphe
-
-    subgraph.add_edges_from(selected_edges)
+    # Ajouter les arêtes (avec attributs de distance) au sous-graphe
+    for edge in selected_edges:
+        # Obtenir la distance de l'arête du graphe original
+        distance = G[edge[0]][edge[1]]['distance']
+        # Ajouter l'arête avec l'attribut distance
+        subgraph.add_edge(edge[0], edge[1], distance=distance)
 
     return subgraph
 
@@ -88,29 +110,6 @@ def generate_random_pairs(subgraph, j):
     return pairs
 
 
-# Chemins vers les fichiers CSV
-airports_csv = "../basic_datasets/airports.csv"
-routes_csv = "../basic_datasets/pre_existing_routes.csv"
 
-# Créer le graphe complet
-airport_graph = create_airport_graph(airports_csv, routes_csv)
 
-# Générer un sous-graphe aléatoire
-n = int(input("Nombre de nœuds dans le sous-graphe = "))
-m = int(input("Nombre d'arêtes dans le sous-graphe = "))
-j = int(input("Nombre de chemins requis (paires de destinations) = "))
-random_subgraph = create_random_subgraph(airport_graph, n, m)
-
-# Générer j paires de destinations reliées par un chemin
-destination_pairs = generate_random_pairs(random_subgraph, j)
-
-# Afficher des informations sur le sous-graphe et les paires de destinations
-print("Sous-graphe aléatoire :")
-print("Nombre de nœuds :", random_subgraph.number_of_nodes())
-print("Nombre d'arêtes :", random_subgraph.number_of_edges())
-print("Liste des nœuds :", list(random_subgraph.nodes(data=True)))
-print("Liste des arêtes :", list(random_subgraph.edges(data=True)))
-
-# Afficher les paires de destinations
-print(f"Paires de destinations (avec chemin) : {destination_pairs}")
 
