@@ -1,6 +1,7 @@
 import random
 import networkx as nx
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def create_airport_graph(airports_csv, routes_csv):
     # Charger les données des fichiers CSV
@@ -66,6 +67,22 @@ def create_random_subgraph(G, n, m):
 
     return subgraph
 
+def visualize_random_subgraph(subgraph):
+    """
+    Visualise le sous-graphe en utilisant matplotlib.
+    """
+    pos = nx.spring_layout(subgraph)  # Positionnement des nœuds avec le layout "spring"
+    
+    plt.figure(figsize=(10, 8))  # Taille de la figure
+    nx.draw(subgraph, pos, with_labels=True, node_size=500, node_color="skyblue", font_size=10, font_weight="bold", edge_color="gray")
+    
+    # Afficher le sous-graphe
+    plt.title("Sous-graphe des Aéroports et Routes")
+    plt.show()
+
+
+
+
 
 # Chemins vers les fichiers CSV
 airports_csv = "../basic_datasets/airports.csv"
@@ -78,6 +95,8 @@ airport_graph = create_airport_graph(airports_csv, routes_csv)
 n = int(input("Nombre de nœuds dans le sous-graphe = "))
 m = int(input("Nombre d'arêtes dans le sous-graphe = "))
 random_subgraph = create_random_subgraph(airport_graph, n, m)
+# Visualiser le sous-graphe
+visualize_random_subgraph(random_subgraph)
 
 # Afficher des informations sur le sous-graphe
 print("Sous-graphe aléatoire :")
@@ -85,3 +104,7 @@ print("Nombre de nœuds :", random_subgraph.number_of_nodes())
 print("Nombre d'arêtes :", random_subgraph.number_of_edges())
 print("Liste des nœuds :", list(random_subgraph.nodes(data=True)))
 print("Liste des arêtes :", list(random_subgraph.edges(data=True)))
+
+
+
+
