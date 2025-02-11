@@ -55,16 +55,37 @@ def create_random_subgraph(G, n, m):
     # Étape 5 : Construire le sous-graphe et ajouter les nœuds avec leurs attributs
     subgraph = nx.DiGraph()
     subgraph.add_nodes_from(selected_nodes)
-    
+
     # Copier les attributs des nœuds du graphe original vers le sous-graphe
     for node in selected_nodes:
         for key, value in G.nodes[node].items():
             subgraph.nodes[node][key] = value
-    
+
     # Ajouter les arêtes (sans attributs) au sous-graphe
+
     subgraph.add_edges_from(selected_edges)
 
     return subgraph
+
+def generate_random_pairs(subgraph, j):
+    """
+    Génère j paires de destinations parmi les nœuds du sous-graphe, où chaque paire est reliée par un chemin.
+    """
+    # Récupérer la liste des nœuds du sous-graphe
+    nodes = list(subgraph.nodes)
+    
+    # Liste pour stocker les paires de destinations
+    pairs = []
+    
+    while len(pairs) < j:
+        # Choisir deux nœuds différents parmi ceux du sous-graphe
+        node1, node2 = random.sample(nodes, 2)
+        
+        # Vérifier qu'il existe un chemin entre node1 et node2 dans le sous-graphe
+        if nx.has_path(subgraph, node1, node2):
+            pairs.append((node1, node2))
+    
+    return pairs
 
 
 # Chemins vers les fichiers CSV
@@ -77,11 +98,19 @@ airport_graph = create_airport_graph(airports_csv, routes_csv)
 # Générer un sous-graphe aléatoire
 n = int(input("Nombre de nœuds dans le sous-graphe = "))
 m = int(input("Nombre d'arêtes dans le sous-graphe = "))
+j = int(input("Nombre de chemins requis (paires de destinations) = "))
 random_subgraph = create_random_subgraph(airport_graph, n, m)
 
-# Afficher des informations sur le sous-graphe
+# Générer j paires de destinations reliées par un chemin
+destination_pairs = generate_random_pairs(random_subgraph, j)
+
+# Afficher des informations sur le sous-graphe et les paires de destinations
 print("Sous-graphe aléatoire :")
 print("Nombre de nœuds :", random_subgraph.number_of_nodes())
 print("Nombre d'arêtes :", random_subgraph.number_of_edges())
 print("Liste des nœuds :", list(random_subgraph.nodes(data=True)))
 print("Liste des arêtes :", list(random_subgraph.edges(data=True)))
+
+# Afficher les paires de destinations
+print(f"Paires de destinations (avec chemin) : {destination_pairs}")
+
