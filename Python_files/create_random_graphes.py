@@ -10,11 +10,11 @@ def create_airport_graph(airports_csv, routes_csv):
     # Créer un graphe dirigé
     G = nx.DiGraph()
     
-    # Ajouter les nœuds (aéroports)
+    # Ajouter les nœuds (aéroports) avec leurs attributs
     for index, row in airports.iterrows():
         G.add_node(row['ID'], name=row['name'], city=row['city'], country=row['country'], latitude=row['latitude'], longitude=row['longitude'])
     
-    # Ajouter les arêtes (connexions)
+    # Ajouter les arêtes (connexions) avec les attributs si disponibles (ici j'ai supposé qu'il n'y en a pas dans le fichier CSV)
     for index, row in routes.iterrows():
         G.add_edge(row['ID_start'], row['ID_end'])
     
@@ -22,37 +22,48 @@ def create_airport_graph(airports_csv, routes_csv):
 
 def create_random_subgraph(G, n, m):
     """
-    Crée un sous-graphe aléatoire à partir d'un graphe existant.
-
-    Args:
-        G (networkx.DiGraph): Le graphe original.
-        n (int): Nombre de nœuds dans le sous-graphe.
-        m (int): Nombre d'arêtes dans le sous-graphe.
-
-    Returns:
-        networkx.DiGraph: Le sous-graphe aléatoire.
+    Crée un sous-graphe aléatoire à partir d'un graphe existant avec des nœuds adjacents.
     """
-    # Étape 1 : Sélectionner n nœuds aléatoires
-    if n > G.number_of_nodes():
-        print("Le nombre de nœuds demandé dépasse le nombre de nœuds disponibles.")
-    selected_nodes = random.sample(list(G.nodes), n)
+    # Étape 1 : Sélectionner un nœud de départ
+    start_node = random.choice(list(G.nodes))
     
-    # Étape 2 : Filtrer les arêtes pour ne garder que celles connectant les nœuds sélectionnés
+    # Étape 2 : Sélectionner les nœuds adjacents au nœud de départ
+    selected_nodes = [start_node]
+    while len(selected_nodes) < n:
+        neighbors = list(G.neighbors(selected_nodes[-1]))
+        if not neighbors:
+            break  # Arrêter si aucun voisin disponible
+        new_node = random.choice(neighbors)
+        if new_node not in selected_nodes:
+            selected_nodes.append(new_node)
+    
+    # Si moins de nœuds peuvent être sélectionnés, on arrête ici
+    if len(selected_nodes) < n:
+        print(f"Impossible de sélectionner {n} nœuds adjacents. Il y en a seulement {len(selected_nodes)}.")
+
+    # Étape 3 : Filtrer les arêtes pour ne garder que celles connectant les nœuds sélectionnés
     potential_edges = [
         edge for edge in G.edges(selected_nodes)
         if edge[0] in selected_nodes and edge[1] in selected_nodes
     ]
     
-    # Étape 3 : Sélectionner m arêtes aléatoires parmi celles disponibles
+    # Étape 4 : Sélectionner m arêtes parmi celles disponibles
     if m > len(potential_edges):
-        print((f"Impossible de sélectionner {m} arêtes parmi les {len(potential_edges)} possibles."))
+        print(f"Impossible de sélectionner {m} arêtes parmi les {len(potential_edges)} possibles.")
     selected_edges = random.sample(potential_edges, m)
     
-    # Étape 4 : Construire le sous-graphe
+    # Étape 5 : Construire le sous-graphe et ajouter les nœuds avec leurs attributs
     subgraph = nx.DiGraph()
     subgraph.add_nodes_from(selected_nodes)
-    subgraph.add_edges_from(selected_edges)
     
+    # Copier les attributs des nœuds du graphe original vers le sous-graphe
+    for node in selected_nodes:
+        for key, value in G.nodes[node].items():
+            subgraph.nodes[node][key] = value
+    
+    # Ajouter les arêtes (sans attributs) au sous-graphe
+    subgraph.add_edges_from(selected_edges)
+
     return subgraph
 
 
