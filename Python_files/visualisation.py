@@ -71,4 +71,4 @@ def visualize_graph_on_globe(subgraph):
     )
 
     # Afficher la visualisation
-    deck.to_html("airport_graph_on_globe.html")
+    deck.to_html("../visualisation/airport_graph_on_globe.html")
