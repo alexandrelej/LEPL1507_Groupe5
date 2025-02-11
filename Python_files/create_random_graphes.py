@@ -1,9 +1,8 @@
 import random
 import networkx as nx
 import pandas as pd
-import math
+import matplotlib.pyplot as plt
 from create_graphe import haversine
-
 
 def create_airport_graph(airports_csv, routes_csv):
     # Charger les données des fichiers CSV
@@ -108,7 +107,6 @@ def generate_random_pairs(subgraph, j):
             pairs.append((node1, node2))
     
     return pairs
-
 
 
 
