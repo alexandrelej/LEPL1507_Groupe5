@@ -51,3 +51,8 @@ def CreateGraphe(airports : dict[str, tuple[float,float]] ,connexions : set[tupl
         else:
             print(f"Avertissement : l'un des aéroports {source} ou {target} n'a pas été trouvé dans le fichier des aéroports.")
     return G
+
+def generate_sous_graphe(): #plus petit graphe
+    return
+def generate_J(): #génère une liste J
+    return
