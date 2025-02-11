@@ -4,41 +4,57 @@ import networkx as nx
 # Charger le graphe
 G = crg.create_airport_graph("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv")
 
-print("Nombre de nœuds :", G.number_of_nodes())
-print("Nombre d'arêtes :", G.number_of_edges())
 
-n, m = 10, 15
-sub_G = crg.create_random_subgraph(G, n, m)
+def precompute_shortest_paths(G, J):
+    """Pré-calcule les plus courts chemins pour tous les trajets dans J et stocke les résultats."""
+    return {
+        (s, t): (path := nx.astar_path(G, s, t, weight="weight"), 
+                 sum(G[path[i]][path[i+1]]["weight"] for i in range(len(path)-1)))
+        for s, t in J
+    }
 
-print("Sous-graphe créé avec", sub_G.number_of_nodes(), "nœuds et", sub_G.number_of_edges(), "arêtes")
+def update_shortest_paths(G, J, shortest_paths, removed_edge):
+    """Met à jour uniquement les trajets impactés après suppression d'une arête."""
+    u, v = removed_edge
+    updated_paths = shortest_paths.copy()  # Copie pour ne pas modifier l'original
+    for (s, t) in J:
+        path, _ = shortest_paths[(s, t)]
+        if (u, v) in zip(path, path[1:]) or (v, u) in zip(path, path[1:]):  # Si l'arête supprimée est utilisée
+            try:
+                new_path = nx.astar_path(G, s, t, weight="weight")
+                new_length = sum(G[new_path[i]][new_path[i+1]]["weight"] for i in range(len(new_path)-1))
+                updated_paths[(s, t)] = (new_path, new_length)
+            except nx.NetworkXNoPath:
+                updated_paths[(s, t)] = (None, float("inf"))  # Impossible d'atteindre t depuis s
+    return updated_paths
 
-def Algo(G, J):
-    C = 1000  # Pénalité pour le nombre d’arêtes
-    G_prime = G.copy()  #  On crée une copie du graphe pour ne pas modifier l’original
+def Algo(G, J, C):
+    G_prime = G.copy()
+    shortest_paths = precompute_shortest_paths(G_prime, J)  # On pré-calcule tout
 
-    initial_cost = sum(nx.shortest_path_length(G_prime, s, t, weight="weight") for s, t in J) / J + C * len(G_prime.edges)
+    # Stocker les coûts pour chaque arête supprimée
+    edge_costs = {}
 
     for u, v in list(G_prime.edges()):
-        G_prime.remove_edge(u, v)  # Supprime une arête
-        
-        try:
-            #  Recalculer le coût après suppression
-            new_cost = sum(nx.shortest_path_length(G_prime, s, t, weight="weight") for s, t in J) + C * len(G_prime.edges)
-            
-            #  Si le coût est pire, on remet l’arête
-            if new_cost > initial_cost:
-                G_prime.add_edge(u, v, weight=G[u][v]["weight"])
-            else:
-                initial_cost = new_cost  # Mettre à jour le coût si c’est une amélioration
-                
-        except nx.NetworkXNoPath:
-            #  Si une route devient impossible, on remet l’arête
-            G_prime.add_edge(u, v, weight=G[u][v]["weight"])
+        G_prime.remove_edge(u, v)  # Supprime une arête temporairement
+        updated_paths = update_shortest_paths(G_prime, J, shortest_paths, (u, v))  # Mise à jour des trajets impactés
 
-    return G_prime
+        # Calcul du nouveau coût total
+        current_cost = sum(length for _, length in updated_paths.values()) + C * (len(G_prime.edges()))
+        edge_costs[(u, v)] = current_cost  # Stocker le coût
 
-# Exemple de J (il faut donner des paires de nœuds)
-J = [(1, 2), (3, 4), (5, 6)]  # Remplace avec de vrais nœuds
+        G_prime.add_edge(u, v, weight=G[u][v]["weight"])  # Remettre l'arête
+
+    # Trouver l'arête qui minimise le coût
+    best_edge_to_remove = min(edge_costs, key=edge_costs.get)
+    
+    # Supprimer définitivement la meilleure arête
+    G_prime.remove_edge(*best_edge_to_remove)
+
+    return G_prime, best_edge_to_remove, edge_costs[best_edge_to_remove]
+
+
+
 
 # Appliquer l’algorithme
 optimized_G = Algo(sub_G, J)
