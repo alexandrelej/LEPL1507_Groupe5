@@ -1,64 +1,74 @@
-import create_random_graphes as crg
 import networkx as nx
 
-# Charger le graphe
-G = crg.create_airport_graph("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv")
-
-
 def precompute_shortest_paths(G, J):
-    """Pré-calcule les plus courts chemins pour tous les trajets dans J et stocke les résultats."""
-    return {
-        (s, t): (path := nx.astar_path(G, s, t, weight="weight"), 
-                 sum(G[path[i]][path[i+1]]["weight"] for i in range(len(path)-1)))
-        for s, t in J
-    }
+    """Pré-calcule les plus courts chemins et leurs coûts pour chaque paire de J."""
+    shortest_paths = {}
+    for s, t in J:
+        try:
+            path = nx.astar_path(G, s, t, weight="distance")
+            length = sum(G[path[i]][path[i+1]]["distance"] for i in range(len(path)-1))
+            shortest_paths[(s, t)] = (path, length)
+        except nx.NetworkXNoPath:
+            shortest_paths[(s, t)] = (None, float("inf"))  # Pas de chemin disponible
+    return shortest_paths
+
+def compute_average_cost(G, shortest_paths, C):
+    """Calcule la moyenne des coûts des trajets."""
+    total_cost = sum(length for _, length in shortest_paths.values()) + C * G.number_of_edges()
+    return total_cost / len(shortest_paths)
 
 def update_shortest_paths(G, J, shortest_paths, removed_edge):
     """Met à jour uniquement les trajets impactés après suppression d'une arête."""
     u, v = removed_edge
-    updated_paths = shortest_paths.copy()  # Copie pour ne pas modifier l'original
+    updated_paths = shortest_paths.copy()
+
     for (s, t) in J:
         path, _ = shortest_paths[(s, t)]
-        if (u, v) in zip(path, path[1:]):  # Si l'arête supprimée est utilisée
+        if path is not None and (u, v) in zip(path, path[1:]):  # Si l'arête supprimée est utilisée
             try:
-                new_path = nx.astar_path(G, s, t, weight="weight")
-                new_length = sum(G[new_path[i]][new_path[i+1]]["weight"] for i in range(len(new_path)-1))
+                new_path = nx.astar_path(G, s, t, weight="distance")
+                new_length = sum(G[new_path[i]][new_path[i+1]]["distance"] for i in range(len(new_path)-1))
                 updated_paths[(s, t)] = (new_path, new_length)
             except nx.NetworkXNoPath:
-                updated_paths[(s, t)] = (None, float("inf"))  # Impossible d'atteindre t depuis s
+                return None  # Impossible de connecter tous les trajets → annuler la suppression
     return updated_paths
 
-def Algo(G, J, C):
+def Astar(G, J, C):
+    """Optimise le graphe en supprimant les arêtes qui réduisent la moyenne des coûts tout en gardant les trajets possibles."""
     G_prime = G.copy()
-    shortest_paths = precompute_shortest_paths(G_prime, J)  # On pré-calcule tout
+    shortest_paths = precompute_shortest_paths(G_prime, J)
 
-    # Stocker les coûts pour chaque arête supprimée
-    edge_costs = {}
+    best_avg_cost = compute_average_cost(G_prime, shortest_paths, C)
+    removed_edges = []
 
-    for u, v in list(G_prime.edges()):
-        G_prime.remove_edge(u, v)  # Supprime une arête temporairement
-        updated_paths = update_shortest_paths(G_prime, J, shortest_paths, (u, v))  # Mise à jour des trajets impactés
+    while True:
+        edge_costs = {}
+        
+        for u, v in list(G_prime.edges()):
+            G_prime.remove_edge(u, v)  # Suppression temporaire
+            updated_paths = update_shortest_paths(G_prime, J, shortest_paths, (u, v))
+            
+            if updated_paths is not None:  # Vérifier que tous les trajets restent possibles
+                new_avg_cost = compute_average_cost(G_prime, updated_paths, C)
+                edge_costs[(u, v)] = new_avg_cost
+            
+            G_prime.add_edge(u, v, distance=G[u][v]["distance"])  # Remettre l'arête temporairement
+        
+        if not edge_costs:
+            break  # Arrêter si aucune arête ne peut être supprimée sans casser la connectivité
+        
+        # Trouver l’arête qui réduit le plus la moyenne des coûts
+        best_edge = min(edge_costs, key=edge_costs.get)
+        new_avg_cost = edge_costs[best_edge]
 
-        # Calcul du nouveau coût total
-        current_cost = sum(length for _, length in updated_paths.values()) + C * (len(G_prime.edges()))
-        edge_costs[(u, v)] = current_cost  # Stocker le coût
+        # Vérifier si la suppression réduit encore la moyenne
+        if new_avg_cost >= best_avg_cost:
+            break  # Stop si aucune suppression n'améliore la situation
 
-        G_prime.add_edge(u, v, weight=G[u][v]["weight"])  # Remettre l'arête
+        # Supprimer définitivement la meilleure arête
+        G_prime.remove_edge(*best_edge)
+        removed_edges.append(best_edge)
+        shortest_paths = update_shortest_paths(G_prime, J, shortest_paths, best_edge)
+        best_avg_cost = new_avg_cost
 
-    # Trouver l'arête qui minimise le coût
-    best_edge_to_remove = min(edge_costs, key=edge_costs.get)
-    
-    # Supprimer définitivement la meilleure arête
-    G_prime.remove_edge(*best_edge_to_remove)
-
-    return G_prime, best_edge_to_remove, edge_costs[best_edge_to_remove]
-
-
-j = 10 # Nombre de paires
-J = crg.generate_random_pairs(G, j)
-# Appliquer l’algorithme
-optimized_G = Algo(G, J)
-
-# Vérifier le résultat
-print("Optimisation terminée :")
-print("Nombre d'arêtes après optimisation :", optimized_G.number_of_edges())
+    return G_prime, removed_edges, best_avg_cost
