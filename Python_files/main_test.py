@@ -1,3 +1,5 @@
+import multiple_astar as ma
+
 from create_random_graphes import create_airport_graph, create_random_subgraph, generate_random_pairs
 from visualisation import visualize_graph_on_globe
 
@@ -28,3 +30,6 @@ print("Liste des arêtes :", list(random_subgraph.edges(data=True)))
 print(f"Paires de destinations (avec chemin) : {destination_pairs}")
 
 visualize_graph_on_globe(random_subgraph)
+
+approximated_graph = ma.approx_multiple_astar(random_subgraph, destination_pairs, 1000)
+visualize_graph_on_globe(approximated_graph)
