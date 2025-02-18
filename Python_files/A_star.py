@@ -1,4 +1,4 @@
-import create_random_graph as crg
+import create_random_graphes as crg
 import networkx as nx
 
 # Charger le graphe
@@ -19,7 +19,7 @@ def update_shortest_paths(G, J, shortest_paths, removed_edge):
     updated_paths = shortest_paths.copy()  # Copie pour ne pas modifier l'original
     for (s, t) in J:
         path, _ = shortest_paths[(s, t)]
-        if (u, v) in zip(path, path[1:]) or (v, u) in zip(path, path[1:]):  # Si l'arête supprimée est utilisée
+        if (u, v) in zip(path, path[1:]):  # Si l'arête supprimée est utilisée
             try:
                 new_path = nx.astar_path(G, s, t, weight="weight")
                 new_length = sum(G[new_path[i]][new_path[i+1]]["weight"] for i in range(len(new_path)-1))
@@ -54,10 +54,10 @@ def Algo(G, J, C):
     return G_prime, best_edge_to_remove, edge_costs[best_edge_to_remove]
 
 
-
-
+j = 10 # Nombre de paires
+J = crg.generate_random_pairs(G, j)
 # Appliquer l’algorithme
-optimized_G = Algo(sub_G, J)
+optimized_G = Algo(G, J)
 
 # Vérifier le résultat
 print("Optimisation terminée :")
