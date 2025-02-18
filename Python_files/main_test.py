@@ -32,7 +32,7 @@ for n, m in zip(n_values, m_values):
         C = C_values[0]  # On prend la première valeur de C pour la visualisation
         G_prime, best_edge_removed, best_cost = Astar(random_subgraph, destination_pairs, C)
         shortest_paths = precompute_shortest_paths(G_prime, destination_pairs)
-        visualize_graph_on_globe(G_prime, shortest_paths)
+        visualize_graph_on_globe(random_subgraph, shortest_paths)
         print("\n=== Résultats de l'A* Optimisé ===")
         print("Arête supprimée pour optimisation :", best_edge_removed)
         print("Meilleur coût moyen obtenu :", best_cost)
