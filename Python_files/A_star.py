@@ -1,14 +1,10 @@
 import create_random_graphes as crg
 import networkx as nx
 
-# Charger le graphe
-G = crg.create_airport_graph("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv")
-
-
 def precompute_shortest_paths(G, J):
     """Pré-calcule les plus courts chemins pour tous les trajets dans J et stocke les résultats."""
     return {
-        (s, t): (path := nx.astar_path(G, s, t, weight="weight"), 
+        (s, t): (path := nx.astar_path(G, s, t, weight="distance"), 
                  sum(G[path[i]][path[i+1]]["weight"] for i in range(len(path)-1)))
         for s, t in J
     }
@@ -21,14 +17,14 @@ def update_shortest_paths(G, J, shortest_paths, removed_edge):
         path, _ = shortest_paths[(s, t)]
         if (u, v) in zip(path, path[1:]):  # Si l'arête supprimée est utilisée
             try:
-                new_path = nx.astar_path(G, s, t, weight="weight")
+                new_path = nx.astar_path(G, s, t, weight="distance")
                 new_length = sum(G[new_path[i]][new_path[i+1]]["weight"] for i in range(len(new_path)-1))
                 updated_paths[(s, t)] = (new_path, new_length)
             except nx.NetworkXNoPath:
                 updated_paths[(s, t)] = (None, float("inf"))  # Impossible d'atteindre t depuis s
     return updated_paths
 
-def Algo(G, J, C):
+def Astar(G, J, C):
     G_prime = G.copy()
     shortest_paths = precompute_shortest_paths(G_prime, J)  # On pré-calcule tout
 
@@ -52,13 +48,3 @@ def Algo(G, J, C):
     G_prime.remove_edge(*best_edge_to_remove)
 
     return G_prime, best_edge_to_remove, edge_costs[best_edge_to_remove]
-
-
-j = 10 # Nombre de paires
-J = crg.generate_random_pairs(G, j)
-# Appliquer l’algorithme
-optimized_G = Algo(G, J)
-
-# Vérifier le résultat
-print("Optimisation terminée :")
-print("Nombre d'arêtes après optimisation :", optimized_G.number_of_edges())
