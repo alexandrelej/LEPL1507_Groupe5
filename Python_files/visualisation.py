@@ -27,7 +27,7 @@ def visualize_graph_on_globe(subgraph, shortest_paths):
             "longitude1": subgraph.nodes[u]["longitude"],
             "latitude2": subgraph.nodes[v]["latitude"],
             "longitude2": subgraph.nodes[v]["longitude"],
-            "weight": data.get("weight", 1)
+            "distance": data.get("distance", 1)
         }
         for u, v, data in subgraph.edges(data=True)
     ]
@@ -55,16 +55,15 @@ def visualize_graph_on_globe(subgraph, shortest_paths):
         auto_highlight=True
     )
 
-    # Couche des arêtes du graphe (en vert)
     lines_layer = pdk.Layer(
         "LineLayer",
         edge_data,
-        get_source_position=lambda d: [d["longitude1"], d["latitude1"]],
-        get_target_position=lambda d: [d["longitude2"], d["latitude2"]],
-
+        get_source_position=["longitude1", "latitude1"],
+        get_target_position=["longitude2", "latitude2"],  
         get_width=4,
         get_color=[0, 255, 0]  # Vert
     )
+
 
     # Couche des chemins empruntés (en bleu)
     path_layer = pdk.Layer(
@@ -85,7 +84,7 @@ def visualize_graph_on_globe(subgraph, shortest_paths):
         bearing=0
     )
 
-    # Création du Deck
+    # Création du Deck2
     deck = pdk.Deck(
         layers=[points_layer, lines_layer, path_layer],
         initial_view_state=view_state,
