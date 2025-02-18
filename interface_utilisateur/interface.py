@@ -1,4 +1,5 @@
 import tkinter as tk
+from PIL import Image, ImageTk
 
 def afficher_reponse():
     reponse = var_reponse.get()
@@ -7,7 +8,16 @@ def afficher_reponse():
 # Création de la fenêtre principale
 root = tk.Tk()
 root.title("Amélioration du trafic aérien national")
-root.geometry("500x300")  # Définit la taille de la fenêtre (largeur x hauteur)
+root.geometry("600x400")  # Augmenter la taille pour mieux afficher l'image
+
+# Charger et afficher une image d'avion avec Pillow
+image_path = "../images/avion-20966179.png"  # Chemin vers ton image .png
+image = Image.open(image_path)
+image = image.resize((150, 100))  # Redimensionner l'image si nécessaire
+photo = ImageTk.PhotoImage(image)
+
+label_image = tk.Label(root, image=photo)
+label_image.pack(pady=10)  # Ajoute un peu d'espace avant la question
 
 # Ajout d'un label avec une question
 label_question = tk.Label(root, text="Quel critère souhaitez-vous minimiser ?", font=("Arial", 12))
@@ -36,6 +46,9 @@ label_resultat.pack(pady=10)
 
 # Lancement de la boucle principale
 root.mainloop()
+
+
+
 
 
 
