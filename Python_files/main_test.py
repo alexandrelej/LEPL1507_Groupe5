@@ -1,5 +1,6 @@
 from create_random_graphes import create_airport_graph, create_random_subgraph, generate_random_pairs
 from visualisation import visualize_graph_on_globe
+from A_star import Astar
 
 # Chemins vers les fichiers CSV
 airports_csv = "../basic_datasets/airports.csv"
@@ -12,13 +13,17 @@ airport_graph = create_airport_graph(airports_csv, routes_csv)
 n = int(input("Nombre de nœuds dans le sous-graphe = "))
 m = int(input("Nombre d'arêtes dans le sous-graphe = "))
 j = int(input("Nombre de chemins requis (paires de destinations) = "))
+C = int(input("Coût C par arête supplémentaire = "))
 random_subgraph = create_random_subgraph(airport_graph, n, m)
 
 # Générer j paires de destinations reliées par un chemin
 destination_pairs = generate_random_pairs(random_subgraph, j)
 
+A_star = Astar(random_subgraph, j, C)
+
+
 # Afficher des informations sur le sous-graphe et les paires de destinations
-print("Sous-graphe aléatoire :")
+print("Sous-graphe aléatoire :A star")
 print("Nombre de nœuds :", random_subgraph.number_of_nodes())
 print("Nombre d'arêtes :", random_subgraph.number_of_edges())
 print("Liste des nœuds :", list(random_subgraph.nodes(data=True)))
