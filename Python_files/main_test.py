@@ -4,6 +4,7 @@ from create_random_graphes import create_airport_graph, create_random_subgraph, 
 from visualisation import visualize_graph_on_globe
 from A_star import Astar, precompute_shortest_paths
 from multiple_astar import approx_multiple_astar
+import networkx as nx
 
 # Chemins vers les fichiers CSV
 airports_csv = "../basic_datasets/airports.csv"
@@ -60,9 +61,9 @@ for n, m in zip(n_values, m_values):
 
         # Exécuter Mult_multiple_astar
         start_time = time.time()
-        G_mult, rsubgraph = approx_multiple_astar(random_subgraph, destination_pairs, C)
+        G_mult, rsubgraph = approx_multiple_astar(random_subgraph, destination_pairs, C,iterations=30)
         multi_astar_time = time.time() - start_time
-        multi_astar_cost = sum(data['distance'] for _, _, data in G_mult.edges(data=True)) + C * len(G_mult.edges())
+        multi_astar_cost = sum([nx.shortest_path_length(G_mult,start,end) for start, end in destination_pairs])/len(destination_pairs) + C * len(G_mult.edges())
         multi_astar_costs.append(multi_astar_cost)
         multi_astar_times.append(multi_astar_time)
 
