@@ -1,6 +1,5 @@
 import networkx as nx
 import numpy as np
-import cvxpy as cp
 import time
 import random
 from create_graphe import haversine
@@ -61,6 +60,10 @@ def approx_multiple_astar(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: floa
     for u, v in list(G_reweighted.edges()):
         if G_reweighted[u][v]['used'] == 0:
             G_reweighted.remove_edge(u, v)
-    
-    return G_reweighted
+            print(f"Removed edge {u} -> {v}")
+    print(f"Total distance: {sum}")
+    print(f"Total cost: {C * len(G_reweighted.edges())}")
+    print(f"objective function value: {sum/len(Trajets)/N + C * len(G_reweighted.edges())}")
+    print(f"Number of edges: {len(G_reweighted.edges())}")
+    return G_reweighted, G
 
