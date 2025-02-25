@@ -26,7 +26,7 @@ G_prime, best_edge_removed, best_cost = Astar(random_subgraph, destination_pairs
 shortest_paths = precompute_shortest_paths(G_prime, destination_pairs)
 
 # Visualiser le graphe avec les chemins trouvés
-visualize_graph_on_globe(G_prime, shortest_paths)
+visualize_graph_on_globe(random_subgraph, shortest_paths)
 
 
 
