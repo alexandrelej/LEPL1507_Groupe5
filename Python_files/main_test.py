@@ -33,16 +33,16 @@ for n, m in zip(n_values, m_values):
     destination_pairs = generate_random_pairs(random_subgraph, j)
 
     # Exécuter et visualiser A* une seule fois pour n et m fixés
-if n == n_values[0] and m == m_values[0]:  # Visualisation seulement pour la première itération
-    C = C_values[0]  # On prend la première valeur de C pour la visualisation
-    G_prime, best_edge_removed, best_cost = Astar(random_subgraph, destination_pairs, C)
-    shortest_paths = precompute_shortest_paths(G_prime, destination_pairs)
-    visualize_graph_on_globe(random_subgraph, shortest_paths)
-    print("\n=== Résultats de l'A* Optimisé ===")
-    print("Arête supprimée pour optimisation :", best_edge_removed)
-    print("Meilleur coût moyen obtenu :", best_cost)
-    print("Nombre d'arêtes restantes :", G_prime.number_of_edges())
-    print("Liste des arêtes restantes :", list(G_prime.edges(data=True)))
+    if n == n_values[0] and m == m_values[0]:  # Visualisation seulement pour la première itération
+        C = C_values[0]  # On prend la première valeur de C pour la visualisation
+        G_prime, best_edge_removed, best_cost = Astar(random_subgraph, destination_pairs, C)
+        shortest_paths = precompute_shortest_paths(G_prime, destination_pairs)
+        visualize_graph_on_globe(random_subgraph, shortest_paths)
+        print("\n=== Résultats de l'A* Optimisé ===")
+        print("Arête supprimée pour optimisation :", best_edge_removed)
+        print("Meilleur coût moyen obtenu :", best_cost)
+        print("Nombre d'arêtes restantes :", G_prime.number_of_edges())
+        print("Liste des arêtes restantes :", list(G_prime.edges(data=True)))
 
 
 
