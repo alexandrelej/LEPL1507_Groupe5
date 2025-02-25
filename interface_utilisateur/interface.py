@@ -108,8 +108,3 @@ label_resultat.grid(row=10, column=0, columnspan=2, pady=10)
 
 # Lancement de la boucle principale
 root.mainloop()
-
-
-
-
-
