@@ -47,13 +47,23 @@ def create_random_subgraph(G, n, m):
     
     # Étape 2 : Sélectionner les nœuds adjacents au nœud de départ
     selected_nodes = [start_node]
+    visited_nodes = set(selected_nodes)
+    
     while len(selected_nodes) < n:
-        neighbors = list(G.neighbors(selected_nodes[-1]))
-        if not neighbors:
-            break  # Arrêter si aucun voisin disponible
-        new_node = random.choice(neighbors)
-        if new_node not in selected_nodes:
+        current_node = selected_nodes[-1]
+        neighbors = list(G.neighbors(current_node))
+        unvisited_neighbors = [node for node in neighbors if node not in visited_nodes]
+        
+        if unvisited_neighbors:
+            new_node = random.choice(unvisited_neighbors)
             selected_nodes.append(new_node)
+            visited_nodes.add(new_node)
+        else:
+            # Re-select a node from selected_nodes that has unvisited neighbors
+            candidates = [node for node in selected_nodes if any(neighbor not in visited_nodes for neighbor in G.neighbors(node))]
+            if not candidates:
+                break  # No more nodes can be selected
+            selected_nodes.append(random.choice(candidates))
     
     # Si moins de nœuds peuvent être sélectionnés, on arrête ici
     if len(selected_nodes) < n:
