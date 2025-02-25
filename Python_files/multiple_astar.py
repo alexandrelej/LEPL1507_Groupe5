@@ -36,7 +36,7 @@ def approx_multiple_astar(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: floa
     for it in range(iterations):
         print("iteration", it)
         print(shortest_paths)
-        for trajet in generate_order(G_reweighted, Trajets, mode="shortest"):
+        for trajet in generate_order(G_reweighted, Trajets, mode=random.choice(["shortest","random"])):
             
             if it > 0:
                 #remove the previous path
