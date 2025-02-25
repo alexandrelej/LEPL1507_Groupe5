@@ -14,8 +14,8 @@ def precompute_shortest_paths(G, J):
 
 def compute_average_cost(G, shortest_paths, C):
     """Calcule la moyenne des coûts des trajets."""
-    total_cost = sum(length for _, length in shortest_paths.values()) + C * G.number_of_edges()
-    return total_cost / len(shortest_paths)
+    total_cost = sum(length for _, length in shortest_paths.values())/len(shortest_paths) + C * G.number_of_edges()
+    return total_cost
 
 def update_shortest_paths(G, J, shortest_paths, removed_edge):
     """Met à jour uniquement les trajets impactés après suppression d'une arête."""
