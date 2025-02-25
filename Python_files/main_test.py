@@ -32,11 +32,6 @@ for n, m in zip(n_values, m_values):
     random_subgraph = create_random_subgraph(airport_graph, n, m)
     destination_pairs = generate_random_pairs(random_subgraph, j)
 
-# Précalculer les chemins après suppression de l’arête optimale
-shortest_paths = precompute_shortest_paths(G_prime, destination_pairs)
-
-# Visualiser le graphe avec les chemins trouvés
-visualize_graph_on_globe(random_subgraph, shortest_paths)
     # Exécuter et visualiser A* une seule fois pour n et m fixés
 if n == n_values[0] and m == m_values[0]:  # Visualisation seulement pour la première itération
     C = C_values[0]  # On prend la première valeur de C pour la visualisation
@@ -66,7 +61,7 @@ if n == n_values[0] and m == m_values[0]:  # Visualisation seulement pour la pre
 
         # Exécuter Mult_multiple_astar
         start_time = time.time()
-        G_mult, rsubgraph = approx_multiple_astar(random_subgraph, destination_pairs, C,iterations=min(n, m))
+        G_mult, rsubgraph = approx_multiple_astar(random_subgraph, destination_pairs, C,iterations=max(n, m))
         multi_astar_time = time.time() - start_time
         multi_astar_cost = sum([nx.shortest_path_length(G_mult,start,end) for start, end in destination_pairs])/len(destination_pairs) + C * len(G_mult.edges())
         multi_astar_costs.append(multi_astar_cost)
