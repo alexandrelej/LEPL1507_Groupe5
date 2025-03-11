@@ -59,8 +59,11 @@ def approx_multiple_astar(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: floa
                 if G_reweighted[path[i]][path[i+1]]['used'] == 0:
                     G_reweighted[path[i]][path[i+1]]['distance'] -= N*C
                 G_reweighted[path[i]][path[i+1]]['used'] += 1
-        if(total_length ==sum(length for _, length in shortest_paths.values())):break
+        if(total_length ==sum(length for _, length in shortest_paths.values())):
+            print("converged")
+            break
         total_length = sum(length for _, length in shortest_paths.values())
+        #print("total_length at iteration",it," = ",total_length)
     # On utilise list(G_reweighted.edges()) pour éviter la modification en cours d'itération
     for u, v in list(G_reweighted.edges()):
         if G_reweighted[u][v]['used'] == 0:

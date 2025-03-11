@@ -1,11 +1,14 @@
 import networkx as nx
+from create_graphe import haversine
 
 def precompute_shortest_paths(G, J):
+    def heuristic(u, v):
+        return haversine(G.nodes[u]["latitude"], G.nodes[u]["longitude"], G.nodes[v]["latitude"], G.nodes[v]["longitude"])
     """Pré-calcule les plus courts chemins et leurs coûts pour chaque paire de J."""
     shortest_paths = {}
     for s, t in J:
         try:
-            path = nx.astar_path(G, s, t, weight="distance")
+            path = nx.astar_path(G, s, t, weight="distance", heuristic=heuristic)
             length = sum(G[path[i]][path[i+1]]["distance"] for i in range(len(path)-1))
             shortest_paths[(s, t)] = (path, length)
         except nx.NetworkXNoPath:
@@ -18,6 +21,8 @@ def compute_average_cost(G, shortest_paths, C):
     return total_cost
 
 def update_shortest_paths(G, J, shortest_paths, removed_edge):
+    def heuristic(u, v):
+        return haversine(G.nodes[u]["latitude"], G.nodes[u]["longitude"], G.nodes[v]["latitude"], G.nodes[v]["longitude"])
     """Met à jour uniquement les trajets impactés après suppression d'une arête."""
     u, v = removed_edge
     updated_paths = shortest_paths.copy()
@@ -26,7 +31,7 @@ def update_shortest_paths(G, J, shortest_paths, removed_edge):
         path, _ = shortest_paths[(s, t)]
         if path is not None and (u, v) in zip(path, path[1:]):  # Si l'arête supprimée est utilisée
             try:
-                new_path = nx.astar_path(G, s, t, weight="distance")
+                new_path = nx.astar_path(G, s, t, weight="distance", heuristic=heuristic)
                 new_length = sum(G[new_path[i]][new_path[i+1]]["distance"] for i in range(len(new_path)-1))
                 updated_paths[(s, t)] = (new_path, new_length)
             except nx.NetworkXNoPath:
