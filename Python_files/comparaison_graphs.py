@@ -15,12 +15,14 @@ routes_csv = "../basic_datasets/pre_existing_routes.csv"
 airport_graph = create_airport_graph(airports_csv, routes_csv)
 
 # Paramètres fixes
-j = 15  # Nombre de paires de destinations
+j = 500  # Nombre de paires de destinations
 C_values = [2000]  # Coût d'ajout d'une arête supplémentaire
-num_runs = 10  # Nombre d'exécutions pour la moyenne
+num_runs = 5  # Nombre d'exécutions pour la moyenne
+
+
 
 # Comparaison en fonction du nombre de nœuds avec un nombre d'arêtes fixe
-n_values = [10, 20, 30, 40, 50, 60, 70] # il y a 75 aéroports dans le fichier csv
+n_values = [10, 20, 30, 40, 50, 60, 70, 75] # il y a 75 aéroports dans le fichier csv
 m_fixed = 40  # Nombre d'arêtes constant
 
 astar_means_times_nodes = []
@@ -61,8 +63,8 @@ for n in n_values:
     multi_astar_means_costs_nodes.append(np.mean(multi_astar_costs))
 
 # Comparaison en fonction du nombre d'arêtes avec un nombre de nœuds fixe
-m_values = [100, 120, 140, 160, 180, 200]
-n_fixed = 50  # Nombre de nœuds constant
+m_values = [100, 250, 500, 750, 1000, 1250, 1500]
+n_fixed = 70  # Nombre de nœuds constant
 
 astar_means_times_edges = []
 multi_astar_means_times_edges = []
@@ -104,9 +106,9 @@ for m in m_values:
 
 
 # Comparaison en fonction du nombre de trajets requis
-j_values = [5, 10, 15, 20, 25, 30]
-m_fixed = 150  # Nombre d'arêtes constant
-n_fixed = 50  # Nombre de nœuds constant
+j_values = [10, 50, 100, 200, 500]
+m_fixed = 1000  # Nombre d'arêtes constant
+n_fixed = 70  # Nombre de nœuds constant
 
 astar_means_times_j = []
 multi_astar_means_times_j = []
@@ -130,7 +132,10 @@ for j in j_values:
         elapsed_time = time.time() - start_time
 
         astar_times.append(elapsed_time)
+        print("Astar time",elapsed_time)
         astar_costs.append(best_cost)
+        print("Astar cost",best_cost)
+        print("Nombre de vols restants",len(G_prime.edges()))
 
         start_time = time.time()
         G_mult, rsubgraph = approx_multiple_astar(random_subgraph, destination_pairs, C_values[0], iterations=30)
@@ -138,7 +143,9 @@ for j in j_values:
         multi_astar_cost = sum([nx.shortest_path_length(G_mult, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C_values[0] * len(G_mult.edges())
 
         multi_astar_times.append(elapsed_time)
+        print("Multi Astar time",elapsed_time)
         multi_astar_costs.append(multi_astar_cost)
+        print("Multi Astar cost",multi_astar_cost)
 
     astar_means_times_j.append(np.mean(astar_times))
     multi_astar_means_times_j.append(np.mean(multi_astar_times))
@@ -151,40 +158,40 @@ plt.figure(figsize=(10, 8))
 
 # Coût en fonction du nombre de nœuds
 plt.subplot(2, 2, 1)
-plt.plot(n_values, astar_means_costs_nodes, 's-', label="Coût total A*")
-plt.plot(n_values, multi_astar_means_costs_nodes, 'o-', label="Coût total Mult A*")
+plt.plot(n_values, astar_means_costs_nodes, 's-', label="Algorithme Remove edges")
+plt.plot(n_values, multi_astar_means_costs_nodes, 'o-', label="Algorithme Update costs")
 plt.xlabel("Nombre de nœuds")
-plt.ylabel("Coût total")
-plt.title("Coût en fonction du nombre de nœuds")
+plt.ylabel("Coût total du réseau")
+plt.title("Coût du réseau en fonction du nombre de nœuds")
 plt.legend()
 plt.grid()
 
 # Temps d'exécution en fonction du nombre de nœuds
 plt.subplot(2, 2, 2)
-plt.plot(n_values, astar_means_times_nodes, 'o-', label="Temps A*")
-plt.plot(n_values, multi_astar_means_times_nodes, 's-', label="Temps Mult A*")
+plt.plot(n_values, astar_means_times_nodes, 'o-', label="Algorithme Remove edges")
+plt.plot(n_values, multi_astar_means_times_nodes, 's-', label="Algorithme Update costs")
 plt.xlabel("Nombre de nœuds")
-plt.ylabel("Temps (s)")
+plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre de nœuds")
 plt.legend()
 plt.grid()
 
 # Coût en fonction du nombre d'arêtes
 plt.subplot(2, 2, 3)
-plt.plot(m_values, astar_means_costs_edges, 's-', label="Coût total A*")
-plt.plot(m_values, multi_astar_means_costs_edges, 'o-', label="Coût total Mult A*")
+plt.plot(m_values, astar_means_costs_edges, 's-', label="Algorithme Remove edges")
+plt.plot(m_values, multi_astar_means_costs_edges, 'o-', label="Algorithme Update costs")
 plt.xlabel("Nombre d'arêtes")
-plt.ylabel("Coût total")
-plt.title("Coût en fonction du nombre d'arêtes")
+plt.ylabel("Coût total du réseau")
+plt.title("Coût total du réseau en fonction du nombre d'arêtes")
 plt.legend()
 plt.grid()
 
 # Temps d'exécution en fonction du nombre d'arêtes
 plt.subplot(2, 2, 4)
-plt.plot(m_values, astar_means_times_edges, 'o-', label="Temps A*")
-plt.plot(m_values, multi_astar_means_times_edges, 's-', label="Temps Mult A*")
+plt.plot(m_values, astar_means_times_edges, 'o-', label="Algorithme Remove edges")
+plt.plot(m_values, multi_astar_means_times_edges, 's-', label="Algorithme Update costs")
 plt.xlabel("Nombre d'arêtes")
-plt.ylabel("Temps (s)")
+plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre d'arêtes")
 plt.legend()
 plt.grid()
@@ -193,31 +200,33 @@ plt.tight_layout()
 plt.savefig("comparaison_noeuds_aretes.png")
 plt.show()
 
+
+
 # Tracé des résultats
-plt.figure(figsize=(10, 8))
+plt.figure(figsize=(10, 4))
 
 # Coût en fonction du nombre de trajets
-plt.subplot(2, 1, 1)
-plt.plot(j_values, astar_means_costs_j, 's-', label="Coût total A*")
-plt.plot(j_values, multi_astar_means_costs_j, 'o-', label="Coût total Mult A*")
+plt.subplot(1, 2, 1)
+plt.plot(j_values, astar_means_costs_j, 's-', label="Algorithme Remove edges")
+plt.plot(j_values, multi_astar_means_costs_j, 'o-', label="Algorithme Update costs")
 plt.xlabel("Nombre de trajets")
-plt.ylabel("Coût total")
-plt.title("Coût en fonction du nombre de trajets")
+plt.ylabel("Coût total du réseau")
+plt.title("Coût total du réseau en fonction du nombre de trajets")
 plt.legend()
 plt.grid()
 
 # Temps d'exécution en fonction du nombre de trajets    
-plt.subplot(2, 1, 2)
-plt.plot(j_values, astar_means_times_j, 'o-', label="Temps A*")
-plt.plot(j_values, multi_astar_means_times_j, 's-', label="Temps Mult A*")
+plt.subplot(1, 2, 2)
+plt.plot(j_values, astar_means_times_j, 'o-', label="Algorithme Remove edges")
+plt.plot(j_values, multi_astar_means_times_j, 's-', label="Algorithme Update costs")
 plt.xlabel("Nombre de trajets")
-plt.ylabel("Temps (s)")
+plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre de trajets")
 plt.legend()
 plt.grid()
 
 plt.tight_layout()
-plt.savefig("comparaison_#trajets.png")
+plt.savefig("all_data.png")
 plt.show()
 
 
@@ -252,21 +261,21 @@ plt.figure(figsize=(10, 8))
 
 # Comparaison des coûts
 plt.subplot(2, 1, 1)
-plt.plot(C_values, astar_costs, 'o-', label="A*")
-plt.plot(C_values, multi_astar_costs, 's-', label="Mult A*")
-plt.xlabel("C (Coût par arête)")
-plt.ylabel("Coût total")
-plt.title("Comparaison des coûts")
+plt.plot(C_values, astar_costs, 'o-', label="Algorithme Remove edges")
+plt.plot(C_values, multi_astar_costs, 's-', label="Algorithme Update costs")
+plt.xlabel("C (coût par arête)")
+plt.ylabel("Coût total du réseau")
+plt.title("Coût total du réseau en fonction du côut C par arête")
 plt.legend()
 plt.grid()
 
 # Comparaison des temps d'exécution
 plt.subplot(2, 1, 2)
-plt.plot(C_values, astar_times, 'o-', label="A*")
-plt.plot(C_values, multi_astar_times, 's-', label="Mult A*")
-plt.xlabel("C (Coût par arête)")
+plt.plot(C_values, astar_times, 'o-', label="Algorithme Remove edges")
+plt.plot(C_values, multi_astar_times, 's-', label="Algorithme Update costs")
+plt.xlabel("C (coût par arête)")
 plt.ylabel("Temps d'exécution (s)")
-plt.title("Comparaison des temps d'exécution")
+plt.title("Temps d'exécution en fonction du coût C par arête")
 plt.legend()
 plt.grid()
 
