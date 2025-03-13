@@ -18,18 +18,33 @@ def generate_order(G: nx.DiGraph, Trajets: list[tuple[str, str]], mode = "random
             path_lengths.append((Trajet, shortest_path_length))
             path_lengths.sort(key=lambda x: x[1])
         return [Trajet for Trajet, _ in path_lengths]
+    elif mode == "longest":
+        path_lengths = []
+        for Trajet in Trajets:
+            start = Trajet[0]
+            end = Trajet[1]
+            shortest_path_length = nx.shortest_path_length(G, source=start, target=end, weight='distance')
+            path_lengths.append((Trajet, shortest_path_length))
+            path_lengths.sort(key=lambda x: -x[1])
+        return [Trajet for Trajet, _ in path_lengths]
 
-def approx_multiple_astar(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: float,iterations : int =1) -> nx.DiGraph:
+def approx_multiple_astar(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: float,iterations : int =1, H : list[bool] = None,mode = "random") -> nx.DiGraph:
     def heuristic(u, v):
         return haversine(G.nodes[u]["latitude"], G.nodes[u]["longitude"], G.nodes[v]["latitude"], G.nodes[v]["longitude"])
     """
     Approximate the optimal solution by iteratively doing A* on the graph.
     """
+    static_turn = 0
+    removed_H = (H == None)
     G_reweighted = G.copy()
     N = len(Trajets)
     nx.set_edge_attributes(G_reweighted, 0, "used")
-    for edge in G_reweighted.edges():
+    for i,edge in enumerate(G_reweighted.edges()):
         G_reweighted.edges[edge]['distance'] += N*C
+        if H is not None:
+            if H[i]:
+                G_reweighted.edges[edge]['used'] = 1
+                G_reweighted.edges[edge]['distance'] -= N*C
     
     shortest_paths = {}
     total_length = 0
@@ -37,7 +52,7 @@ def approx_multiple_astar(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: floa
         #print("iteration", it)
         #print(shortest_paths)
         
-        for trajet in generate_order(G_reweighted, Trajets, mode=random.choice(["shortest","random"])):
+        for trajet in generate_order(G_reweighted, Trajets, mode = random.choice(["shortest","longest","random"])):
             
             if it > 0:
                 #remove the previous path
@@ -60,8 +75,21 @@ def approx_multiple_astar(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: floa
                     G_reweighted[path[i]][path[i+1]]['distance'] -= N*C
                 G_reweighted[path[i]][path[i+1]]['used'] += 1
         if(total_length ==sum(length for _, length in shortest_paths.values())):
-            print("converged")
-            break
+            static_turn += 1
+        else:
+            static_turn = 0
+        if static_turn > 20:
+            if not removed_H:
+                for i, (u, v) in enumerate(list(G_reweighted.edges())):
+                    if H[i]:
+                        G_reweighted[u][v]['used'] -= 1
+                        if G_reweighted[u][v]['used'] == 0:
+                            G_reweighted[u][v]['distance'] += N*C
+                static_turn = 0
+                removed_H = True
+            else:
+                print("converged")
+                break
         total_length = sum(length for _, length in shortest_paths.values())
         #print("total_length at iteration",it," = ",total_length)
     # On utilise list(G_reweighted.edges()) pour éviter la modification en cours d'itération
