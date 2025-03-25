@@ -30,6 +30,6 @@ def epidemic(G):
     plt.subplot(122)
     nx.draw(G_removed, with_labels=True, node_color='lightgreen', font_weight='bold')
     plt.title(f"Graphe après retrait du nœud {node_to_remove}")
-    plt.show()
+    plt.savefig("epidemie_resultat.png")
 
     return G_removed
