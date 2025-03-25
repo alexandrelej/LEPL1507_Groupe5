@@ -166,8 +166,10 @@ plt.title("Coût du réseau en fonction du nombre de nœuds")
 plt.legend()
 plt.grid()
 info_text = "Paramètres fixes :\n- |E| = {m_fixed}\n- |J| = {j}\n- C = {C}".format(m_fixed=m_fixed, j=j, C=C_values[0])
-plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
-             fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+plt.annotate(info_text, xy=(0.05, 0.95), xycoords='axes fraction',
+             fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5),
+             verticalalignment='top', horizontalalignment='left')
+
 
 
 # Temps d'exécution en fonction du nombre de nœuds
@@ -180,7 +182,7 @@ plt.title("Temps d'exécution en fonction du nombre de nœuds")
 plt.legend()
 plt.grid()
 info_text = "Paramètres fixes :\n- |E| = {m_fixed}\n- |J| = {j}\n- C = {C}".format(m_fixed=m_fixed, j=j, C=C_values[0])
-plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
              fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
 
@@ -194,7 +196,7 @@ plt.title("Coût total du réseau en fonction du nombre d'arêtes")
 plt.legend()
 plt.grid()
 info_text = "Paramètres fixes :\n- |V| = {n_fixed}\n- |J| = {j}\n- C = {C}".format(n_fixed=n_fixed, j=j, C=C_values[0])
-plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
              fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
 
@@ -208,7 +210,7 @@ plt.title("Temps d'exécution en fonction du nombre d'arêtes")
 plt.legend()
 plt.grid()
 info_text = "Paramètres fixes :\n- |V| = {n_fixed}\n- |J| = {j}\n- C = {C}".format(n_fixed=n_fixed, j=j, C=C_values[0])
-plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
              fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
 
@@ -245,7 +247,7 @@ plt.title("Temps d'exécution en fonction du nombre de trajets")
 plt.legend()
 plt.grid()
 info_text = "Paramètres fixes :\n- |V| = {n_fixed_for_j}\n- |E| = {m_fixed_for_j}\n- C = {C}".format(n_fixed_for_j=n_fixed_for_j, m_fixed_for_j=m_fixed_for_j, C=C_values[0])
-plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
              fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
 plt.tight_layout()
@@ -292,7 +294,7 @@ plt.title("Coût total du réseau en fonction du côut C par arête")
 plt.legend()
 plt.grid()
 info_text = "Paramètres fixes :\n- |V| = {n_fixed_for_j}\n- |E| = {m_fixed_for_j}\n- |J| = {j}".format(n_fixed_for_j=n_fixed_for_j, m_fixed_for_j=m_fixed_for_j, j=j)
-plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
              fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
 # Comparaison des temps d'exécution
@@ -305,7 +307,7 @@ plt.title("Temps d'exécution en fonction du coût C par arête")
 plt.legend()
 plt.grid()
 info_text = "Paramètres fixes :\n- |V| = {n_fixed_for_j}\n- |E| = {m_fixed_for_j}\n- |J| = {j}".format(n_fixed_for_j=n_fixed_for_j, m_fixed_for_j=m_fixed_for_j, j=j)
-plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
              fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
 plt.tight_layout()
