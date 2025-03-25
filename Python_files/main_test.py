@@ -5,7 +5,38 @@ from create_random_graphes import create_airport_graph, create_random_subgraph, 
 from visualisation import visualize_graph_on_globe
 from A_star import Astar, precompute_shortest_paths
 from multiple_astar import approx_multiple_astar
+from epidemie import epidemic
+import json
+from networkx.readwrite import json_graph
 import networkx as nx
+
+def graph_to_json(G):
+    """
+    Convertit un graphe NetworkX en une chaîne JSON au format node-link.
+    
+    Parameters:
+        G (networkx.Graph): Le graphe à convertir.
+        
+    Returns:
+        str: La représentation JSON du graphe.
+    """
+    data = json_graph.node_link_data(G)
+    return json.dumps(data, indent=4)
+
+
+def graph_to_json(G):
+    """
+    Convertit un graphe NetworkX en une chaîne JSON au format node-link.
+    
+    Parameters:
+        G (networkx.Graph): Le graphe à convertir.
+        
+    Returns:
+        str: La représentation JSON du graphe.
+    """
+    data = json_graph.node_link_data(G)
+    return json.dumps(data, indent=4)
+
 
 debug = False
 # Chemins vers les fichiers CSV
@@ -33,18 +64,17 @@ for n, m in zip(n_values, m_values):
     random_subgraph = create_random_subgraph(airport_graph, n, m)
     destination_pairs = generate_random_pairs(random_subgraph, j)
 
-    if debug:
-        # Exécuter et visualiser A* une seule fois pour n et m fixés
-        if n == n_values[0] and m == m_values[0]:  # Visualisation seulement pour la première itération
-            C = C_values[0]  # On prend la première valeur de C pour la visualisation
-            G_prime, best_edge_removed, best_cost = Astar(random_subgraph, destination_pairs, C)
-            shortest_paths = precompute_shortest_paths(G_prime, destination_pairs)
-            visualize_graph_on_globe(random_subgraph, shortest_paths)
-            print("\n=== Résultats de l'A* Optimisé ===")
-            print("Arête supprimée pour optimisation :", best_edge_removed)
-            print("Meilleur coût moyen obtenu :", best_cost)
-            print("Nombre d'arêtes restantes :", G_prime.number_of_edges())
-            print("Liste des arêtes restantes :", list(G_prime.edges(data=True)))
+    # Exécuter et visualiser A* une seule fois pour n et m fixés
+    if n == n_values[0] and m == m_values[0]:  # Visualisation seulement pour la première itération
+        C = C_values[0]  # On prend la première valeur de C pour la visualisation
+        G_prime, best_edge_removed, best_cost = Astar(random_subgraph, destination_pairs, C)
+        shortest_paths = precompute_shortest_paths(G_prime, destination_pairs)
+        visualize_graph_on_globe(random_subgraph, shortest_paths)
+        print("\n=== Résultats de l'A* Optimisé ===")
+        print("Arête supprimée pour optimisation :", best_edge_removed)
+        print("Meilleur coût moyen obtenu :", best_cost)
+        print("Nombre d'arêtes restantes :", G_prime.number_of_edges())
+        print("Liste des arêtes restantes :", list(G_prime.edges(data=True)))
 
 
 
@@ -63,7 +93,11 @@ for n, m in zip(n_values, m_values):
 
         # Exécuter Mult_multiple_astar
         start_time = time.time()
-        G_mult, rsubgraph = approx_multiple_astar(random_subgraph, destination_pairs, C,iterations=max(n, m))
+        G_mult, rsubgraph = approx_multiple_astar(random_subgraph, destination_pairs, C,iterations=min(n, m))
+
+        #String au format json du sous-graphe optimisé
+        
+        json_str = graph_to_json(G_mult)
         multi_astar_time = time.time() - start_time
         multi_astar_cost = sum([nx.shortest_path_length(G_mult,start,end) for start, end in destination_pairs])/len(destination_pairs) + C * len(G_mult.edges())
         multi_astar_costs.append(multi_astar_cost)
@@ -97,4 +131,9 @@ plt.grid()
 plt.tight_layout()
 plt.savefig("resultats.png")  # Enregistre le graphique dans un fichier
 
+
+# --- Test sur la propagation d'épidémie sur le graphe complet ---
+print("\n=== Test de l'épidémie sur le graphe complet ===")
+# On utilise ici le graphe complet airport_graph
+G_after_epidemic = epidemic(airport_graph)
 
