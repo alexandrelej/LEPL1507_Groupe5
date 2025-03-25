@@ -15,7 +15,7 @@ routes_csv = "../basic_datasets/pre_existing_routes.csv"
 airport_graph = create_airport_graph(airports_csv, routes_csv)
 
 # Paramètres fixes
-j = 500  # Nombre de paires de destinations
+j = 20  # Nombre de paires de destinations
 C_values = [2000]  # Coût d'ajout d'une arête supplémentaire
 num_runs = 5  # Nombre d'exécutions pour la moyenne
 
@@ -63,8 +63,8 @@ for n in n_values:
     multi_astar_means_costs_nodes.append(np.mean(multi_astar_costs))
 
 # Comparaison en fonction du nombre d'arêtes avec un nombre de nœuds fixe
-m_values = [100, 250, 500, 750, 1000, 1250, 1500]
-n_fixed = 70  # Nombre de nœuds constant
+m_values = [20, 30, 40]
+n_fixed = 30  # Nombre de nœuds constant
 
 astar_means_times_edges = []
 multi_astar_means_times_edges = []
@@ -106,9 +106,9 @@ for m in m_values:
 
 
 # Comparaison en fonction du nombre de trajets requis
-j_values = [10, 50, 100, 200, 500]
-m_fixed = 1000  # Nombre d'arêtes constant
-n_fixed = 70  # Nombre de nœuds constant
+j_values = [10, 10, 10, 10, 10]
+m_fixed_for_j = 40  # Nombre d'arêtes constant
+n_fixed_for_j = 20  # Nombre de nœuds constant
 
 astar_means_times_j = []
 multi_astar_means_times_j = []
@@ -124,7 +124,7 @@ for j in j_values:
     print("\n### Test avec j =", j)
 
     for _ in range(num_runs):
-        random_subgraph = create_random_subgraph(airport_graph, n_fixed, m_fixed)
+        random_subgraph = create_random_subgraph(airport_graph, n_fixed_for_j, m_fixed_for_j)
         destination_pairs = generate_random_pairs(random_subgraph, j)
 
         start_time = time.time()
@@ -165,6 +165,10 @@ plt.ylabel("Coût total du réseau")
 plt.title("Coût du réseau en fonction du nombre de nœuds")
 plt.legend()
 plt.grid()
+info_text = "Paramètres fixes :\n- |E| = {m_fixed}\n- |J| = {j}\n- C = {C}".format(m_fixed=m_fixed, j=j, C=C_values[0])
+plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+             fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+
 
 # Temps d'exécution en fonction du nombre de nœuds
 plt.subplot(2, 2, 2)
@@ -175,6 +179,10 @@ plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre de nœuds")
 plt.legend()
 plt.grid()
+info_text = "Paramètres fixes :\n- |E| = {m_fixed}\n- |J| = {j}\n- C = {C}".format(m_fixed=m_fixed, j=j, C=C_values[0])
+plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+             fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+
 
 # Coût en fonction du nombre d'arêtes
 plt.subplot(2, 2, 3)
@@ -185,6 +193,10 @@ plt.ylabel("Coût total du réseau")
 plt.title("Coût total du réseau en fonction du nombre d'arêtes")
 plt.legend()
 plt.grid()
+info_text = "Paramètres fixes :\n- |V| = {n_fixed}\n- |J| = {j}\n- C = {C}".format(n_fixed=n_fixed, j=j, C=C_values[0])
+plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+             fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+
 
 # Temps d'exécution en fonction du nombre d'arêtes
 plt.subplot(2, 2, 4)
@@ -195,6 +207,10 @@ plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre d'arêtes")
 plt.legend()
 plt.grid()
+info_text = "Paramètres fixes :\n- |V| = {n_fixed}\n- |J| = {j}\n- C = {C}".format(n_fixed=n_fixed, j=j, C=C_values[0])
+plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+             fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+
 
 plt.tight_layout()
 plt.savefig("comparaison_noeuds_aretes.png")
@@ -214,6 +230,10 @@ plt.ylabel("Coût total du réseau")
 plt.title("Coût total du réseau en fonction du nombre de trajets")
 plt.legend()
 plt.grid()
+info_text = "Paramètres fixes :\n- |V| = {n_fixed_for_j}\n- |E| = {m_fixed_for_j}\n- C = {C}".format(n_fixed_for_j=n_fixed_for_j, m_fixed_for_j=m_fixed_for_j, C=C_values[0])
+plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+             fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+
 
 # Temps d'exécution en fonction du nombre de trajets    
 plt.subplot(1, 2, 2)
@@ -224,6 +244,9 @@ plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre de trajets")
 plt.legend()
 plt.grid()
+info_text = "Paramètres fixes :\n- |V| = {n_fixed_for_j}\n- |E| = {m_fixed_for_j}\n- C = {C}".format(n_fixed_for_j=n_fixed_for_j, m_fixed_for_j=m_fixed_for_j, C=C_values[0])
+plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+             fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
 plt.tight_layout()
 plt.savefig("all_data.png")
@@ -268,6 +291,9 @@ plt.ylabel("Coût total du réseau")
 plt.title("Coût total du réseau en fonction du côut C par arête")
 plt.legend()
 plt.grid()
+info_text = "Paramètres fixes :\n- |V| = {n_fixed_for_j}\n- |E| = {m_fixed_for_j}\n- |J| = {j}".format(n_fixed_for_j=n_fixed_for_j, m_fixed_for_j=m_fixed_for_j, j=j)
+plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+             fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
 # Comparaison des temps d'exécution
 plt.subplot(2, 1, 2)
@@ -278,6 +304,9 @@ plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du coût C par arête")
 plt.legend()
 plt.grid()
+info_text = "Paramètres fixes :\n- |V| = {n_fixed_for_j}\n- |E| = {m_fixed_for_j}\n- |J| = {j}".format(n_fixed_for_j=n_fixed_for_j, m_fixed_for_j=m_fixed_for_j, j=j)
+plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
+             fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
 plt.tight_layout()
 plt.savefig("comparaison_C.png")
