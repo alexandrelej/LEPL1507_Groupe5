@@ -10,18 +10,18 @@ import json
 from networkx.readwrite import json_graph
 import networkx as nx
 
-def graph_to_json(G):
+def graph_to_json_file(G, file_path):
     """
-    Convertit un graphe NetworkX en une chaîne JSON au format node-link.
+    Convertit un graphe NetworkX en JSON (format node-link) et l'écrit dans un fichier.
     
     Parameters:
         G (networkx.Graph): Le graphe à convertir.
-        
-    Returns:
-        str: La représentation JSON du graphe.
+        file_path (str): Le chemin du fichier dans lequel sauvegarder la représentation JSON.
     """
     data = json_graph.node_link_data(G)
-    return json.dumps(data, indent=4)
+    with open(file_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=4)
+
 
 debug = False
 # Chemins vers les fichiers CSV
@@ -78,7 +78,8 @@ for n, m in zip(n_values, m_values):
         G_mult, rsubgraph = update_costs(random_subgraph, destination_pairs, C, iterations=min(n, m))
 
         # Conversion du sous-graphe optimisé en JSON
-        json_str = graph_to_json(G_mult)
+        graph_to_json_file(G_mult, "G_mult.json")
+
         multi_astar_time = time.time() - start_time
         multi_astar_cost = sum([nx.shortest_path_length(G_mult, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C * len(G_mult.edges())
         multi_astar_costs.append(multi_astar_cost)
