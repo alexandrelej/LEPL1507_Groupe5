@@ -5,10 +5,11 @@ from create_random_graphes import create_airport_graph, create_random_subgraph, 
 from visualisation import visualize_graph_on_globe
 # from A_star import Astar, precompute_shortest_paths 
 from multiple_astar import approx_multiple_astar as update_costs
-from epidemie import epidemic
+from epidemie import *
 import json
 from networkx.readwrite import json_graph
 import networkx as nx
+import os
 
 def graph_to_json_file(G, file_path):
     """
@@ -21,7 +22,6 @@ def graph_to_json_file(G, file_path):
     data = json_graph.node_link_data(G)
     with open(file_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4)
-
 
 debug = False
 # Chemins vers les fichiers CSV
@@ -66,6 +66,7 @@ for n, m in zip(n_values, m_values):
     for C in C_values:
         print(f"\nTest avec C = {C}")
 
+        # --- Code utilisant remove_edges mis en commentaire ---
         # start_time = time.time()
         # G_prime, best_edge_removed, best_cost = remove_edges(random_subgraph, destination_pairs, C)
         # astar_time = time.time() - start_time
@@ -86,6 +87,20 @@ for n, m in zip(n_values, m_values):
         multi_astar_times.append(multi_astar_time)
 
         print(f"update_costs - Coût: {multi_astar_cost}, Temps: {multi_astar_time:.4f}s")
+
+        # Appel de visualize_graph_on_globe pour la première itération et pour la première valeur de C
+        if n == n_values[0] and C == C_values[0]:
+            # Calculer les plus courts chemins pour la visualisation
+            shortest_paths = {}
+            for start, end in destination_pairs:
+                try:
+                    path = nx.shortest_path(G_mult, start, end)
+                    length = nx.shortest_path_length(G_mult, start, end)
+                except nx.NetworkXNoPath:
+                    path = []
+                    length = float('inf')
+                shortest_paths[(start, end)] = (path, length)
+            visualize_graph_on_globe(random_subgraph, shortest_paths)
 
 # Tracer les résultats
 plt.figure(figsize=(12, 5))
@@ -116,4 +131,43 @@ plt.savefig("resultats.png")  # Enregistre le graphique dans un fichier
 # --- Test sur la propagation d'épidémie sur le graphe complet ---
 print("\n=== Test de l'épidémie sur le graphe complet ===")
 # On utilise ici le graphe complet airport_graph
-G_after_epidemic = epidemic(airport_graph)
+G_after_epidemic = epidemic(random_subgraph)
+G_robustesse = robustesse(random_subgraph)
+
+    
+results = average_simulations(random_subgraph, num_simulations=10, record_interval=5)
+
+common_fractions = results["fractions"]
+gcc_sizes = results["gscc_sizes"]
+avg_mean = results["avg_paths"]
+eff_mean = results["efficiencies"]
+n_comp_mean = results["num_components"]
+
+plt.figure(figsize=(16, 4))
+    
+plt.subplot(141)
+plt.plot(common_fractions, gcc_sizes, marker='o', color='blue')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Taille de la GCC")
+plt.title("Taille de la composante géante (moyenne)")
+
+plt.subplot(142)
+plt.plot(common_fractions, avg_mean, marker='o', color='green')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Longueur moyenne")
+plt.title("Longueur moyenne des chemins (moyenne)")
+
+plt.subplot(143)
+plt.plot(common_fractions, eff_mean, marker='o', color='red')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Efficacité globale")
+plt.title("Efficacité globale du réseau (moyenne)")
+    
+plt.subplot(144)
+plt.plot(common_fractions, n_comp_mean, marker='o', color='purple')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Nombre de composantes")
+plt.title("Nombre de composantes connexes (moyenne)")
+    
+plt.tight_layout()
+plt.savefig("robustesse_edge_removal.png")
