@@ -14,7 +14,12 @@ def add_prices(G, prices_csv):
             G.edges[start_node, end_node]['price'] = price[0]
         else:
             print(f"Prix non trouvé pour le vol de {start_node} à {end_node}.")
-
+"""
+Pour le moment on considère un temps d'arête moyen par aéroports.
+Si on obtient des données avec un temps différents par trajet, 
+On peut ajouter le temps sur les arêtes correspondantes
+puis retirer les temps d'attente aux arêtes qui partent du noeud de départ
+"""
 def add_times(G, waiting_times_csv, average_speed=800):
     """
     Ajoute les temps de vol aux arêtes du graphe.
