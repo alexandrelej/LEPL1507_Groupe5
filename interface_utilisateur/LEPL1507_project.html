@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimisation du Trafic Aérien</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/vis-network.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #network { width: 80%; height: 500px; margin: auto; border: 1px solid black; }
+    </style>
+</head>
+<body>
+    <h1>Optimisation du Trafic Aérien</h1>
+    <label for="critere">Critère de sélection :</label>
+    <select id="critere" onchange="chargerGraphe()">
+        <option value="distance">Distance</option>
+        <option value="temps">Temps</option>
+        <option value="prix">Prix</option>
+    </select>
+    <br><br>
+    <label for="depart">Aéroport de départ :</label>
+    <select id="depart"></select>
+    
+    <label for="arrivee">Aéroport d'arrivée :</label>
+    <select id="arrivee"></select>
+    
+    <button onclick="trouverTrajet()">Trouver Trajet</button>
+    <div id="network"></div>
+    
+    <script>
+        let graphe = { nodes: [], edges: [] };
+
+        function chargerGraphe() {
+            const critere = document.getElementById("critere").value;
+            fetch(`data/${critere}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    graphe = data;
+                    afficherGraphe();
+                    remplirSelects();
+                });
+        }
+
+        function afficherGraphe() {
+            const container = document.getElementById("network");
+            const data = { nodes: new vis.DataSet(graphe.nodes), edges: new vis.DataSet(graphe.edges) };
+            const options = { edges: { arrows: 'to' } };
+            new vis.Network(container, data, options);
+        }
+
+        function remplirSelects() {
+            const departSelect = document.getElementById("depart");
+            const arriveeSelect = document.getElementById("arrivee");
+            departSelect.innerHTML = "";
+            arriveeSelect.innerHTML = "";
+            
+            graphe.nodes.forEach(node => {
+                let option1 = new Option(node.label, node.id);
+                let option2 = new Option(node.label, node.id);
+                departSelect.add(option1);
+                arriveeSelect.add(option2);
+            });
+        }
+
+        function trouverTrajet() {
+            const depart = parseInt(document.getElementById("depart").value);
+            const arrivee = parseInt(document.getElementById("arrivee").value);
+            const chemin = dijkstra(graphe, depart, arrivee);
+            alert(`Trajet trouvé : ${chemin.join(" → ")}`);
+        }
+
+        function dijkstra(graphe, depart, arrivee) {
+            let distances = {};
+            let prev = {};
+            let nodes = new Set(graphe.nodes.map(n => n.id));
+            
+            graphe.nodes.forEach(n => distances[n.id] = Infinity);
+            distances[depart] = 0;
+            
+            while (nodes.size) {
+                let minNode = [...nodes].reduce((a, b) => distances[a] < distances[b] ? a : b);
+                nodes.delete(minNode);
+                
+                if (minNode === arrivee) {
+                    let chemin = [];
+                    while (minNode) {
+                        chemin.unshift(graphe.nodes.find(n => n.id === minNode).label);
+                        minNode = prev[minNode];
+                    }
+                    return chemin;
+                }
+                
+                let voisins = graphe.edges.filter(e => e.from === minNode);
+                voisins.forEach(({ to, weight }) => {
+                    let alt = distances[minNode] + weight;
+                    if (alt < distances[to]) {
+                        distances[to] = alt;
+                        prev[to] = minNode;
+                    }
+                });
+            }
+            return ["Aucun chemin trouvé"];
+        }
+
+        chargerGraphe();
+    </script>
+</body>
+</html>
