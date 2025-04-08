@@ -10,6 +10,9 @@ import json
 from networkx.readwrite import json_graph
 import networkx as nx
 import os
+import pandas as pd
+import copy 
+
 
 def graph_to_json_file(G, file_path):
     """
@@ -23,6 +26,48 @@ def graph_to_json_file(G, file_path):
     with open(file_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4)
 
+def change_to_prices(G, prices_csv):
+    """
+    Crée une copie du graphe G où la clé 'distance' de chaque arête est remplacée par le prix du vol.
+    """
+    G_prices = copy.deepcopy(G)
+    prices = pd.read_csv(prices_csv)
+
+    for edge in G_prices.edges:
+        start_node, end_node = edge
+        price_row = prices[(prices['ID_start'] == start_node) & (prices['ID_end'] == end_node)]
+        if not price_row.empty:
+            price = price_row.iloc[0]['price_tag']
+            G_prices.edges[start_node, end_node]['distance'] = price
+        else:
+            print(f"[Warning] Prix non trouvé pour le vol de {start_node} à {end_node}.")
+
+    return G_prices
+
+
+def change_to_times(G, waiting_times_csv, average_speed=800):
+    """
+    Crée une copie du graphe G où la clé 'distance' est remplacée par un temps de trajet
+    (calculé à partir de la distance et du temps d’attente au départ).
+    """
+    G_times = copy.deepcopy(G)
+    waiting_times = pd.read_csv(waiting_times_csv)
+
+    # Créer un dictionnaire rapide des idle_time
+    idle_time_dict = dict(zip(waiting_times['ID'], waiting_times['idle_time']))
+
+    for edge in G_times.edges:
+        start_node, end_node = edge
+        distance = G_times.edges[start_node, end_node]['distance']
+        flight_time = distance / average_speed
+
+        idle_time = idle_time_dict.get(start_node, 0)
+        total_time = flight_time + idle_time
+
+        G_times.edges[start_node, end_node]['distance'] = total_time
+
+    return G_times
+
 debug = False
 # Chemins vers les fichiers CSV
 airports_csv = "../basic_datasets/airports.csv"
@@ -31,11 +76,18 @@ routes_csv = "../basic_datasets/pre_existing_routes.csv"
 # Créer le graphe complet
 airport_graph = create_airport_graph(airports_csv, routes_csv)
 
+"""
 # Lire les valeurs de n et m depuis l'input sous forme "10 20 30"
 n_values = list(map(int, input("Liste des nombres de nœuds (séparés par espace) : ").split()))
 m_values = list(map(int, input("Liste des nombres d'arêtes (séparés par espace) : ").split()))
 j = int(input("Nombre de chemins requis (paires de destinations) = "))
 C_values = list(map(int, input("Liste des différentes coûts pour une arête supplémentaire : ").split()))
+"""
+n_values = [20]
+m_values = [50]
+j = 5
+C_values = [2000]
+
 
 astar_costs = []
 multi_astar_costs = []
@@ -77,9 +129,15 @@ for n, m in zip(n_values, m_values):
         # Exécuter update_costs
         start_time = time.time()
         G_mult, rsubgraph = update_costs(random_subgraph, destination_pairs, C, iterations=min(n, m))
-
+        
         # Conversion du sous-graphe optimisé en JSON
-        graph_to_json_file(G_mult, "G_mult.json")
+        graph_to_json_file(G_mult, "../json/G_mult_distances.json")
+
+        G_prices = change_to_prices(G_mult, "../basic_datasets/prices.csv")
+        graph_to_json_file(G_prices, "../json/G_mult_with_prices.json")
+
+        G_times = change_to_times(G_mult, "../basic_datasets/waiting_times.csv")
+        graph_to_json_file(G_times, "../json/G_mult_with_times.json")
 
         multi_astar_time = time.time() - start_time
         multi_astar_cost = sum([nx.shortest_path_length(G_mult, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C * len(G_mult.edges())
