@@ -94,12 +94,12 @@ plt.legend(title=f"Min: {min_flow}, Max: {max_flow}, Écart-type: {std_dev:.2f}"
 
 # Labels et titre
 plt.xlabel("Trajets")
-plt.ylabel("Flot Maximal")
+plt.ylabel("Flot Maximal (nombre de personnes simultanément sur le réseau)")
 plt.title("Histogramme des flots maximaux par trajet")
 plt.xticks(rotation=45)
 plt.grid(axis="y", linestyle="--", alpha=0.7)
 plt.tight_layout()
 
-# Affichage
-plt.show()
+# Sauvegarder l'histogramme
+plt.savefig("objectifs_secondaires/major_event.png")
 
