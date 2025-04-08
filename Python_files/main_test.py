@@ -6,6 +6,8 @@ from visualisation import visualize_graph_on_globe
 # from A_star import Astar, precompute_shortest_paths 
 from multiple_astar import approx_multiple_astar as update_costs
 from epidemie import *
+from robustesse import *
+from disturbance_result import test_disturbance
 import json
 from networkx.readwrite import json_graph
 import networkx as nx
@@ -229,3 +231,5 @@ plt.title("Nombre de composantes connexes (moyenne)")
     
 plt.tight_layout()
 plt.savefig("robustesse_edge_removal.png")
+
+test_disturbance(G_mult,random_subgraph,destination_pairs,C)
