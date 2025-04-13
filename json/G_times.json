@@ -1,0 +1,215 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "name": "El Dorado International Airport",
+            "city": "Bogota",
+            "country": "Colombia",
+            "latitude": 4.70159,
+            "longitude": -74.1469,
+            "id": "BOG"
+        },
+        {
+            "name": "Ministro Pistarini International Airport",
+            "city": "Buenos Aires",
+            "country": "Argentina",
+            "latitude": -34.8222,
+            "longitude": -58.5358,
+            "id": "EZE"
+        },
+        {
+            "name": "Comodoro Arturo Merino Ben\u00edtez International Airport",
+            "city": "Santiago",
+            "country": "Chile",
+            "latitude": -33.393001556396484,
+            "longitude": -70.78579711914062,
+            "id": "SCL"
+        },
+        {
+            "name": "John F Kennedy International Airport",
+            "city": "New York",
+            "country": "United States",
+            "latitude": 40.63980103,
+            "longitude": -73.77890015,
+            "id": "JFK"
+        },
+        {
+            "name": "Licenciado Benito Juarez International Airport",
+            "city": "Mexico City",
+            "country": "Mexico",
+            "latitude": 19.4363,
+            "longitude": -99.072098,
+            "id": "MEX"
+        },
+        {
+            "name": "Hartsfield Jackson Atlanta International Airport",
+            "city": "Atlanta",
+            "country": "United States",
+            "latitude": 33.6367,
+            "longitude": -84.428101,
+            "id": "ATL"
+        },
+        {
+            "name": "Charles de Gaulle International Airport",
+            "city": "Paris",
+            "country": "France",
+            "latitude": 49.012798,
+            "longitude": 2.55,
+            "id": "CDG"
+        },
+        {
+            "name": "Amsterdam Airport Schiphol",
+            "city": "Amsterdam",
+            "country": "Netherlands",
+            "latitude": 52.308601,
+            "longitude": 4.76389,
+            "id": "AMS"
+        },
+        {
+            "name": "Adolfo Su\u00e1rez Madrid\u2013Barajas Airport",
+            "city": "Madrid",
+            "country": "Spain",
+            "latitude": 40.471926,
+            "longitude": -3.56264,
+            "id": "MAD"
+        },
+        {
+            "name": "Mohammed V International Airport",
+            "city": "Casablanca",
+            "country": "Morocco",
+            "latitude": 33.36750030517578,
+            "longitude": -7.589970111846924,
+            "id": "CMN"
+        },
+        {
+            "name": "Guarulhos - Governador Andr\u00e9 Franco Montoro International Airport",
+            "city": "Sao Paulo",
+            "country": "Brazil",
+            "latitude": -23.435556411743164,
+            "longitude": -46.47305679321289,
+            "id": "GRU"
+        },
+        {
+            "name": "Presidente Juscelino Kubistschek International Airport",
+            "city": "Brasilia",
+            "country": "Brazil",
+            "latitude": -15.86916732788086,
+            "longitude": -47.92083358764648,
+            "id": "BSB"
+        },
+        {
+            "name": "Santos Dumont Airport",
+            "city": "Rio De Janeiro",
+            "country": "Brazil",
+            "latitude": -22.910499572800003,
+            "longitude": -43.1631011963,
+            "id": "SDU"
+        },
+        {
+            "name": "Frankfurt am Main Airport",
+            "city": "Frankfurt",
+            "country": "Germany",
+            "latitude": 50.033333,
+            "longitude": 8.570556,
+            "id": "FRA"
+        },
+        {
+            "name": "Dallas Fort Worth International Airport",
+            "city": "Dallas-Fort Worth",
+            "country": "United States",
+            "latitude": 32.896801,
+            "longitude": -97.038002,
+            "id": "DFW"
+        },
+        {
+            "name": "George Bush Intercontinental Houston Airport",
+            "city": "Houston",
+            "country": "United States",
+            "latitude": 29.98439979553223,
+            "longitude": -95.34140014648438,
+            "id": "IAH"
+        },
+        {
+            "name": "Denver International Airport",
+            "city": "Denver",
+            "country": "United States",
+            "latitude": 39.861698150635,
+            "longitude": -104.672996521,
+            "id": "DEN"
+        },
+        {
+            "name": "McCarran International Airport",
+            "city": "Las Vegas",
+            "country": "United States",
+            "latitude": 36.08010101,
+            "longitude": -115.1520004,
+            "id": "LAS"
+        },
+        {
+            "name": "Lester B. Pearson International Airport",
+            "city": "Toronto",
+            "country": "Canada",
+            "latitude": 43.6772003174,
+            "longitude": -79.63059997559999,
+            "id": "YYZ"
+        }
+    ],
+    "links": [
+        {
+            "distance": 8.021814788770511,
+            "used": 2,
+            "source": "JFK",
+            "target": "CDG"
+        },
+        {
+            "distance": 10.359308577204958,
+            "used": 1,
+            "source": "ATL",
+            "target": "AMS"
+        },
+        {
+            "distance": 3.054688432242834,
+            "used": 3,
+            "source": "ATL",
+            "target": "JFK"
+        },
+        {
+            "distance": 1.5538863102961082,
+            "used": 3,
+            "source": "AMS",
+            "target": "FRA"
+        },
+        {
+            "distance": 10.99556967105567,
+            "used": 1,
+            "source": "CMN",
+            "target": "GRU"
+        },
+        {
+            "distance": 10.424636571220534,
+            "used": 2,
+            "source": "GRU",
+            "target": "ATL"
+        },
+        {
+            "distance": 4.136136640472516,
+            "used": 1,
+            "source": "BSB",
+            "target": "GRU"
+        },
+        {
+            "distance": 8.708091646724787,
+            "used": 2,
+            "source": "FRA",
+            "target": "YYZ"
+        },
+        {
+            "distance": 2.0618161779986375,
+            "used": 2,
+            "source": "YYZ",
+            "target": "ATL"
+        }
+    ]
+}

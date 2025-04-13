@@ -63,6 +63,7 @@ def change_to_times(G, waiting_times_csv, average_speed=800):
         flight_time = distance / average_speed
 
         idle_time = idle_time_dict.get(start_node, 0)
+        idle_time = idle_time / 60  # Convertir en heures
         total_time = flight_time + idle_time
 
         G_times.edges[start_node, end_node]['distance'] = total_time
@@ -101,9 +102,8 @@ def add_times(G, waiting_times_csv, average_speed=800):
         distance = G.edges[start_node, end_node]['distance']
         speed = average_speed
         time = distance / speed
-        # Add waiting time at the start node
-        G.nodes[start_node]['idle_time'] = waiting_times[waiting_times['ID'] == start_node]['idle_time'].values[0]
-        time += G.nodes[start_node]['idle_time']
+        # Add waiting time in hours at the start node
+        time += waiting_times[waiting_times['ID'] == start_node]['idle_time'].values[0] / 60
         G.edges[edge]['time'] = time
 
 def find_shortest_path(G, start_node, end_node, metric='distance'):
@@ -189,16 +189,16 @@ for n, m in zip(n_values, m_values):
         G_all = copy.deepcopy(G_reweighted)
         add_prices(G_all, "../basic_datasets/prices.csv")
         add_times(G_all, "../basic_datasets/waiting_times.csv", average_speed=800)
-        graph_to_json_file(G_all, "../json/G_reweighted_all.json")
+        graph_to_json_file(G_all, "../json/G_all.json")
 
         # Conversion du sous-graphe optimisé en JSON
-        graph_to_json_file(G_reweighted, "../json/G_reweighted_distances.json")
+        graph_to_json_file(G_reweighted, "../json/G_distances.json")
 
         G_prices = change_to_prices(G_reweighted, "../basic_datasets/prices.csv")
-        graph_to_json_file(G_prices, "../json/G_reweighted_prices.json")
+        graph_to_json_file(G_prices, "../json/G_prices.json")
 
         G_times = change_to_times(G_reweighted, "../basic_datasets/waiting_times.csv")
-        graph_to_json_file(G_times, "../json/G_reweighted_times.json")
+        graph_to_json_file(G_times, "../json/G_times.json")
 
         update_costs_time = time.time() - start_time
         update_costs_cost = sum([nx.shortest_path_length(G_reweighted, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C * len(G_reweighted.edges())
