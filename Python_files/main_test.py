@@ -2,11 +2,10 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 from create_random_graphes import create_airport_graph, create_random_subgraph, generate_random_pairs
-from visualisation import visualize_graph_on_globe
-# from A_star import Astar, precompute_shortest_paths 
-from multiple_astar import approx_multiple_astar as update_costs
-from epidemie import *
-from robustesse import *
+#from visualisation.visualisation import visualize_graph_on_globe
+from update_costs import Update_costs
+from B_epidemie import *
+from C_robustesse import *
 from disturbance_result import test_disturbance
 import json
 from networkx.readwrite import json_graph
@@ -107,6 +106,23 @@ def add_times(G, waiting_times_csv, average_speed=800):
         time += G.nodes[start_node]['idle_time']
         G.edges[edge]['time'] = time
 
+def find_shortest_path(G, start_node, end_node, metric='distance'):
+    """
+    Trouve le plus court chemin entre deux nœuds dans un graphe.
+    """
+    if metric == 'time':
+        # retire le temps d'attente au premier nœud
+        length -= G.nodes[start_node]['idle_time']
+    path = nx.shortest_path(G, start_node, end_node, weight=metric)
+    length = nx.shortest_path_length(G, start_node, end_node, weight=metric)
+    return path, length
+
+
+
+
+
+
+
 debug = False
 # Chemins vers les fichiers CSV
 airports_csv = "../basic_datasets/airports.csv"
@@ -128,10 +144,10 @@ j = 5
 C_values = [2000]
 
 
-astar_costs = []
-multi_astar_costs = []
-astar_times = []
-multi_astar_times = []
+remove_edges_costs = []
+update_costs_costs = []
+remove_edges_times = []
+update_costs_times = []
 
 # Boucler sur différentes tailles de sous-graphes
 for n, m in zip(n_values, m_values):
@@ -141,7 +157,7 @@ for n, m in zip(n_values, m_values):
     random_subgraph = create_random_subgraph(airport_graph, n, m)
     destination_pairs = generate_random_pairs(random_subgraph, j)
 
-    # --- Code utilisant remove_edges (anciennement A_star) mis en commentaire ---
+    # --- Code utilisant Remove_edges (anciennement A_star) mis en commentaire ---
     # if n == n_values[0] and m == m_values[0]:  # Visualisation seulement pour la première itération
     #     C = C_values[0]  # On prend la première valeur de C pour la visualisation
     #     G_prime, best_edge_removed, best_cost = remove_edges(random_subgraph, destination_pairs, C)
@@ -160,36 +176,36 @@ for n, m in zip(n_values, m_values):
         # --- Code utilisant remove_edges mis en commentaire ---
         # start_time = time.time()
         # G_prime, best_edge_removed, best_cost = remove_edges(random_subgraph, destination_pairs, C)
-        # astar_time = time.time() - start_time
-        # astar_costs.append(best_cost)
-        # astar_times.append(astar_time)
-        # print(f"remove_edges - Coût: {best_cost}, Temps: {astar_time:.4f}s")
+        # remove_edges_time = time.time() - start_time
+        # remove_edges_costs.append(best_cost)
+        # remove_edges_times.append(remove_edges_time)
+        # print(f"remove_edges - Coût: {best_cost}, Temps: {remove_edges_time:.4f}s")
 
         # Exécuter update_costs
         start_time = time.time()
-        G_mult, rsubgraph = update_costs(random_subgraph, destination_pairs, C, iterations=min(n, m))
+        G_reweighted, rsubgraph = Update_costs(random_subgraph, destination_pairs, C, iterations=min(n, m))
         
         # Obtenir le graphe avec les prix et les temps
-        G_all = copy.deepcopy(G_mult)
+        G_all = copy.deepcopy(G_reweighted)
         add_prices(G_all, "../basic_datasets/prices.csv")
         add_times(G_all, "../basic_datasets/waiting_times.csv", average_speed=800)
-        graph_to_json_file(G_all, "../json/G_mult_all.json")
+        graph_to_json_file(G_all, "../json/G_reweighted_all.json")
 
         # Conversion du sous-graphe optimisé en JSON
-        graph_to_json_file(G_mult, "../json/G_mult_distances.json")
+        graph_to_json_file(G_reweighted, "../json/G_reweighted_distances.json")
 
-        G_prices = change_to_prices(G_mult, "../basic_datasets/prices.csv")
-        graph_to_json_file(G_prices, "../json/G_mult_prices.json")
+        G_prices = change_to_prices(G_reweighted, "../basic_datasets/prices.csv")
+        graph_to_json_file(G_prices, "../json/G_reweighted_prices.json")
 
-        G_times = change_to_times(G_mult, "../basic_datasets/waiting_times.csv")
-        graph_to_json_file(G_times, "../json/G_mult_times.json")
+        G_times = change_to_times(G_reweighted, "../basic_datasets/waiting_times.csv")
+        graph_to_json_file(G_times, "../json/G_reweighted_times.json")
 
-        multi_astar_time = time.time() - start_time
-        multi_astar_cost = sum([nx.shortest_path_length(G_mult, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C * len(G_mult.edges())
-        multi_astar_costs.append(multi_astar_cost)
-        multi_astar_times.append(multi_astar_time)
+        update_costs_time = time.time() - start_time
+        update_costs_cost = sum([nx.shortest_path_length(G_reweighted, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C * len(G_reweighted.edges())
+        update_costs_costs.append(update_costs_cost)
+        update_costs_times.append(update_costs_time)
 
-        print(f"update_costs - Coût: {multi_astar_cost}, Temps: {multi_astar_time:.4f}s")
+        print(f"Update costs - Coût: {update_costs_cost}, Temps: {update_costs_time:.4f}s")
 
         # Appel de visualize_graph_on_globe pour la première itération et pour la première valeur de C
         if n == n_values[0] and C == C_values[0]:
@@ -197,21 +213,21 @@ for n, m in zip(n_values, m_values):
             shortest_paths = {}
             for start, end in destination_pairs:
                 try:
-                    path = nx.shortest_path(G_mult, start, end)
-                    length = nx.shortest_path_length(G_mult, start, end)
+                    path = nx.shortest_path(G_reweighted, start, end)
+                    length = nx.shortest_path_length(G_reweighted, start, end)
                 except nx.NetworkXNoPath:
                     path = []
                     length = float('inf')
                 shortest_paths[(start, end)] = (path, length)
-            visualize_graph_on_globe(random_subgraph, shortest_paths)
+            #visualize_graph_on_globe(random_subgraph, shortest_paths)
 
 # Tracer les résultats
 plt.figure(figsize=(12, 5))
 
 # Comparaison des coûts
 plt.subplot(1, 2, 1)
-# plt.plot(astar_costs, 'o-', label="remove_edges")   # Code remove_edges mis en commentaire
-plt.plot(multi_astar_costs, 's-', label="update_costs")
+# plt.plot(remove_edges_costs, 'o-', label="remove_edges")   # Code remove_edges mis en commentaire
+plt.plot(update_costs_costs, 's-', label="Update costs")
 plt.xlabel("C (Coût par arête)")
 plt.ylabel("Coût total")
 plt.title("Comparaison des coûts")
@@ -220,8 +236,8 @@ plt.grid()
 
 # Comparaison des temps d'exécution
 plt.subplot(1, 2, 2)
-# plt.plot(np.arange(len(astar_costs)), astar_times, 'o-', label="remove_edges")
-plt.plot(np.arange(len(multi_astar_times)), multi_astar_times, 's-', label="update_costs")
+# plt.plot(np.arange(len(remove_edges_costs)), remove_edges_times, 'o-', label="remove_edges")
+plt.plot(np.arange(len(update_costs_times)), update_costs_times, 's-', label="Update costs")
 plt.xlabel("C (Coût par arête)")
 plt.ylabel("Temps d'exécution (s)")
 plt.title("Comparaison des temps d'exécution")
@@ -275,4 +291,4 @@ plt.title("Nombre de composantes connexes (moyenne)")
 plt.tight_layout()
 plt.savefig("robustesse_edge_removal.png")
 
-test_disturbance(G_mult,random_subgraph,destination_pairs,C)
+test_disturbance(G_reweighted,random_subgraph,destination_pairs,C)

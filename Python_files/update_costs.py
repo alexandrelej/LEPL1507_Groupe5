@@ -19,7 +19,7 @@ def generate_order(G: nx.DiGraph, Trajets: list[tuple[str, str]], mode = "random
             path_lengths.sort(key=lambda x: x[1])
         return [Trajet for Trajet, _ in path_lengths]
 
-def approx_multiple_astar(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: float,iterations : int =1) -> nx.DiGraph:
+def Update_costs(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: float,iterations : int =1) -> nx.DiGraph:
     def heuristic(u, v):
         return haversine(G.nodes[u]["latitude"], G.nodes[u]["longitude"], G.nodes[v]["latitude"], G.nodes[v]["longitude"])
     """

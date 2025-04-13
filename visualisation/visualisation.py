@@ -2,7 +2,7 @@ import pydeck as pdk
 import os
 
 # Définir le répertoire de sortie
-output_dir = "../visualisation"
+output_dir = "visualisation"
 os.makedirs(output_dir, exist_ok=True)
 
 def visualize_graph_on_globe(subgraph, shortest_paths):

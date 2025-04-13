@@ -166,79 +166,79 @@
     ],
     "links": [
         {
-            "distance": 5534.267913355654,
+            "distance": 75.87631417351018,
             "used": 1,
             "source": "CDG",
             "target": "BOS"
         },
         {
-            "distance": 10276.031976268328,
+            "distance": 81.80351925215102,
             "used": 1,
             "source": "CDG",
             "target": "LIM"
         },
         {
-            "distance": 1669.5392712148405,
+            "distance": 139.4649503640347,
             "used": 3,
             "source": "IST",
             "target": "TUN"
         },
         {
-            "distance": 1147.7128626922658,
+            "distance": 65.32952990038238,
             "used": 3,
             "source": "BCN",
             "target": "LHR"
         },
         {
-            "distance": 1245.9502722815887,
+            "distance": 63.25028120003605,
             "used": 3,
             "source": "LHR",
             "target": "MAD"
         },
         {
-            "distance": 1487.9143038525508,
+            "distance": 28.774237292571037,
             "used": 3,
             "source": "TUN",
             "target": "CDG"
         },
         {
-            "distance": 2702.755854205154,
+            "distance": 50.50066813727855,
             "used": 3,
             "source": "MAD",
             "target": "IST"
         },
         {
-            "distance": 1805.974762705353,
+            "distance": 29.465966386256184,
             "used": 2,
             "source": "BOS",
             "target": "MCO"
         },
         {
-            "distance": 3693.775422860721,
+            "distance": 31.825717211450396,
             "used": 1,
             "source": "BOS",
             "target": "PHX"
         },
         {
-            "distance": 309.97312963003424,
+            "distance": 23.737609261047233,
             "used": 1,
             "source": "MCO",
             "target": "MIA"
         },
         {
-            "distance": 6198.716203351745,
+            "distance": 65.46237683666817,
             "used": 1,
             "source": "LIM",
             "target": "YYZ"
         },
         {
-            "distance": 8462.885211967234,
+            "distance": 94.1628006740415,
             "used": 1,
             "source": "PHX",
             "target": "LHR"
         },
         {
-            "distance": 5175.709081172941,
+            "distance": 189.67464924171335,
             "used": 2,
             "source": "DXB",
             "target": "BCN"

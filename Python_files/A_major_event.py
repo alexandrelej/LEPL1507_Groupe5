@@ -101,5 +101,5 @@ plt.grid(axis="y", linestyle="--", alpha=0.7)
 plt.tight_layout()
 
 # Sauvegarder l'histogramme
-plt.savefig("objectifs_secondaires/major_event.png")
+plt.savefig("../graphs/major_event.png")
 

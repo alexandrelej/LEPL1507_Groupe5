@@ -1,13 +1,13 @@
 import random
 import networkx as nx
-from multiple_astar import approx_multiple_astar
+from update_costs import Update_costs
 
 def compute_cost(G: nx.DiGraph, C: float) -> float:
     return G.size(weight="weight") + C * len(G.nodes)
 
-def disturbance(G_mult: nx.DiGraph, random_subgraph: nx.DiGraph, trajets: list[tuple[str, str]], C: float, iterations: int = 1):
-    cost_before = compute_cost(G_mult, C)
-    candidate_nodes = list(set(G_mult.nodes).intersection(random_subgraph.nodes))
+def disturbance(G_reweighted: nx.DiGraph, random_subgraph: nx.DiGraph, trajets: list[tuple[str, str]], C: float, iterations: int = 1):
+    cost_before = compute_cost(G_reweighted, C)
+    candidate_nodes = list(set(G_reweighted.nodes).intersection(random_subgraph.nodes))
 
     safe_nodes = []
     for node in candidate_nodes:
@@ -23,22 +23,22 @@ def disturbance(G_mult: nx.DiGraph, random_subgraph: nx.DiGraph, trajets: list[t
             safe_nodes.append(node)
 
     if not safe_nodes:
-        return G_mult, False, cost_before, 0.0
+        return G_reweighted, False, cost_before, 0.0
 
     node_to_remove = random.choice(safe_nodes)
     disturbed_subgraph = random_subgraph.copy()
     disturbed_subgraph.remove_node(node_to_remove)
 
-    new_G_mult, _ = approx_multiple_astar(disturbed_subgraph, trajets, C, iterations)
-    cost_after = compute_cost(new_G_mult, C)
+    new_G_reweighted, _ = Update_costs(disturbed_subgraph, trajets, C, iterations)
+    cost_after = compute_cost(new_G_reweighted, C)
     improved = cost_after < cost_before
     cost_diff = cost_before - cost_after
 
-    return new_G_mult, improved, cost_after, cost_diff
+    return new_G_reweighted, improved, cost_after, cost_diff
 
-def test_disturbance(G_mult, random_subgraph, listJ, C):
-    n_iter = len(G_mult.nodes)
-    current_graph = G_mult
+def test_disturbance(G_reweighted, random_subgraph, listJ, C):
+    n_iter = len(G_reweighted.nodes)
+    current_graph = G_reweighted
     current_cost = compute_cost(current_graph, C)
 
     print(f"[Initial] Cost: {current_cost:.2f} | Nodes: {len(current_graph.nodes)}")
@@ -60,7 +60,7 @@ def multi_optimize_and_disturb(random_subgraph, trajets, C):
     print("→ Phase 1 : Exécution multiple de approx_multiple_astar")
     graphs = []
     for i in range(5):
-        g, _ = approx_multiple_astar(random_subgraph, trajets, C)
+        g, _ = Update_costs(random_subgraph, trajets, C)
         graphs.append(g)
         print(f"  - Run {i+1} → Nodes: {len(g.nodes)}, Cost: {compute_cost(g, C):.2f}")
 

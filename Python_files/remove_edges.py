@@ -38,7 +38,7 @@ def update_shortest_paths(G, J, shortest_paths, removed_edge):
                 return None  # Impossible de connecter tous les trajets → annuler la suppression
     return updated_paths
 
-def Astar(G, J, C):
+def Remove_edges(G, J, C):
     """Optimise le graphe en supprimant les arêtes qui réduisent la moyenne des coûts tout en gardant les trajets possibles."""
     G_prime = G.copy()
     shortest_paths = precompute_shortest_paths(G_prime, J)
