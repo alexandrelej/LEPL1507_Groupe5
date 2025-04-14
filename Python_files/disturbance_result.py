@@ -57,7 +57,7 @@ def test_disturbance(G_reweighted, random_subgraph, listJ, C):
     return current_graph
 
 def multi_optimize_and_disturb(random_subgraph, trajets, C):
-    print("→ Phase 1 : Exécution multiple de approx_multiple_astar")
+    print("→ Phase 1 : Exécution multiple de Update_costs")
     graphs = []
     for i in range(5):
         g, _ = Update_costs(random_subgraph, trajets, C)
@@ -72,7 +72,7 @@ def multi_optimize_and_disturb(random_subgraph, trajets, C):
     print(f"  - Fused graph → Nodes: {len(fused_graph.nodes)}, Edges: {len(fused_graph.edges)}")
 
     print("→ Phase 3 : Nouvelle optimisation sur graphe fusionné")
-    optimized_graph, _ = approx_multiple_astar(fused_graph, trajets, C)
+    optimized_graph, _ = Update_costs(fused_graph, trajets, C)
     print(f"  - Optimized → Nodes: {len(optimized_graph.nodes)}, Cost: {compute_cost(optimized_graph, C):.2f}")
 
     print("→ Phase 4 : Perturbation")

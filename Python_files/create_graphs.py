@@ -1,8 +1,17 @@
 import random
+import math
 import networkx as nx
 import pandas as pd
 import matplotlib.pyplot as plt
-from create_graphe import haversine
+
+def haversine(lat1, lon1, lat2, lon2):
+    R = 6371
+    phi1, phi2 = math.radians(lat1), math.radians(lat2)
+    dphi = math.radians(lat2 - lat1)
+    dlambda = math.radians(lon2 - lon1)
+    
+    a = math.sin(dphi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(dlambda / 2) ** 2
+    return 2 * R * math.asin(math.sqrt(a))
 
 def create_airport_graph(airports_csv, routes_csv):
     # Charger les données des fichiers CSV
