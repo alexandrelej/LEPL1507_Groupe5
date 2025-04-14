@@ -2,9 +2,8 @@ import networkx as nx
 import numpy as np
 import time
 import random
-from create_graphe import haversine
 from update_costs import Update_costs
-from create_random_graphes import create_airport_graph, create_random_subgraph, generate_random_pairs
+from create_graphs import create_airport_graph, create_random_subgraph, generate_random_pairs
 
 
 def new_network(airports_csv, routes_csv, C, j=20):
