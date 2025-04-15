@@ -173,18 +173,21 @@
         try {
             let response = await fetch(url);
             let data = await response.json();
-            let aeroports = data.nodes.map(node => node.id + '(' + node.name + ')').sort();
+            let aeroports = data.nodes.map(node => node.id + ' (' + node.name + ')').sort();
 
             data.nodes.forEach(node => {
                 aeroportID[node.id + ' (' + node.name + ')'] = node.id;
-                IDaeroport[node.id] = node.id + '(' + node.name + ')';
+                IDaeroport[node.id] = node.id + ' (' + node.name + ')';
             });
 
             data.links.forEach(lien => {
                 if (!distances[lien.source]) {
                     distances[lien.source] = {};
+                    distances[lien.source][lien.source] = 0;
                     times[lien.source] = {};
+                    times[lien.source][lien.source] = 0;
                     prices[lien.source] = {};
+                    prices[lien.source][lien.source] = 0;
                 }
 
                 distances[lien.source][lien.target] = lien.distance;
@@ -193,8 +196,11 @@
 
                 if (!distances[lien.target]) {
                     distances[lien.target] = {};
+                    distances[lien.target][lien.target] = 0;
                     times[lien.target] = {};
+                    times[lien.target][lien.target] = 0;
                     prices[lien.target] = {};
+                    prices[lien.target][lien.target] = 0;
                 }
 
             });
@@ -315,22 +321,37 @@
             let unite;
             let cost;
             let criterion;
+            let trajet = "";
             switch (critere) {
                 case "distance":
                     unite = "km";
                     criterion = "Distance totale";
                     cost = `${resultat.cost.toFixed(2)}  ${unite}`;
+                    for(let i = 0; i < resultat.chemin.length -1; i++){
+                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i+1]} : 
+                                ${distances[resultat.chemin[i]][resultat.chemin[i+1]].toFixed(2)}
+                                 ${unite}\n`;
+                    }
                     break;
                 case "coût":
                     unite = "€";
                     criterion = "Coût total";
                     cost = `${resultat.cost.toFixed(2)}  ${unite}`;
+                    for(let i = 0; i < resultat.chemin.length -1; i++){
+                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i+1]} : 
+                                ${costs[resultat.chemin[i]][resultat.chemin[i+1]].toFixed(2)}
+                                 ${unite}\n`;
+                    }
                     break;
                 case "temps":
                     criterion = "Temps total";
                     let hours = Math.floor(resultat.cost);
                     let minutes = Math.floor((resultat.cost - hours)*60);
                     cost = `${hours} h ${minutes} m`;
+                    for(let i = 0; i < resultat.chemin.length -1; i++){
+                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i+1]} : 
+                                ${times[resultat.chemin[i]][resultat.chemin[i+1]]}\n`;
+                    }
                     break;
             }
             let chemin = "";
@@ -341,7 +362,9 @@
             chemin += IDaeroport[resultat.chemin[resultat.chemin.length-1]];
             resultatDiv.innerHTML = `<p class='success'>Le plus court chemin de ${depart} à ${arrivee} est :</p>
                                     <p>${chemin}</p>
-                                    <p>${criterion} : ${cost} </p>`;
+                                    <p>${criterion} : ${cost} </p>
+                                    <p>Trajet détaillée :</p>
+                                    <p>${trajet}</>`;
         }
     }
     </script>
