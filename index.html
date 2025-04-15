@@ -336,7 +336,7 @@
                 chemin += IDaeroport[resultat.chemin[i]];
                 chemin += " → "
             }
-            chemin += IDaeroport[resultat.chemin[length-1]];
+            chemin += IDaeroport[resultat.chemin[resultat.chemin.length-1]];
             resultatDiv.innerHTML = `<p class='success'>Le plus court chemin de ${depart} à ${arrivee} est :</p>
                                     <p>${chemin}</p>
                                     <p>${criterion} : ${cost} </p>`;
