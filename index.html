@@ -157,6 +157,7 @@
     let prices = {};
     let times = {};
     let aeroportID = {};
+    let IDaeroport = {};
 
     window.onload = function() {
         chargerAeroports();
@@ -174,6 +175,7 @@
 
             data.nodes.forEach(node => {
                 aeroportID[node.id + '(' + node.name + ')'] = node.id;
+                IDaeroport[node.id] = node.id + '(' + node.name + ')';
             });
 
             data.links.forEach(lien => {
@@ -329,8 +331,14 @@
                     cost = `${hours} h ${minutes} m`;
                     break;
             }
+            let chemin = "";
+            for(let i=0; i < resultat.chemin.length; i++){
+                chemin += IDaeroport[resultat.chemin[i]];
+                chemin += " → "
+            }
+            chemin += IDaeroport[resultat.chemin[length-1]];
             resultatDiv.innerHTML = `<p class='success'>Le plus court chemin de ${depart} à ${arrivee} est :</p>
-                                    <p>${resultat.chemin.join(" → ")}</p>
+                                    <p>${chemin}</p>
                                     <p>${criterion} : ${cost} </p>`;
         }
     }
