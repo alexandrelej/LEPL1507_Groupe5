@@ -173,11 +173,11 @@
         try {
             let response = await fetch(url);
             let data = await response.json();
-            let aeroports = data.nodes.map(node => node.id + '(' + node.name + ')').sort();
+            let aeroports = data.nodes.map(node => node.id + ' (' + node.name + ')').sort();
 
             data.nodes.forEach(node => {
                 aeroportID[node.id + ' (' + node.name + ')'] = node.id;
-                IDaeroport[node.id] = node.id + '(' + node.name + ')';
+                IDaeroport[node.id] = node.id + ' (' + node.name + ')';
             });
 
             data.links.forEach(lien => {
