@@ -14,21 +14,16 @@
             color: #333;
             margin: 0;
             padding: 0;
-            height: 100vh; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            min-height: 100vh;
+            display: block; /* ou flex-direction: column si tu veux garder flex */
             position: relative;
-            overflow-x: hidden;
         }
 
         h1 {
             font-size: 36px;
             color: white;
             text-align: center;
-            margin-top: 40px;  /* Espacement suffisant du titre */
-            position: absolute;
-            top: 2.5%;
+            margin-top: 40px; /* ou plus selon l'espacement que tu veux */
             width: 100%;
             z-index: 10;
         }
