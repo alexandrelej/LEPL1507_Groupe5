@@ -310,24 +310,28 @@
         } else {
             let unite;
             let cost;
-            let costAffichee = resultat.cost.toFixed(2);
+            let costAffichee;
             switch (critere) {
                 case "distance":
                     unite = "km";
-                    cost = "Distance totale";
+                    criterion = "Distance totale";
+                    cost = `${resultat.cost.toFixed(2)}  ${unite}`;
                     break;
                 case "coût":
                     unite = "€";
-                    cost = "Coût total";
+                    criterion = "Coût total";
+                    costAffichee = resultat.cost.toFixed(2);
                     break;
                 case "temps":
                     unite = "h"; 
-                    cost = "Temps total";
+                    criterion = "Temps total";
+                    let hours = Math.floor(resultat.cost);
+                    let minutes = (resultat.cost - hours)*60;
                     break;
             }
             resultatDiv.innerHTML = `<p class='success'>Le plus court chemin de ${depart} à ${arrivee} est :</p>
                                     <p>${resultat.chemin.join(" → ")}</p>
-                                    <p>${cost} : ${costAffichee} ${unite}</p>`;
+                                    <p>${criterion} : ${cost} </p>`;
         }
     }
     </script>
