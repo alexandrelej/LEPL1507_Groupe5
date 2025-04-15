@@ -1,7 +1,7 @@
 import time
 import matplotlib.pyplot as plt
 import numpy as np
-from create_random_graphes import create_airport_graph, create_random_subgraph, generate_random_pairs
+from create_graphs import create_airport_graph, create_random_subgraph, generate_random_pairs
 from remove_edges import Remove_edges, precompute_shortest_paths
 from update_costs import Update_costs
 import networkx as nx

@@ -4,9 +4,11 @@ import time
 import random
 from update_costs import Update_costs
 from create_graphs import create_airport_graph, create_random_subgraph, generate_random_pairs
+import copy
+from main_test import add_prices, add_times, graph_to_json_file
 
 
-def new_network(airports_csv, routes_csv, C, j=20):
+def new_network(airports_csv, routes_csv, C, j=100):
     """
     Create a new network with the given parameters.
 
@@ -25,7 +27,7 @@ def new_network(airports_csv, routes_csv, C, j=20):
     airport_graph = create_airport_graph(airports_csv, routes_csv)
 
     # Generate a random subgraph
-    random_subgraph = create_random_subgraph(airport_graph, n=50, m=200) # to comment if we want the whole data to create the new network
+    random_subgraph = create_random_subgraph(airport_graph, n=75, m=1500) # to comment if we want the whole data to create the new network
     destination_pairs = generate_random_pairs(random_subgraph, j)
 
     # Generate the new network
@@ -38,6 +40,12 @@ def new_network(airports_csv, routes_csv, C, j=20):
         for start, end in G_reweighted.edges():
             distance = G_reweighted[start][end]['distance']
             f.write(f"{start},{end},{distance}\n")
+
+    # Save the graph to a json file
+    G_all = copy.deepcopy(G_reweighted)
+    add_prices(G_all, "../basic_datasets/prices.csv")
+    add_times(G_all, "../basic_datasets/waiting_times.csv", average_speed=800)
+    graph_to_json_file(G_all, "../json/all.json")
 
     return cost, G_reweighted.edges()
 

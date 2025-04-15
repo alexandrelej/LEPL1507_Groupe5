@@ -1,0 +1,1361 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "name": "Istanbul Airport",
+            "city": "Istanbul",
+            "country": "Turkey",
+            "latitude": 41.275278,
+            "longitude": 28.751944,
+            "id": "IST"
+        },
+        {
+            "name": "Beijing Capital International Airport",
+            "city": "Beijing",
+            "country": "China",
+            "latitude": 40.0801010131836,
+            "longitude": 116.58499908447266,
+            "id": "PEK"
+        },
+        {
+            "name": "Shenzhen Bao'an International Airport",
+            "city": "Shenzhen",
+            "country": "China",
+            "latitude": 22.639299392700195,
+            "longitude": 113.81099700927734,
+            "id": "SZX"
+        },
+        {
+            "name": "Hangzhou Xiaoshan International Airport",
+            "city": "Hangzhou",
+            "country": "China",
+            "latitude": 30.22949981689453,
+            "longitude": 120.43399810791016,
+            "id": "HGH"
+        },
+        {
+            "name": "Hamad International Airport",
+            "city": "Doha",
+            "country": "Qatar",
+            "latitude": 25.273056,
+            "longitude": 51.608056,
+            "id": "DOH"
+        },
+        {
+            "name": "Amsterdam Airport Schiphol",
+            "city": "Amsterdam",
+            "country": "Netherlands",
+            "latitude": 52.308601,
+            "longitude": 4.76389,
+            "id": "AMS"
+        },
+        {
+            "name": "Cairo International Airport",
+            "city": "Cairo",
+            "country": "Egypt",
+            "latitude": 30.12190055847168,
+            "longitude": 31.40559959411621,
+            "id": "CAI"
+        },
+        {
+            "name": "Adolfo Su\u00e1rez Madrid\u2013Barajas Airport",
+            "city": "Madrid",
+            "country": "Spain",
+            "latitude": 40.471926,
+            "longitude": -3.56264,
+            "id": "MAD"
+        },
+        {
+            "name": "General Edward Lawrence Logan International Airport",
+            "city": "Boston",
+            "country": "United States",
+            "latitude": 42.36429977,
+            "longitude": -71.00520325,
+            "id": "BOS"
+        },
+        {
+            "name": "Newark Liberty International Airport",
+            "city": "Newark",
+            "country": "United States",
+            "latitude": 40.69250106811523,
+            "longitude": -74.168701171875,
+            "id": "EWR"
+        },
+        {
+            "name": "Miami International Airport",
+            "city": "Miami",
+            "country": "United States",
+            "latitude": 25.79319953918457,
+            "longitude": -80.29060363769531,
+            "id": "MIA"
+        },
+        {
+            "name": "Denver International Airport",
+            "city": "Denver",
+            "country": "United States",
+            "latitude": 39.861698150635,
+            "longitude": -104.672996521,
+            "id": "DEN"
+        },
+        {
+            "name": "Licenciado Benito Juarez International Airport",
+            "city": "Mexico City",
+            "country": "Mexico",
+            "latitude": 19.4363,
+            "longitude": -99.072098,
+            "id": "MEX"
+        },
+        {
+            "name": "McCarran International Airport",
+            "city": "Las Vegas",
+            "country": "United States",
+            "latitude": 36.08010101,
+            "longitude": -115.1520004,
+            "id": "LAS"
+        },
+        {
+            "name": "Incheon International Airport",
+            "city": "Seoul",
+            "country": "South Korea",
+            "latitude": 37.46910095214844,
+            "longitude": 126.45099639892578,
+            "id": "ICN"
+        },
+        {
+            "name": "Taiwan Taoyuan International Airport",
+            "city": "Taipei",
+            "country": "Taiwan",
+            "latitude": 25.0777,
+            "longitude": 121.233002,
+            "id": "TPE"
+        },
+        {
+            "name": "Kunming Changshui International Airport",
+            "city": "Kunming",
+            "country": "China",
+            "latitude": 25.1019444,
+            "longitude": 102.9291667,
+            "id": "KMG"
+        },
+        {
+            "name": "Hong Kong International Airport",
+            "city": "Hong Kong",
+            "country": "Hong Kong",
+            "latitude": 22.308901,
+            "longitude": 113.915001,
+            "id": "HKG"
+        },
+        {
+            "name": "Guangzhou Baiyun International Airport",
+            "city": "Guangzhou",
+            "country": "China",
+            "latitude": 23.39240074157715,
+            "longitude": 113.29900360107422,
+            "id": "CAN"
+        },
+        {
+            "name": "Shanghai Hongqiao International Airport",
+            "city": "Shanghai",
+            "country": "China",
+            "latitude": 31.19790077209473,
+            "longitude": 121.33599853515624,
+            "id": "SHA"
+        },
+        {
+            "name": "Chongqing Jiangbei International Airport",
+            "city": "Chongqing",
+            "country": "China",
+            "latitude": 29.719200134277344,
+            "longitude": 106.64199829101562,
+            "id": "CKG"
+        },
+        {
+            "name": "Xi'an Xianyang International Airport",
+            "city": "Xi'an",
+            "country": "China",
+            "latitude": 34.447102,
+            "longitude": 108.751999,
+            "id": "XIY"
+        },
+        {
+            "name": "Don Mueang International Airport",
+            "city": "Bangkok",
+            "country": "Thailand",
+            "latitude": 13.9125995636,
+            "longitude": 100.607002258,
+            "id": "DMK"
+        },
+        {
+            "name": "Soekarno-Hatta International Airport",
+            "city": "Jakarta",
+            "country": "Indonesia",
+            "latitude": -6.1255698204,
+            "longitude": 106.65599823,
+            "id": "CGK"
+        },
+        {
+            "name": "King Abdulaziz International Airport",
+            "city": "Jeddah",
+            "country": "Saudi Arabia",
+            "latitude": 21.6796,
+            "longitude": 39.156502,
+            "id": "JED"
+        },
+        {
+            "name": "London Heathrow Airport",
+            "city": "London",
+            "country": "United Kingdom",
+            "latitude": 51.4706,
+            "longitude": -0.461941,
+            "id": "LHR"
+        },
+        {
+            "name": "Houari Boumediene Airport",
+            "city": "Algier",
+            "country": "Algeria",
+            "latitude": 36.69100189208984,
+            "longitude": 3.215409994125366,
+            "id": "ALG"
+        },
+        {
+            "name": "Dubai International Airport",
+            "city": "Dubai",
+            "country": "United Arab Emirates",
+            "latitude": 25.252799987800003,
+            "longitude": 55.3643989563,
+            "id": "DXB"
+        },
+        {
+            "name": "Melbourne International Airport",
+            "city": "Melbourne",
+            "country": "Australia",
+            "latitude": -37.673302,
+            "longitude": 144.843002,
+            "id": "MEL"
+        },
+        {
+            "name": "Canberra International Airport",
+            "city": "Canberra",
+            "country": "Australia",
+            "latitude": -35.30690002441406,
+            "longitude": 149.19500732421875,
+            "id": "CBR"
+        },
+        {
+            "name": "Sydney Kingsford Smith International Airport",
+            "city": "Sydney",
+            "country": "Australia",
+            "latitude": -33.94609832763672,
+            "longitude": 151.177001953125,
+            "id": "SYD"
+        },
+        {
+            "name": "Kuala Lumpur International Airport",
+            "city": "Kuala Lumpur",
+            "country": "Malaysia",
+            "latitude": 2.745579957962,
+            "longitude": 101.70999908446998,
+            "id": "KUL"
+        },
+        {
+            "name": "Tan Son Nhat International Airport",
+            "city": "Ho Chi Minh City",
+            "country": "Vietnam",
+            "latitude": 10.8187999725,
+            "longitude": 106.652000427,
+            "id": "SGN"
+        },
+        {
+            "name": "Ninoy Aquino International Airport",
+            "city": "Manila",
+            "country": "Philippines",
+            "latitude": 14.5086,
+            "longitude": 121.019997,
+            "id": "MNL"
+        },
+        {
+            "name": "San Francisco International Airport",
+            "city": "San Francisco",
+            "country": "United States",
+            "latitude": 37.61899948120117,
+            "longitude": -122.375,
+            "id": "SFO"
+        },
+        {
+            "name": "Chicago O'Hare International Airport",
+            "city": "Chicago",
+            "country": "United States",
+            "latitude": 41.9786,
+            "longitude": -87.9048,
+            "id": "ORD"
+        },
+        {
+            "name": "Shanghai Pudong International Airport",
+            "city": "Shanghai",
+            "country": "China",
+            "latitude": 31.143400192260746,
+            "longitude": 121.80500030517578,
+            "id": "PVG"
+        },
+        {
+            "name": "Los Angeles International Airport",
+            "city": "Los Angeles",
+            "country": "United States",
+            "latitude": 33.94250107,
+            "longitude": -118.4079971,
+            "id": "LAX"
+        },
+        {
+            "name": "Jorge Ch\u00e1vez International Airport",
+            "city": "Lima",
+            "country": "Peru",
+            "latitude": -12.0219,
+            "longitude": -77.114305,
+            "id": "LIM"
+        },
+        {
+            "name": "Comodoro Arturo Merino Ben\u00edtez International Airport",
+            "city": "Santiago",
+            "country": "Chile",
+            "latitude": -33.393001556396484,
+            "longitude": -70.78579711914062,
+            "id": "SCL"
+        },
+        {
+            "name": "Ministro Pistarini International Airport",
+            "city": "Buenos Aires",
+            "country": "Argentina",
+            "latitude": -34.8222,
+            "longitude": -58.5358,
+            "id": "EZE"
+        },
+        {
+            "name": "John F Kennedy International Airport",
+            "city": "New York",
+            "country": "United States",
+            "latitude": 40.63980103,
+            "longitude": -73.77890015,
+            "id": "JFK"
+        },
+        {
+            "name": "Sheremetyevo International Airport",
+            "city": "Moscow",
+            "country": "Russia",
+            "latitude": 55.972599,
+            "longitude": 37.4146,
+            "id": "SVO"
+        },
+        {
+            "name": "Charles de Gaulle International Airport",
+            "city": "Paris",
+            "country": "France",
+            "latitude": 49.012798,
+            "longitude": 2.55,
+            "id": "CDG"
+        },
+        {
+            "name": "Guarulhos - Governador Andr\u00e9 Franco Montoro International Airport",
+            "city": "Sao Paulo",
+            "country": "Brazil",
+            "latitude": -23.435556411743164,
+            "longitude": -46.47305679321289,
+            "id": "GRU"
+        },
+        {
+            "name": "George Bush Intercontinental Houston Airport",
+            "city": "Houston",
+            "country": "United States",
+            "latitude": 29.98439979553223,
+            "longitude": -95.34140014648438,
+            "id": "IAH"
+        },
+        {
+            "name": "Charlotte Douglas International Airport",
+            "city": "Charlotte",
+            "country": "United States",
+            "latitude": 35.2140007019043,
+            "longitude": -80.94309997558594,
+            "id": "CLT"
+        },
+        {
+            "name": "Orlando International Airport",
+            "city": "Orlando",
+            "country": "United States",
+            "latitude": 28.429399490356445,
+            "longitude": -81.30899810791016,
+            "id": "MCO"
+        },
+        {
+            "name": "Phoenix Sky Harbor International Airport",
+            "city": "Phoenix",
+            "country": "United States",
+            "latitude": 33.43429946899414,
+            "longitude": -112.01200103759766,
+            "id": "PHX"
+        },
+        {
+            "name": "Hartsfield Jackson Atlanta International Airport",
+            "city": "Atlanta",
+            "country": "United States",
+            "latitude": 33.6367,
+            "longitude": -84.428101,
+            "id": "ATL"
+        },
+        {
+            "name": "Murtala Muhammed International Airport",
+            "city": "Lagos",
+            "country": "Nigeria",
+            "latitude": 6.5773701667785645,
+            "longitude": 3.321160078048706,
+            "id": "LOS"
+        },
+        {
+            "name": "Frankfurt am Main Airport",
+            "city": "Frankfurt",
+            "country": "Germany",
+            "latitude": 50.033333,
+            "longitude": 8.570556,
+            "id": "FRA"
+        },
+        {
+            "name": "Dallas Fort Worth International Airport",
+            "city": "Dallas-Fort Worth",
+            "country": "United States",
+            "latitude": 32.896801,
+            "longitude": -97.038002,
+            "id": "DFW"
+        },
+        {
+            "name": "Lester B. Pearson International Airport",
+            "city": "Toronto",
+            "country": "Canada",
+            "latitude": 43.6772003174,
+            "longitude": -79.63059997559999,
+            "id": "YYZ"
+        },
+        {
+            "name": "Seattle Tacoma International Airport",
+            "city": "Seattle",
+            "country": "United States",
+            "latitude": 47.449001,
+            "longitude": -122.308998,
+            "id": "SEA"
+        },
+        {
+            "name": "Tokyo Haneda International Airport",
+            "city": "Tokyo",
+            "country": "Japan",
+            "latitude": 35.552299,
+            "longitude": 139.779999,
+            "id": "HND"
+        },
+        {
+            "name": "Suvarnabhumi Airport",
+            "city": "Bangkok",
+            "country": "Thailand",
+            "latitude": 13.681099891662598,
+            "longitude": 100.74700164794922,
+            "id": "BKK"
+        },
+        {
+            "name": "Addis Ababa Bole International Airport",
+            "city": "Addis Ababa",
+            "country": "Ethiopia",
+            "latitude": 8.97789001465,
+            "longitude": 38.7993011475,
+            "id": "ADD"
+        },
+        {
+            "name": "Indira Gandhi International Airport",
+            "city": "Delhi",
+            "country": "India",
+            "latitude": 28.5665,
+            "longitude": 77.103104,
+            "id": "DEL"
+        },
+        {
+            "name": "Singapore Changi Airport",
+            "city": "Singapore",
+            "country": "Singapore",
+            "latitude": 1.35019,
+            "longitude": 103.994003,
+            "id": "SIN"
+        },
+        {
+            "name": "Barcelona International Airport",
+            "city": "Barcelona",
+            "country": "Spain",
+            "latitude": 41.2971,
+            "longitude": 2.07846,
+            "id": "BCN"
+        },
+        {
+            "name": "London Gatwick Airport",
+            "city": "London",
+            "country": "United Kingdom",
+            "latitude": 51.148102,
+            "longitude": -0.190278,
+            "id": "LGW"
+        },
+        {
+            "name": "Mohammed V International Airport",
+            "city": "Casablanca",
+            "country": "Morocco",
+            "latitude": 33.36750030517578,
+            "longitude": -7.589970111846924,
+            "id": "CMN"
+        },
+        {
+            "name": "Tunis Carthage International Airport",
+            "city": "Tunis",
+            "country": "Tunisia",
+            "latitude": 36.85100173950195,
+            "longitude": 10.22719955444336,
+            "id": "TUN"
+        },
+        {
+            "name": "Auckland International Airport",
+            "city": "Auckland",
+            "country": "New Zealand",
+            "latitude": -37.0080986023,
+            "longitude": 174.792007446,
+            "id": "AKL"
+        },
+        {
+            "name": "Adelaide International Airport",
+            "city": "Adelaide",
+            "country": "Australia",
+            "latitude": -34.945,
+            "longitude": 138.53100600000002,
+            "id": "ADL"
+        },
+        {
+            "name": "Jomo Kenyatta International Airport",
+            "city": "Nairobi",
+            "country": "Kenya",
+            "latitude": -1.31923997402,
+            "longitude": 36.9277992249,
+            "id": "NBO"
+        },
+        {
+            "name": "OR Tambo International Airport",
+            "city": "Johannesburg",
+            "country": "South Africa",
+            "latitude": -26.1392,
+            "longitude": 28.246,
+            "id": "JNB"
+        },
+        {
+            "name": "Cape Town International Airport",
+            "city": "Cape Town",
+            "country": "South Africa",
+            "latitude": -33.9648017883,
+            "longitude": 18.6016998291,
+            "id": "CPT"
+        },
+        {
+            "name": "El Dorado International Airport",
+            "city": "Bogota",
+            "country": "Colombia",
+            "latitude": 4.70159,
+            "longitude": -74.1469,
+            "id": "BOG"
+        },
+        {
+            "name": "Alfonso Bonilla Aragon International Airport",
+            "city": "Cali",
+            "country": "Colombia",
+            "latitude": 3.54322,
+            "longitude": -76.3816,
+            "id": "CLO"
+        }
+    ],
+    "links": [
+        {
+            "distance": 5795.090330327948,
+            "used": 3,
+            "price": 651.7420888820728,
+            "time": 8.15504203121692,
+            "source": "PEK",
+            "target": "SVO"
+        },
+        {
+            "distance": 1099.5209790282242,
+            "used": 1,
+            "price": 188.036485646644,
+            "time": 2.285580342092265,
+            "source": "PEK",
+            "target": "PVG"
+        },
+        {
+            "distance": 1700.436383599852,
+            "used": 2,
+            "price": 264.77734659321334,
+            "time": 2.435449958986546,
+            "source": "SZX",
+            "target": "BKK"
+        },
+        {
+            "distance": 3287.3047301589104,
+            "used": 5,
+            "price": 432.1311749145237,
+            "time": 5.204800662508182,
+            "source": "AMS",
+            "target": "CAI"
+        },
+        {
+            "distance": 364.7017464268429,
+            "used": 3,
+            "price": 110.54795851323809,
+            "time": 1.5515469328430973,
+            "source": "AMS",
+            "target": "LGW"
+        },
+        {
+            "distance": 2415.4452388281934,
+            "used": 6,
+            "price": 335.8748356766016,
+            "time": 5.513597904964344,
+            "source": "CAI",
+            "target": "DXB"
+        },
+        {
+            "distance": 8302.806611118955,
+            "used": 2,
+            "price": 824.442870425873,
+            "time": 11.163878652557395,
+            "source": "MAD",
+            "target": "CLO"
+        },
+        {
+            "distance": 9526.187448453245,
+            "used": 3,
+            "price": 886.7130879996716,
+            "time": 12.693104699225259,
+            "source": "MAD",
+            "target": "LIM"
+        },
+        {
+            "distance": 1245.950272281596,
+            "used": 6,
+            "price": 203.3674028320788,
+            "time": 2.342808229010697,
+            "source": "MAD",
+            "target": "LHR"
+        },
+        {
+            "distance": 5239.6497251398105,
+            "used": 4,
+            "price": 595.6314606811871,
+            "time": 7.003037121972671,
+            "source": "BOS",
+            "target": "LHR"
+        },
+        {
+            "distance": 5856.568130177766,
+            "used": 4,
+            "price": 656.1709290847507,
+            "time": 9.777348940040538,
+            "source": "EWR",
+            "target": "CDG"
+        },
+        {
+            "distance": 2050.7079202094465,
+            "used": 2,
+            "price": 300.0747468512203,
+            "time": 3.7223748319786782,
+            "source": "MIA",
+            "target": "MEX"
+        },
+        {
+            "distance": 309.9731296300306,
+            "used": 7,
+            "price": 104.47060405841322,
+            "time": 1.5464563437544085,
+            "source": "MIA",
+            "target": "MCO"
+        },
+        {
+            "distance": 1385.1392038078047,
+            "used": 2,
+            "price": 217.9528121404116,
+            "time": 2.9534069866959314,
+            "source": "DEN",
+            "target": "LAX"
+        },
+        {
+            "distance": 2609.7820968124724,
+            "used": 2,
+            "price": 354.7524379349663,
+            "time": 4.484210602951766,
+            "source": "DEN",
+            "target": "JFK"
+        },
+        {
+            "distance": 664.8915200252086,
+            "used": 5,
+            "price": 142.6007045412096,
+            "time": 1.4719905126768662,
+            "source": "LAS",
+            "target": "SFO"
+        },
+        {
+            "distance": 6585.744191106292,
+            "used": 2,
+            "price": 706.4279441433048,
+            "time": 8.704747397482567,
+            "source": "ICN",
+            "target": "SVO"
+        },
+        {
+            "distance": 5264.323366451572,
+            "used": 1,
+            "price": 594.9804690912496,
+            "time": 7.052971366664167,
+            "source": "ICN",
+            "target": "CGK"
+        },
+        {
+            "distance": 3811.186586892698,
+            "used": 3,
+            "price": 477.05199685174097,
+            "time": 6.0981941461387725,
+            "source": "TPE",
+            "target": "CGK"
+        },
+        {
+            "distance": 4760.198438235122,
+            "used": 3,
+            "price": 557.8741239672884,
+            "time": 9.402808544674365,
+            "source": "KMG",
+            "target": "DXB"
+        },
+        {
+            "distance": 11664.47265089053,
+            "used": 1,
+            "price": 1054.9544081903016,
+            "time": 15.280670583138688,
+            "source": "HKG",
+            "target": "LAX"
+        },
+        {
+            "distance": 12959.911724637466,
+            "used": 4,
+            "price": 1155.7666179082505,
+            "time": 16.89996942532236,
+            "source": "HKG",
+            "target": "EWR"
+        },
+        {
+            "distance": 1440.4899732354097,
+            "used": 2,
+            "price": 223.04533297942143,
+            "time": 2.5006922360697894,
+            "source": "HKG",
+            "target": "XIY"
+        },
+        {
+            "distance": 1098.0774830323353,
+            "used": 4,
+            "price": 187.896080275322,
+            "time": 2.072676623315946,
+            "source": "HKG",
+            "target": "CKG"
+        },
+        {
+            "distance": 6875.839117872849,
+            "used": 7,
+            "price": 722.5879677656114,
+            "time": 9.294878666866587,
+            "source": "HKG",
+            "target": "ADL"
+        },
+        {
+            "distance": 7526.113467346877,
+            "used": 3,
+            "price": 765.417679899611,
+            "time": 9.961392376251396,
+            "source": "CAN",
+            "target": "JED"
+        },
+        {
+            "distance": 11618.35644692328,
+            "used": 1,
+            "price": 1051.3936974675594,
+            "time": 15.0766961007219,
+            "source": "CAN",
+            "target": "LAX"
+        },
+        {
+            "distance": 1076.4858331694268,
+            "used": 1,
+            "price": 185.625103234873,
+            "time": 1.8459487307238676,
+            "source": "SHA",
+            "target": "PEK"
+        },
+        {
+            "distance": 1267.6783847852785,
+            "used": 1,
+            "price": 205.09749948030824,
+            "time": 2.422916817497352,
+            "source": "DMK",
+            "target": "KMG"
+        },
+        {
+            "distance": 5264.323366451572,
+            "used": 4,
+            "price": 594.9804690912496,
+            "time": 7.2475095164550645,
+            "source": "CGK",
+            "target": "ICN"
+        },
+        {
+            "distance": 1698.993435059121,
+            "used": 3,
+            "price": 264.96875655441147,
+            "time": 4.446982251272104,
+            "source": "JED",
+            "target": "DXB"
+        },
+        {
+            "distance": 370.4488288311113,
+            "used": 8,
+            "price": 111.17216169506816,
+            "time": 1.4912750920336235,
+            "source": "LHR",
+            "target": "AMS"
+        },
+        {
+            "distance": 11136.564161102811,
+            "used": 2,
+            "price": 1010.3605966006958,
+            "time": 14.948919257373248,
+            "source": "LHR",
+            "target": "EZE"
+        },
+        {
+            "distance": 2508.4997372039943,
+            "used": 7,
+            "price": 345.22560191771964,
+            "time": 4.163838727499727,
+            "source": "LHR",
+            "target": "SVO"
+        },
+        {
+            "distance": 1831.260158092744,
+            "used": 5,
+            "price": 278.0470601765744,
+            "time": 3.317289253610664,
+            "source": "LHR",
+            "target": "TUN"
+        },
+        {
+            "distance": 9104.074131729983,
+            "used": 1,
+            "price": 867.4697647691809,
+            "time": 13.215896228527725,
+            "source": "ALG",
+            "target": "PEK"
+        },
+        {
+            "distance": 4903.712108428037,
+            "used": 13,
+            "price": 568.9842729984141,
+            "time": 9.183057017039166,
+            "source": "DXB",
+            "target": "BKK"
+        },
+        {
+            "distance": 2183.598648378189,
+            "used": 1,
+            "price": 313.3171872203825,
+            "time": 5.782915191976857,
+            "source": "DXB",
+            "target": "DEL"
+        },
+        {
+            "distance": 7643.572294593876,
+            "used": 1,
+            "price": 770.2846694124846,
+            "time": 12.607882249746465,
+            "source": "DXB",
+            "target": "CPT"
+        },
+        {
+            "distance": 2415.4452388281934,
+            "used": 1,
+            "price": 335.8748356766016,
+            "time": 6.072723430039362,
+            "source": "DXB",
+            "target": "CAI"
+        },
+        {
+            "distance": 5068.248062705941,
+            "used": 1,
+            "price": 582.0474275727768,
+            "time": 9.388726959886547,
+            "source": "DXB",
+            "target": "ALG"
+        },
+        {
+            "distance": 5919.684099754813,
+            "used": 5,
+            "price": 660.2381116261486,
+            "time": 10.453022006197637,
+            "source": "DXB",
+            "target": "HKG"
+        },
+        {
+            "distance": 7412.500294801692,
+            "used": 2,
+            "price": 756.2967952029078,
+            "time": 9.61564692918008,
+            "source": "MEL",
+            "target": "HKG"
+        },
+        {
+            "distance": 5210.5655654468865,
+            "used": 2,
+            "price": 591.9414440127028,
+            "time": 6.863228517486574,
+            "source": "MEL",
+            "target": "CGK"
+        },
+        {
+            "distance": 236.17677168617956,
+            "used": 2,
+            "price": 96.65346424404626,
+            "time": 1.6406629296184738,
+            "source": "CBR",
+            "target": "SYD"
+        },
+        {
+            "distance": 11023.823468292074,
+            "used": 1,
+            "price": 1005.1785676217056,
+            "time": 15.15825010199648,
+            "source": "SYD",
+            "target": "JNB"
+        },
+        {
+            "distance": 12043.879518145637,
+            "used": 8,
+            "price": 1082.5821429546609,
+            "time": 16.433320164313436,
+            "source": "SYD",
+            "target": "DXB"
+        },
+        {
+            "distance": 5549.192767621862,
+            "used": 2,
+            "price": 632.7453705938572,
+            "time": 7.285778380951479,
+            "source": "KUL",
+            "target": "DXB"
+        },
+        {
+            "distance": 5909.283357946842,
+            "used": 2,
+            "price": 658.9036393842356,
+            "time": 7.735891618857704,
+            "source": "KUL",
+            "target": "DOH"
+        },
+        {
+            "distance": 1247.6119473988365,
+            "used": 2,
+            "price": 202.89355120816248,
+            "time": 1.9088023556726965,
+            "source": "KUL",
+            "target": "DMK"
+        },
+        {
+            "distance": 9655.916911018197,
+            "used": 7,
+            "price": 893.6071889790439,
+            "time": 15.010792151325763,
+            "source": "SGN",
+            "target": "FRA"
+        },
+        {
+            "distance": 4151.786261925037,
+            "used": 5,
+            "price": 508.2824407178503,
+            "time": 5.604827828331934,
+            "source": "SFO",
+            "target": "JFK"
+        },
+        {
+            "distance": 8285.872853192559,
+            "used": 1,
+            "price": 824.4236552353693,
+            "time": 10.772436067416336,
+            "source": "SFO",
+            "target": "HND"
+        },
+        {
+            "distance": 12522.536247265642,
+            "used": 1,
+            "price": 1121.76945342935,
+            "time": 18.417245914954552,
+            "source": "ORD",
+            "target": "HKG"
+        },
+        {
+            "distance": 10922.426086770574,
+            "used": 3,
+            "price": 982.255714977707,
+            "time": 14.430811607210797,
+            "source": "LAX",
+            "target": "TPE"
+        },
+        {
+            "distance": 12061.12784551052,
+            "used": 7,
+            "price": 1083.5039098937991,
+            "time": 15.854188805635731,
+            "source": "LAX",
+            "target": "SYD"
+        },
+        {
+            "distance": 4218.884928488958,
+            "used": 6,
+            "price": 511.2774512663631,
+            "time": 6.235505853652507,
+            "source": "LIM",
+            "target": "MIA"
+        },
+        {
+            "distance": 7588.47032916997,
+            "used": 3,
+            "price": 766.4743982725116,
+            "time": 10.568973430842195,
+            "source": "SCL",
+            "target": "ATL"
+        },
+        {
+            "distance": 8173.312957671034,
+            "used": 2,
+            "price": 815.676412282724,
+            "time": 11.909788263523954,
+            "source": "EZE",
+            "target": "IAH"
+        },
+        {
+            "distance": 7397.372946180054,
+            "used": 1,
+            "price": 755.7200180671971,
+            "time": 10.93986324916023,
+            "source": "EZE",
+            "target": "MEX"
+        },
+        {
+            "distance": 5794.965751632641,
+            "used": 1,
+            "price": 651.558803598722,
+            "time": 7.973459757778814,
+            "source": "JFK",
+            "target": "CMN"
+        },
+        {
+            "distance": 10225.399718524306,
+            "used": 2,
+            "price": 927.9037104654758,
+            "time": 13.511502216393396,
+            "source": "JFK",
+            "target": "JED"
+        },
+        {
+            "distance": 5762.180228596233,
+            "used": 6,
+            "price": 649.311913820251,
+            "time": 7.932477853983304,
+            "source": "JFK",
+            "target": "MAD"
+        },
+        {
+            "distance": 8237.79854694294,
+            "used": 3,
+            "price": 818.7851774868241,
+            "time": 11.027000751916688,
+            "source": "JFK",
+            "target": "SCL"
+        },
+        {
+            "distance": 7137.142485904013,
+            "used": 10,
+            "price": 741.4447423571679,
+            "time": 9.824686038731485,
+            "source": "SVO",
+            "target": "HKG"
+        },
+        {
+            "distance": 4719.16148215119,
+            "used": 5,
+            "price": 552.7604227955289,
+            "time": 7.048259840719249,
+            "source": "CDG",
+            "target": "LOS"
+        },
+        {
+            "distance": 12217.062833885982,
+            "used": 1,
+            "price": 1096.511959926698,
+            "time": 16.30812394825805,
+            "source": "GRU",
+            "target": "DXB"
+        },
+        {
+            "distance": 3013.405141587078,
+            "used": 3,
+            "price": 392.1775774435609,
+            "time": 5.225574757962604,
+            "source": "IAH",
+            "target": "SEA"
+        },
+        {
+            "distance": 3562.3146853313374,
+            "used": 8,
+            "price": 457.1818726965468,
+            "time": 4.842062404147667,
+            "source": "MCO",
+            "target": "LAX"
+        },
+        {
+            "distance": 594.3608778208145,
+            "used": 1,
+            "price": 135.09429464383032,
+            "time": 2.1360209999273927,
+            "source": "PHX",
+            "target": "LAX"
+        },
+        {
+            "distance": 976.327829165617,
+            "used": 1,
+            "price": 175.17122101946114,
+            "time": 2.7474814200514484,
+            "source": "ATL",
+            "target": "ORD"
+        },
+        {
+            "distance": 1222.0934389187314,
+            "used": 4,
+            "price": 201.0100442358426,
+            "time": 3.054688432242841,
+            "source": "ATL",
+            "target": "JFK"
+        },
+        {
+            "distance": 5004.059643807035,
+            "used": 10,
+            "price": 575.2627231652757,
+            "time": 7.703812280364428,
+            "source": "LOS",
+            "target": "LHR"
+        },
+        {
+            "distance": 1093.6144443442463,
+            "used": 3,
+            "price": 187.6048547165644,
+            "time": 2.145146662436467,
+            "source": "FRA",
+            "target": "BCN"
+        },
+        {
+            "distance": 8963.47703520357,
+            "used": 3,
+            "price": 860.4347050898197,
+            "time": 11.982474901010622,
+            "source": "FRA",
+            "target": "LAS"
+        },
+        {
+            "distance": 7059.467923025222,
+            "used": 1,
+            "price": 737.0607321479723,
+            "time": 9.602463510787688,
+            "source": "FRA",
+            "target": "CLT"
+        },
+        {
+            "distance": 5424.053068502311,
+            "used": 3,
+            "price": 621.8605576239756,
+            "time": 7.2100303346283425,
+            "source": "DFW",
+            "target": "LIM"
+        },
+        {
+            "distance": 2111.1888928744593,
+            "used": 2,
+            "price": 306.36145869474024,
+            "time": 3.211955979111715,
+            "source": "YYZ",
+            "target": "DEN"
+        },
+        {
+            "distance": 2668.1529866142664,
+            "used": 3,
+            "price": 359.94079961435614,
+            "time": 4.777158253777112,
+            "source": "SEA",
+            "target": "DFW"
+        },
+        {
+            "distance": 7934.622090693039,
+            "used": 1,
+            "price": 789.4926534920136,
+            "time": 10.208168748509651,
+            "source": "HND",
+            "target": "DXB"
+        },
+        {
+            "distance": 716.1744739165006,
+            "used": 7,
+            "price": 147.89565614152866,
+            "time": 1.6691013182463985,
+            "source": "BKK",
+            "target": "SGN"
+        },
+        {
+            "distance": 6757.834948503529,
+            "used": 6,
+            "price": 717.1696023468827,
+            "time": 9.221176911480184,
+            "source": "BKK",
+            "target": "ADD"
+        },
+        {
+            "distance": 1220.5693480548507,
+            "used": 5,
+            "price": 200.1043045500119,
+            "time": 2.2995949109193363,
+            "source": "BKK",
+            "target": "KUL"
+        },
+        {
+            "distance": 1700.436383599852,
+            "used": 2,
+            "price": 264.77734659321334,
+            "time": 2.8994287053505876,
+            "source": "BKK",
+            "target": "SZX"
+        },
+        {
+            "distance": 1416.9035648215213,
+            "used": 1,
+            "price": 220.3002891791409,
+            "time": 2.545012681877674,
+            "source": "BKK",
+            "target": "SIN"
+        },
+        {
+            "distance": 3916.3130462975823,
+            "used": 7,
+            "price": 487.81846640549503,
+            "time": 5.871209831022674,
+            "source": "ADD",
+            "target": "LOS"
+        },
+        {
+            "distance": 1416.9035648215213,
+            "used": 1,
+            "price": 220.3002891791409,
+            "time": 3.715782141105294,
+            "source": "SIN",
+            "target": "BKK"
+        },
+        {
+            "distance": 2219.829939637275,
+            "used": 1,
+            "price": 317.0692723459981,
+            "time": 3.839702238246878,
+            "source": "BCN",
+            "target": "IST"
+        },
+        {
+            "distance": 8513.395195425139,
+            "used": 3,
+            "price": 835.9460019913166,
+            "time": 11.706658807981707,
+            "source": "BCN",
+            "target": "BOG"
+        },
+        {
+            "distance": 6991.457439605525,
+            "used": 2,
+            "price": 732.5346338719447,
+            "time": 9.61783902960907,
+            "source": "LGW",
+            "target": "MCO"
+        },
+        {
+            "distance": 307.539775382902,
+            "used": 1,
+            "price": 104.3549036808971,
+            "time": 1.2629419493307927,
+            "source": "LGW",
+            "target": "CDG"
+        },
+        {
+            "distance": 1261.5845800650422,
+            "used": 5,
+            "price": 205.28364869482425,
+            "time": 2.0255531319605584,
+            "source": "TUN",
+            "target": "MAD"
+        },
+        {
+            "distance": 970.2054500167142,
+            "used": 2,
+            "price": 174.89924625699896,
+            "time": 1.5941543272299117,
+            "source": "ADL",
+            "target": "CBR"
+        },
+        {
+            "distance": 641.5985932137701,
+            "used": 5,
+            "price": 140.07322746447838,
+            "time": 1.1833957562262314,
+            "source": "ADL",
+            "target": "MEL"
+        },
+        {
+            "distance": 7224.087189878017,
+            "used": 2,
+            "price": 746.6488488477044,
+            "time": 10.754547191894895,
+            "source": "NBO",
+            "target": "BKK"
+        },
+        {
+            "distance": 8996.179527043947,
+            "used": 3,
+            "price": 860.8468420505716,
+            "time": 14.382370229566437,
+            "source": "JNB",
+            "target": "BKK"
+        },
+        {
+            "distance": 10674.618545991281,
+            "used": 1,
+            "price": 961.2313321984332,
+            "time": 16.480419003250603,
+            "source": "JNB",
+            "target": "HKG"
+        },
+        {
+            "distance": 2509.027109208051,
+            "used": 2,
+            "price": 343.383986071103,
+            "time": 3.472706382635002,
+            "source": "CLO",
+            "target": "MIA"
+        }
+    ]
+}
