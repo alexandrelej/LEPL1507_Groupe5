@@ -325,7 +325,7 @@
                 case "temps":
                     criterion = "Temps total";
                     let hours = Math.floor(resultat.cost);
-                    let minutes = (resultat.cost - hours)*60;
+                    let minutes = Math.floor((resultat.cost - hours)*60);
                     cost = `${hours} h ${minutes} m`;
                     break;
             }
