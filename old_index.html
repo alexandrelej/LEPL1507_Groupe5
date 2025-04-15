@@ -183,11 +183,8 @@
             data.links.forEach(lien => {
                 if (!distances[lien.source]) {
                     distances[lien.source] = {};
-                    distances[lien.source][lien.source] = 0;
                     times[lien.source] = {};
-                    times[lien.source][lien.source] = 0;
                     prices[lien.source] = {};
-                    prices[lien.source][lien.source] = 0;
                 }
 
                 distances[lien.source][lien.target] = lien.distance;
@@ -196,11 +193,8 @@
 
                 if (!distances[lien.target]) {
                     distances[lien.target] = {};
-                    distances[lien.target][lien.target] = 0;
                     times[lien.target] = {};
-                    times[lien.target][lien.target] = 0;
                     prices[lien.target] = {};
-                    prices[lien.target][lien.target] = 0;
                 }
 
             });
@@ -321,35 +315,22 @@
             let unite;
             let cost;
             let criterion;
-            let trajet = "";
             switch (critere) {
                 case "distance":
                     unite = "km";
                     criterion = "Distance totale";
                     cost = `${resultat.cost.toFixed(2)}  ${unite}`;
-                    for(let i = 0; i < resultat.chemin.length -1; i++){
-                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i]} : 
-                                ${distances[resultat.chemin[i]][resultat.chemin[i]]}\n`;
-                    }
                     break;
                 case "coût":
                     unite = "€";
                     criterion = "Coût total";
                     cost = `${resultat.cost.toFixed(2)}  ${unite}`;
-                    for(let i = 0; i < resultat.chemin.length -1; i++){
-                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i]} : 
-                                ${costs[resultat.chemin[i]][resultat.chemin[i]]}\n`;
-                    }
                     break;
                 case "temps":
                     criterion = "Temps total";
                     let hours = Math.floor(resultat.cost);
                     let minutes = Math.floor((resultat.cost - hours)*60);
                     cost = `${hours} h ${minutes} m`;
-                    for(let i = 0; i < resultat.chemin.length -1; i++){
-                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i]} : 
-                                ${times[resultat.chemin[i]][resultat.chemin[i]]}\n`;
-                    }
                     break;
             }
             let chemin = "";
@@ -360,9 +341,7 @@
             chemin += IDaeroport[resultat.chemin[resultat.chemin.length-1]];
             resultatDiv.innerHTML = `<p class='success'>Le plus court chemin de ${depart} à ${arrivee} est :</p>
                                     <p>${chemin}</p>
-                                    <p>${criterion} : ${cost} </p>
-                                    <p>Trajet détaillée :</p>
-                                    <p>${trajet}</>`;
+                                    <p>${criterion} : ${cost} </p>`;
         }
     }
     </script>
