@@ -329,7 +329,8 @@
                     cost = `${resultat.cost.toFixed(2)}  ${unite}`;
                     for(let i = 0; i < resultat.chemin.length -1; i++){
                         trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i+1]} : 
-                                ${distances[resultat.chemin[i]][resultat.chemin[i+1]]}\n`;
+                                ${distances[resultat.chemin[i]][resultat.chemin[i+1]].toFixed(2)}
+                                 ${unite}\n`;
                     }
                     break;
                 case "coût":
@@ -338,7 +339,8 @@
                     cost = `${resultat.cost.toFixed(2)}  ${unite}`;
                     for(let i = 0; i < resultat.chemin.length -1; i++){
                         trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i+1]} : 
-                                ${costs[resultat.chemin[i]][resultat.chemin[i+1]]}\n`;
+                                ${costs[resultat.chemin[i]][resultat.chemin[i+1]].toFixed(2)}
+                                 ${unite}\n`;
                     }
                     break;
                 case "temps":
