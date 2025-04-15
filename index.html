@@ -328,8 +328,8 @@
                     criterion = "Distance totale";
                     cost = `${resultat.cost.toFixed(2)}  ${unite}`;
                     for(let i = 0; i < resultat.chemin.length -1; i++){
-                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i]} : 
-                                ${distances[resultat.chemin[i]][resultat.chemin[i]]}\n`;
+                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i+1]} : 
+                                ${distances[resultat.chemin[i]][resultat.chemin[i+1]]}\n`;
                     }
                     break;
                 case "coût":
@@ -337,8 +337,8 @@
                     criterion = "Coût total";
                     cost = `${resultat.cost.toFixed(2)}  ${unite}`;
                     for(let i = 0; i < resultat.chemin.length -1; i++){
-                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i]} : 
-                                ${costs[resultat.chemin[i]][resultat.chemin[i]]}\n`;
+                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i+1]} : 
+                                ${costs[resultat.chemin[i]][resultat.chemin[i+1]]}\n`;
                     }
                     break;
                 case "temps":
@@ -347,8 +347,8 @@
                     let minutes = Math.floor((resultat.cost - hours)*60);
                     cost = `${hours} h ${minutes} m`;
                     for(let i = 0; i < resultat.chemin.length -1; i++){
-                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i]} : 
-                                ${times[resultat.chemin[i]][resultat.chemin[i]]}\n`;
+                        trajet += `${resultat.chemin[i]}  → ${resultat.chemin[i+1]} : 
+                                ${times[resultat.chemin[i]][resultat.chemin[i+1]]}\n`;
                     }
                     break;
             }
@@ -361,7 +361,8 @@
             resultatDiv.innerHTML = `<p class='success'>Le plus court chemin de ${depart} à ${arrivee} est :</p>
                                     <p>${chemin}</p>
                                     <p>${criterion} : ${cost} </p>
-                                    `;
+                                    <p>Trajet détaillée :</p>
+                                    <p>${trajet}</>`;
         }
     }
     </script>
