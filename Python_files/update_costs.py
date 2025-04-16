@@ -3,6 +3,8 @@ import numpy as np
 import time
 import random
 from create_graphs import haversine
+
+
 def generate_order(G: nx.DiGraph, Trajets: list[tuple[str, str]], mode = "random") -> list[tuple[str, str]]:
     """
     Generate an order for the trajectories

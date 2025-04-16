@@ -1,6 +1,6 @@
 import sys
 import os
-import B_flow
+import direct as direct
 import time
 import matplotlib.pyplot as plt
 from create_graphs import create_airport_graph, create_random_subgraph, generate_random_pairs
@@ -42,7 +42,7 @@ for (n, m, j) in graph_sizes:
             for C in C_values:
                 print(f"Testing solve_flow with flow_binaire={flow_binaire}, choice_binaire={choice_binaire}, C={C}")
                 start_time = time.time()
-                solved_graph = B_flow.solve_flow(random_subgraph, destination_pairs, C, flow_binaire=flow_binaire, Choice_binaire=choice_binaire,Initialise=True)
+                solved_graph = direct.solve_flow(random_subgraph, destination_pairs, C, flow_binaire=flow_binaire, Choice_binaire=choice_binaire,Initialise=True)
                 end_time = time.time()
                 time_taken = end_time - start_time
                 print(f"Time taken: {time_taken} seconds")
