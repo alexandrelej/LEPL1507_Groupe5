@@ -1,6 +1,10 @@
 # Projet 4 — Mathématiques appliquées (LEPL1507)
 
-Ce projet vise à optimiser un réseau aérien mondial en minimisant la fonction objectif suivante : **(à compléter)**.  
+Ce projet vise à optimiser un réseau aérien mondial en minimisant la fonction objectif suivante : 
+$$
+f(E) = \frac{1}{N} \sum_{(A_t, A_l) \in J} \text{dist}(A_t, A_l \mid E) + C \cdot |E|
+$$
+
 Notre approche consiste à implémenter plusieurs algorithmes, à comparer leurs performances et à analyser les résultats afin de déterminer la meilleure méthode d’optimisation.
 
 **Auteurs :** Joachim De Favereau, Alexandre Lejeune, Florent Thyrion & Charlotte Weynants
@@ -38,7 +42,7 @@ Cela s’inscrit dans une optique de **développement durable**, en limitant les
 | ├── `capacities_connexions.csv`  | Capacité maximale de chaque connexion |
 | └── `new_routes.csv`             | Connexions retenues dans le réseau final |
 | `python_files/`                  | Contient l’ensemble des scripts Python |
-| ├── `create_graphs.py`           | Création des graphes à partir des fichiers CSV |
+| ├── `create_graphs.py`           | Création des graphes à partir des fichiers CSV et ajout des prix et temps pour la conversion au format JSON |
 | ├── `remove_edges.py`            | Implémentation de l’algorithme "Remove Edges" |
 | ├── `update_costs.py`            | Implémentation de l’algorithme "Update Costs" |
 | ├── `disturbance_result.py`      | Amélioration du réseau par perturbations successives |
@@ -51,8 +55,10 @@ Cela s’inscrit dans une optique de **développement durable**, en limitant les
 | ├── `main_test.py`               | Étude des objectifs secondaires |
 | └── `new_network.py`             | Génère le nouveau réseau optimisé |
 | `interface_utilisateur/`         | Interface web pour l’utilisation du réseau |
+| ├── `find_shortest_path.py`      | Fonctions pour obtenir les distances, temps et prix des arêtes et pour trouver le chemin le plus court |
 | ├── `index.html`                 | Page principale de l'interface |
-| └── `script.js`, `style.css`     | Fichiers JS et CSS associés |
+| ├── `old_index.html`             |  |
+| └── `visu.jpg`                   | Image dans l'interface utilisateur |
 | `json/`                          | Graphe du nouveau réseau au format JSON |
 | └── `all.json`                   | Informations complètes sur les arêtes (distance, coût, temps) |
 | `graphs/`                        | Graphiques d’analyse |

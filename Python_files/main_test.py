@@ -2,124 +2,13 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 from create_graphs import create_airport_graph, create_random_subgraph, generate_random_pairs
-#from visualisation.visualisation import visualize_graph_on_globe
+from create_graphs import add_prices, add_times, graph_to_json_file
 from update_costs import Update_costs
 from B_epidemie import *
 from C_robustesse import *
 from disturbance_result import test_disturbance
-import json
-from networkx.readwrite import json_graph
 import networkx as nx
-import os
-import pandas as pd
 import copy 
-
-
-def graph_to_json_file(G, file_path):
-    """
-    Convertit un graphe NetworkX en JSON (format node-link) et l'écrit dans un fichier.
-    
-    Parameters:
-        G (networkx.Graph): Le graphe à convertir.
-        file_path (str): Le chemin du fichier dans lequel sauvegarder la représentation JSON.
-    """
-    data = json_graph.node_link_data(G)
-    with open(file_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=4)
-
-def change_to_prices(G, prices_csv):
-    """
-    Crée une copie du graphe G où la clé 'distance' de chaque arête est remplacée par le prix du vol.
-    """
-    G_prices = copy.deepcopy(G)
-    prices = pd.read_csv(prices_csv)
-
-    for edge in G_prices.edges:
-        start_node, end_node = edge
-        price_row = prices[(prices['ID_start'] == start_node) & (prices['ID_end'] == end_node)]
-        if not price_row.empty:
-            price = price_row.iloc[0]['price_tag']
-            G_prices.edges[start_node, end_node]['distance'] = price
-        else:
-            print(f"[Warning] Prix non trouvé pour le vol de {start_node} à {end_node}.")
-
-    return G_prices
-
-
-def change_to_times(G, waiting_times_csv, average_speed=800):
-    """
-    Crée une copie du graphe G où la clé 'distance' est remplacée par un temps de trajet
-    (calculé à partir de la distance et du temps d’attente au départ).
-    """
-    G_times = copy.deepcopy(G)
-    waiting_times = pd.read_csv(waiting_times_csv)
-
-    # Créer un dictionnaire rapide des idle_time
-    idle_time_dict = dict(zip(waiting_times['ID'], waiting_times['idle_time']))
-
-    for edge in G_times.edges:
-        start_node, end_node = edge
-        distance = G_times.edges[start_node, end_node]['distance']
-        flight_time = distance / average_speed
-
-        idle_time = idle_time_dict.get(start_node, 0)
-        idle_time = idle_time / 60  # Convertir en heures
-        total_time = flight_time + idle_time
-
-        G_times.edges[start_node, end_node]['distance'] = total_time
-
-    return G_times
-
-def add_prices(G, prices_csv):
-    """
-    Ajoute les prix des vols aux arêtes du graphe.
-    """
-    prices = pd.read_csv(prices_csv)
-    
-    for edge in G.edges:
-        start_node, end_node = edge
-        price = prices[(prices['ID_start'] == start_node) & (prices['ID_end'] == end_node)]['price_tag'].values
-        if price:
-            G.edges[start_node, end_node]['price'] = price[0]
-        else:
-            print(f"Prix non trouvé pour le vol de {start_node} à {end_node}.")
-"""
-Pour le moment on considère un temps d'arête moyen par aéroports.
-Si on obtient des données avec un temps différents par trajet, 
-On peut ajouter le temps sur les arêtes correspondantes
-puis retirer les temps d'attente aux arêtes qui partent du noeud de départ
-"""
-def add_times(G, waiting_times_csv, average_speed=800):
-    """
-    Ajoute les temps de vol aux arêtes du graphe.
-    """
-    # waiting_times contain the waiting times at each airport
-    waiting_times = pd.read_csv(waiting_times_csv)
-    # 1) convertir les distances en temps de vol
-    # 2) ajouter les temps d'attentes aux temps de vol
-    for edge in G.edges:
-        start_node, end_node = edge
-        distance = G.edges[start_node, end_node]['distance']
-        speed = average_speed
-        time = distance / speed
-        # Add waiting time in hours at the start node
-        time += waiting_times[waiting_times['ID'] == start_node]['idle_time'].values[0] / 60
-        G.edges[edge]['time'] = time
-
-def find_shortest_path(G, start_node, end_node, metric='distance'):
-    """
-    Trouve le plus court chemin entre deux nœuds dans un graphe.
-    """
-    if metric == 'time':
-        # retire le temps d'attente au premier nœud
-        length -= G.nodes[start_node]['idle_time']
-    path = nx.shortest_path(G, start_node, end_node, weight=metric)
-    length = nx.shortest_path_length(G, start_node, end_node, weight=metric)
-    return path, length
-
-
-
-
 
 
 
@@ -191,15 +80,6 @@ for n, m in zip(n_values, m_values):
         add_times(G_all, "../basic_datasets/waiting_times.csv", average_speed=800)
         graph_to_json_file(G_all, "../json/G_all.json")
 
-        # Conversion du sous-graphe optimisé en JSON
-        graph_to_json_file(G_reweighted, "../json/G_distances.json")
-
-        G_prices = change_to_prices(G_reweighted, "../basic_datasets/prices.csv")
-        graph_to_json_file(G_prices, "../json/G_prices.json")
-
-        G_times = change_to_times(G_reweighted, "../basic_datasets/waiting_times.csv")
-        graph_to_json_file(G_times, "../json/G_times.json")
-
         update_costs_time = time.time() - start_time
         update_costs_cost = sum([nx.shortest_path_length(G_reweighted, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C * len(G_reweighted.edges())
         update_costs_costs.append(update_costs_cost)
@@ -245,7 +125,7 @@ plt.legend()
 plt.grid()
 
 plt.tight_layout()
-plt.savefig("resultats.png")  # Enregistre le graphique dans un fichier
+plt.savefig("../graphs/resultats.png")  # Enregistre le graphique dans un fichier
 
 # --- Test sur la propagation d'épidémie sur le graphe complet ---
 print("\n=== Test de l'épidémie sur le graphe complet ===")
@@ -289,6 +169,6 @@ plt.ylabel("Nombre de composantes")
 plt.title("Nombre de composantes connexes (moyenne)")
     
 plt.tight_layout()
-plt.savefig("robustesse_edge_removal.png")
+plt.savefig("../graphs/robustesse_edge_removal.png")
 
 test_disturbance(G_reweighted,random_subgraph,destination_pairs,C)

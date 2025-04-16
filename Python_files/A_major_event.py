@@ -32,7 +32,8 @@ def preprocess_and_max_flow(G, airport_capacities, J):
     :param G: networkx.DiGraph() - Graphe initial avec les routes aériennes et leurs capacités
     :param airport_capacities: dict - Dictionnaire {aéroport: capacité max journalière}
     :param J: list of tuples - Liste de trajets (départ, arrivée)
-    :return: dict - Flot maximal pour chaque trajet de J
+
+    Retourne un dictionnaire des flots maximaux pour chaque trajet de J
     """
     # Création d'un graphe transformé avec duplication des aéroports
     G_transformed = nx.DiGraph()

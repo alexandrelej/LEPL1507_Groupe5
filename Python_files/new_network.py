@@ -1,7 +1,4 @@
 import networkx as nx
-import numpy as np
-import time
-import random
 from update_costs import Update_costs
 from create_graphs import create_airport_graph, create_random_subgraph, generate_random_pairs
 import copy
@@ -10,17 +7,17 @@ from main_test import add_prices, add_times, graph_to_json_file
 
 def new_network(airports_csv, routes_csv, C, j=100):
     """
-    Create a new network with the given parameters.
+    Crée un nouveau réseau avec les paramètres donnés.
 
-    Parameters:
-        airport_csv (str): Path to the airport.csv file.
-        routes_csv (str): Path to the pre_existing_routes.csv file.
-        C (int): Cost per route.
-        j (int): Number of destination pairs to generate.
+    Paramètres :
+        airport_csv (str) : Chemin vers le fichier airport.csv.
+        routes_csv (str) : Chemin vers le fichier pre_existing_routes.csv.
+        C (int) : Coût par trajet.
+        j (int) : Nombre de paires de destinations à générer.
 
-    Returns:
-        int: The cost of the objective function.
-        list: A list of selected routes + creation of a CSV file containing those selected routes.
+    Retourne :
+        int : Le coût de la fonction objectif.
+        list : Une liste des trajets sélectionnés + création d’un fichier CSV contenant ces trajets.
     """
     
     # Create the complete graph

@@ -3,9 +3,27 @@ import networkx as nx
 from update_costs import Update_costs
 
 def compute_cost(G: nx.DiGraph, C: float) -> float:
+    """
+    Calcule le coût total d’un graphe en combinant la somme pondérée des arêtes et une pénalité
+    proportionnelle au nombre de nœuds. 
+    
+    Retourne le coût total (float).
+    """
     return G.size(weight="weight") + C * len(G.nodes)
 
+
 def disturbance(G_reweighted: nx.DiGraph, random_subgraph: nx.DiGraph, trajets: list[tuple[str, str]], C: float, iterations: int = 1):
+    """
+    Perturbe un sous-graphe en retirant aléatoirement un nœud «sûr» (ne bloquant aucun trajet),
+    puis relance l’optimisation. Si le coût diminue, la nouvelle solution est conservée.
+    
+    Retourne :
+      - le nouveau graphe optimisé,
+      - un booléen indiquant une amélioration,
+      - le nouveau coût,
+      - la différence de coût.
+    """
+    
     cost_before = compute_cost(G_reweighted, C)
     candidate_nodes = list(set(G_reweighted.nodes).intersection(random_subgraph.nodes))
 
@@ -36,7 +54,14 @@ def disturbance(G_reweighted: nx.DiGraph, random_subgraph: nx.DiGraph, trajets: 
 
     return new_G_reweighted, improved, cost_after, cost_diff
 
+
 def test_disturbance(G_reweighted, random_subgraph, listJ, C):
+    """
+    Applique la fonction de perturbation plusieurs fois afin d’explorer l’espace des solutions 
+    et améliorer itérativement le graphe initial. Affiche les évolutions du coût.
+
+    Retourne le graphe final optimisé après perturbations.
+    """
     n_iter = len(G_reweighted.nodes)
     current_graph = G_reweighted
     current_cost = compute_cost(current_graph, C)
@@ -57,6 +82,13 @@ def test_disturbance(G_reweighted, random_subgraph, listJ, C):
     return current_graph
 
 def multi_optimize_and_disturb(random_subgraph, trajets, C):
+    """
+    Lance plusieurs optimisations indépendantes, fusionne les résultats, optimise à nouveau 
+    le graphe fusionné, puis applique une phase de perturbation pour réduire le coût final.
+
+    Retourne le graphe final optimisé.
+    """
+    
     print("→ Phase 1 : Exécution multiple de Update_costs")
     graphs = []
     for i in range(5):

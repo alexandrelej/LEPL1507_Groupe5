@@ -5,18 +5,19 @@ import time
 
 def solve_flow(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: float, flow_binaire=True, Choice_binaire=True, Initialise = False, Verbose=False) -> nx.DiGraph:
     """
-    Solve the flow optimization problem on a directed graph.
+    Résout le problème d'optimisation de flux sur un graphe dirigé.
 
-    Parameters:
-    G (nx.DiGraph): A directed graph with distances on the edges.
-    Trajets (list[tuple[str, str]]): A list of tuples representing the start and end nodes of the trajectories.
-    C (float): A constant used in the objective function to penalize the number of edges chosen.
-    flow_binaire (bool, optional): If True, the flow variables are binary. If False, the flow variables are non-negative. Default is True.
-    Choice_binaire (bool, optional): If True, the choice variables are binary. If False, the choice variables are non-negative. Default is True.
+    Paramètres :
+    G (nx.DiGraph) : Un graphe dirigé avec des distances sur les arêtes.
+    Trajets (list[tuple[str, str]]) : Une liste de couples représentant les nœuds de départ et d'arrivée des trajets.
+    C (float) : Une constante utilisée dans la fonction objectif pour pénaliser le nombre d'arêtes choisies.
+    flow_binaire (bool, optionnel) : Si True, les variables de flux sont binaires. Si False, les variables de flux sont positives. Par défaut : True.
+    Choice_binaire (bool, optionnel) : Si True, les variables de choix sont binaires. Si False, elles sont positives. Par défaut : True.
 
-    Returns:
-    nx.DiGraph: A new directed graph with the optimized set of edges.
+    Retourne :
+    nx.DiGraph : Un nouveau graphe dirigé contenant l’ensemble optimisé d’arêtes.
     """
+
     
     edge_to_id = {i: edge for i, edge in enumerate(G.edges())}
     id_to_edge = {edge: i for i, edge in enumerate(G.edges())}
