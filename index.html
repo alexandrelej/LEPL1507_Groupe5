@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimisation du Trafic Aérien</title>
+    <style>
+        /* Global Styles */
+        html, body {
+            height: auto;
+            min-height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('images/visu.jpg'); 
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: block;
+            position: relative;
+        }
+
+
+        h1 {
+            font-size: 36px;
+            color: white;
+            text-align: center;
+            margin-top: 40px; /* ou plus selon l'espacement que tu veux */
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* Container for content */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 10; /* Assure que le contenu est au-dessus de l'image */
+        }
+
+        /* Form Elements */
+        select, button {
+            padding: 12px;
+            margin: 12px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        select:focus, button:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Labels and layout adjustments */
+        label {
+            font-size: 18px;
+            margin-right: 10px;
+            color: #555;
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Result Box */
+        #resultat {
+            margin-top: 30px;  /* Augmentation de la marge pour éviter la superposition */
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        /* Error and success messages */
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+            select, button {
+                font-size: 14px;
+            }
+            .container {
+                padding: 10px;
+                margin: 20px 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Optimisation du trafic aérien</h1>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="critere">Critère de sélection :</label>
+            <select id="critere">
+                <option value="distance">Distance</option>
+                <option value="temps">Temps</option>
+                <option value="coût">Coût</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="depart">Aéroport de départ :</label>
+            <select id="depart">
+                <option value="">Sélectionner...</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="arrivee">Aéroport d'arrivée :</label>
+            <select id="arrivee">
+                <option value="">Sélectionner...</option>
+            </select>
+        </div>
+
+        <button onclick="trouverPlusCourtChemin()">Trouver Trajet</button>
+        
+        <div id="resultat"></div>
+    </div>
+
+    <script>
+    let distances = {};
+    let prices = {};
+    let times = {};
+    let aeroportID = {};
+    let IDaeroport = {};
+
+    window.onload = function() {
+        chargerAeroports();
+    };
+
+    async function chargerAeroports() {
+    
+        let fichier = "json/" + "all" + ".json";
+        let url = fichier + "?t=" + new Date().getTime();
+        
+        try {
+            let response = await fetch(url);
+            let data = await response.json();
+            let aeroports = data.nodes.map(node => node.id + ' (' + node.name + ')').sort();
+
+            data.nodes.forEach(node => {
+                aeroportID[node.id + ' (' + node.name + ')'] = node.id;
+                IDaeroport[node.id] = node.id + ' (' + node.name + ')';
+            });
+
+            data.links.forEach(lien => {
+                if (!distances[lien.source]) {
+                    distances[lien.source] = {};
+                    times[lien.source] = {};
+                    prices[lien.source] = {};
+                }
+
+                distances[lien.source][lien.target] = lien.distance;
+                times[lien.source][lien.target] = lien.time;
+                prices[lien.source][lien.target] = lien.price;
+
+                if (!distances[lien.target]) {
+                    distances[lien.target] = {};
+                    times[lien.target] = {};
+                    prices[lien.target] = {};
+                }
+
+            });
+
+            let departSelect = document.getElementById("depart");
+            let arriveeSelect = document.getElementById("arrivee");
+
+            departSelect.innerHTML = "<option value=''>Sélectionner...</option>";
+            arriveeSelect.innerHTML = "<option value=''>Sélectionner...</option>";
+
+            aeroports.forEach(aeroport => {
+                let option1 = document.createElement("option");
+                option1.value = aeroport;
+                option1.textContent = aeroport;
+                departSelect.appendChild(option1);
+
+                let option2 = document.createElement("option");
+                option2.value = aeroport;
+                option2.textContent = aeroport;
+                arriveeSelect.appendChild(option2);
+            });
+        } catch (error) {
+            console.error("Erreur de chargement des aéroports :", error);
+        }
+    }
+
+    function dijkstra(depart, arrivee, critere) {
+        let costs = {};
+        let parents = {};
+        let visited = new Set();
+        let noeuds;
+        let localgraph;
+
+        switch (critere) {
+            case "distance":
+                noeuds = Object.keys(distances);
+                localgraph = distances;
+                break;
+            case "coût":
+                noeuds = Object.keys(prices);
+                localgraph = prices;
+                break;
+            case "temps":
+                noeuds = Object.keys(times);
+                localgraph = times;
+                break;
+        }
+
+        if (depart == arrivee) {
+            return { chemin: [depart, arrivee], cost: 0 };
+        }
+        if (!noeuds.includes(depart) || !noeuds.includes(arrivee)) {
+            return { chemin: [], cost: Infinity };
+        }
+
+        noeuds.forEach(n => costs[n] = Infinity);
+        costs[depart] = 0;
+
+        while (noeuds.length > 0) {
+            let noeudActuel = noeuds.reduce((min, n) => (costs[n] < costs[min] ? n : min));
+            noeuds = noeuds.filter(n => n !== noeudActuel);
+            visited.add(noeudActuel);
+
+            if (noeudActuel === arrivee) break;
+
+            for (let voisin in localgraph[noeudActuel]) {
+                if (!visited.has(voisin)) {
+                    let newcost = costs[noeudActuel] + localgraph[noeudActuel][voisin];
+                    if (newcost < costs[voisin]) {
+                        costs[voisin] = newcost;
+                        parents[voisin] = noeudActuel;
+                    }
+                }
+            }
+        }
+
+        if (costs[arrivee] === Infinity) {
+            return { chemin: [], cost: Infinity };
+        }
+
+        let chemin = [];
+        let temp = arrivee;
+        while (temp) {
+            chemin.unshift(temp);
+            temp = parents[temp];
+        }
+
+        return { chemin, cost: costs[arrivee] };
+    }
+
+    function trouverPlusCourtChemin() {
+
+        let critere = document.getElementById("critere").value;
+        let depart = aeroportID[document.getElementById("depart").value];
+        let arrivee = aeroportID[document.getElementById("arrivee").value];
+        let resultatDiv = document.getElementById("resultat");
+
+        if (!depart && !arrivee) {
+            resultatDiv.innerHTML = "<p class='error'>Veuillez sélectionner un aéroport de départ et d'arrivée.</p>";
+            return;
+        }
+
+        else if (!depart) {
+            resultatDiv.innerHTML = "<p class='error'>Veuillez sélectionner un aéroport de départ.</p>";
+            return;
+        }
+
+        else if (!arrivee) {
+            resultatDiv.innerHTML = "<p class='error'>Veuillez sélectionner un aéroport d'arrivée.</p>";
+            return;
+        }
+
+        let resultat = dijkstra(depart, arrivee, critere);
+
+        if (resultat.cost === Infinity || resultat.chemin.length === 0) {
+            resultatDiv.innerHTML = `<p class='error'>Aucun chemin trouvé entre ${depart} et ${arrivee}.</p>`;
+        } else {
+            let unite;
+            let cost;
+            let criterion;
+            switch (critere) {
+                case "distance":
+                    unite = "km";
+                    criterion = "Distance totale";
+                    cost = `${resultat.cost.toFixed(2)}  ${unite}`;
+                    break;
+                case "coût":
+                    unite = "€";
+                    criterion = "Coût total";
+                    cost = `${resultat.cost.toFixed(2)}  ${unite}`;
+                    break;
+                case "temps":
+                    criterion = "Temps total";
+                    let hours = Math.floor(resultat.cost);
+                    let minutes = Math.floor((resultat.cost - hours)*60);
+                    cost = `${hours} h ${minutes} m`;
+                    break;
+            }
+            let chemin = "";
+            for(let i=0; i < resultat.chemin.length-1; i++){
+                chemin += IDaeroport[resultat.chemin[i]];
+                chemin += " → "
+            }
+            chemin += IDaeroport[resultat.chemin[resultat.chemin.length-1]];
+            resultatDiv.innerHTML = `<p class='success'>Le plus court chemin de ${depart} à ${arrivee} est :</p>
+                                    <p>${chemin}</p>
+                                    <p>${criterion} : ${cost} </p>`;
+        }
+    }
+    </script>
+</body>
+</html>
+
+
+
+
