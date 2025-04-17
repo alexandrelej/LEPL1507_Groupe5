@@ -1,10 +1,11 @@
+import csv
 import networkx as nx
 from update_costs import Update_costs
 from create_graphs import create_airport_graph, create_random_subgraph, generate_random_pairs, add_prices, add_times, graph_to_json_file
 import copy
 
 
-def new_network(airports_csv, routes_csv, C, j=100):
+def new_network(airports_csv, routes_csv, C, j=500):
     """
     Crée un nouveau réseau avec les paramètres donnés.
 
@@ -26,9 +27,18 @@ def new_network(airports_csv, routes_csv, C, j=100):
     
     # Generate a random subgraph
     #random_subgraph = create_random_subgraph(airport_graph, n=75, m=1500) # to comment if we want the whole data to create the new network
+
+    #destination_pairs = generate_random_pairs(random_subgraph, j)
     destination_pairs = generate_random_pairs(airport_graph, j)
+    with open('../basic_datasets/destination_pairs.csv', 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['start', 'end'])  # en-têtes
+        for pair in destination_pairs:
+            writer.writerow(pair)
+        
 
     # Generate the new network
+    #G_reweighted, rsubgraph = Update_costs(random_subgraph, destination_pairs, C)
     G_reweighted, rsubgraph = Update_costs(airport_graph, destination_pairs, C)
     cost = sum([nx.shortest_path_length(G_reweighted, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C * len(G_reweighted.edges())
 
@@ -50,7 +60,8 @@ def new_network(airports_csv, routes_csv, C, j=100):
     return cost, G_reweighted.edges()
 
 
-final_cost, new_routes = new_network("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv", C=2000)
+final_cost, new_routes = new_network("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv", C=4)
 print(final_cost)
 print(new_routes)
-print(len(new_routes))
+new_routes_list = list(new_routes)  # Conversion en liste pour compter
+print(len(new_routes_list))         # Impression du nombre d'arêtes

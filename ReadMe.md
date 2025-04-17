@@ -56,9 +56,9 @@ Cela s’inscrit dans une optique de **développement durable**, en limitant les
 | └── `new_network.py`             | Génère le nouveau réseau optimisé |
 | `interface_utilisateur/`         | Interface web pour l’utilisation du réseau |
 | ├── `find_shortest_path.py`      | Fonctions pour obtenir les distances, temps et prix des arêtes et pour trouver le chemin le plus court |
-| ├── `index.html`                 | Page principale de l'interface |
-| ├── `old_index.html`             |  |
+| ├── `find_shortest_path.py`      | Fonction qui trouve le plus court chemin entre 2 aéroports |
 | └── `visu.jpg`                   | Image dans l'interface utilisateur |
+| `index.html`                     | Page principale de l'interface |
 | `json/`                          | Graphe du nouveau réseau au format JSON |
 | └── `all.json`                   | Informations complètes sur les arêtes (distance, coût, temps) |
 | `graphs/`                        | Graphiques d’analyse |
@@ -67,6 +67,7 @@ Cela s’inscrit dans une optique de **développement durable**, en limitant les
 | ├── `comparison_N_M.png`         | Influence du nombre d’aéroports et connexions |
 | ├── `major_events.png`           | Flots maximaux lors d’un événement majeur |
 | └── `robustesse_edge_removal.png`| Analyse de la robustesse en cas de suppression d’arêtes |
+
 
 
 ## ✈️ Fonctionnalités et options
