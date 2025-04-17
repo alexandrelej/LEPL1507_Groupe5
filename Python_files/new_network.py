@@ -47,7 +47,8 @@ def new_network(airports_csv, routes_csv, C, j=100):
     return cost, G_reweighted.edges()
 
 
-final_cost, new_routes = new_network("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv", C=100)
+final_cost, new_routes = new_network("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv", C=10)
 print(final_cost)
 print(new_routes)
-print(len(new_routes))
+new_routes_list = list(new_routes)  # Conversion en liste pour compter
+print(len(new_routes_list))         # Impression du nombre d'arêtes
