@@ -16,7 +16,7 @@ airport_graph = create_airport_graph(airports_csv, routes_csv)
 # Paramètres fixes
 j = 20  # Nombre de paires de destinations
 C = 2000  # Coût d'ajout d'une arête supplémentaire
-num_runs = 5  # Nombre d'exécutions pour la moyenne
+num_runs = 10 # Nombre d'exécutions pour la moyenne
 
 
 
@@ -28,7 +28,7 @@ remove_edges_means_times_nodes = []
 update_costs_means_times_nodes = []
 remove_edges_means_costs_nodes = []
 update_costs_means_costs_nodes = []
-
+"""
 for n in n_values:
     remove_edges_times = []
     update_costs_times = []
@@ -63,7 +63,7 @@ for n in n_values:
 
 
 # Comparaison en fonction du nombre d'arêtes avec un nombre de nœuds fixe
-m_values = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500] # il y a 1791 arêtes dans le fichier csv
+m_values = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500] # il y a 1791 arêtes dans le fichier csv 
 n_fixed = 75  # Nombre de nœuds constant
 
 remove_edges_means_times_edges = []
@@ -107,7 +107,7 @@ for m in m_values:
 
 # Comparaison en fonction du nombre de trajets requis
 j_values = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100] 
-m_fixed_for_j = 100  # Nombre d'arêtes constant
+m_fixed_for_j = 200  # Nombre d'arêtes constant
 n_fixed_for_j = 50  # Nombre de nœuds constant
 
 remove_edges_means_times_j = []
@@ -140,7 +140,7 @@ for j in j_values:
         start_time = time.time()
         G_reweighted, rsubgraph = Update_costs(random_subgraph, destination_pairs, C, iterations=30)
         elapsed_time = time.time() - start_time 
-        update_costs_cost = sum([nx.shortest_path_length(G_reweighted, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C_values[0] * len(G_reweighted.edges())
+        update_costs_cost = sum([nx.shortest_path_length(G_reweighted, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C * len(G_reweighted.edges())
 
         update_costs_times.append(elapsed_time)
         print("Update costs time",elapsed_time)
@@ -151,11 +151,11 @@ for j in j_values:
     update_costs_means_times_j.append(np.mean(update_costs_times))
     remove_edges_means_costs_j.append(np.mean(remove_edges_costs))
     update_costs_means_costs_j.append(np.mean(update_costs_costs))
-
+"""
 
 # Comparaison en fonction du cout C
 C_values = [500, 1000, 1500, 2000, 2500]
-m_fixed_for_C = 100  # Nombre d'arêtes constant
+m_fixed_for_C = 200  # Nombre d'arêtes constant
 n_fixed_for_C = 50  # Nombre de nœuds constant
 
 remove_edges_means_times_C = []
@@ -195,13 +195,13 @@ for c in C_values:
         update_costs_costs.append(update_costs_cost)
         print("Update costs cost",update_costs_cost)
 
-    remove_edges_means_times_j.append(np.mean(remove_edges_times))
-    update_costs_means_times_j.append(np.mean(update_costs_times))
-    remove_edges_means_costs_j.append(np.mean(remove_edges_costs))
-    update_costs_means_costs_j.append(np.mean(update_costs_costs))
+    remove_edges_means_times_C.append(np.mean(remove_edges_times))
+    update_costs_means_times_C.append(np.mean(update_costs_times))
+    remove_edges_means_costs_C.append(np.mean(remove_edges_costs))
+    update_costs_means_costs_C.append(np.mean(update_costs_costs))
 
 
-
+"""
 ###### Tracé des résultats en fonction du nombre de nœuds et d'arêtes #####
 plt.figure(figsize=(10, 8))
 
@@ -223,8 +223,8 @@ plt.annotate(info_text, xy=(0.05, 0.95), xycoords='axes fraction',
 
 # Temps d'exécution en fonction du nombre de nœuds
 plt.subplot(2, 2, 2)
-plt.plot(n_values, remove_edges_means_times_nodes, 'o-', label="Algorithme Remove edges")
-plt.plot(n_values, update_costs_means_times_nodes, 's-', label="Algorithme Update costs")
+plt.loglog(n_values, remove_edges_means_times_nodes, 'o-', label="Algorithme Remove edges")
+plt.loglog(n_values, update_costs_means_times_nodes, 's-', label="Algorithme Update costs")
 plt.xlabel("Nombre de nœuds")
 plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre de nœuds")
@@ -251,8 +251,8 @@ plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
 
 # Temps d'exécution en fonction du nombre d'arêtes
 plt.subplot(2, 2, 4)
-plt.plot(m_values, remove_edges_means_times_edges, 'o-', label="Algorithme Remove edges")
-plt.plot(m_values, update_costs_means_times_edges, 's-', label="Algorithme Update costs")
+plt.loglog(m_values, remove_edges_means_times_edges, 'o-', label="Algorithme Remove edges")
+plt.loglog(m_values, update_costs_means_times_edges, 's-', label="Algorithme Update costs")
 plt.xlabel("Nombre d'arêtes")
 plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre d'arêtes")
@@ -303,15 +303,15 @@ plt.tight_layout()
 plt.savefig("../graphs/comparison_J.png")
 plt.show()
 
-
+"""
 
 ##### Tracé des résultats en fonction du coût C #####
 plt.figure(figsize=(10, 8))
 
 # Coût en fonction du coût C
 plt.subplot(2, 1, 1)
-plt.plot(C_values, remove_edges_costs, 'o-', label="Algorithme Remove edges")
-plt.plot(C_values, update_costs_costs, 's-', label="Algorithme Update costs")
+plt.plot(C_values, remove_edges_means_costs_C, 'o-', label="Algorithme Remove edges")
+plt.plot(C_values, update_costs_means_costs_C, 's-', label="Algorithme Update costs")
 plt.xlabel("C (coût par arête)")
 plt.ylabel("Coût total du réseau")
 plt.title("Coût total du réseau en fonction du côut C par arête")
@@ -323,8 +323,8 @@ plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
 
 # Comparaison des temps d'exécution
 plt.subplot(2, 1, 2)
-plt.plot(C_values, remove_edges_times, 'o-', label="Algorithme Remove edges")
-plt.plot(C_values, update_costs_times, 's-', label="Algorithme Update costs")
+plt.loglog(C_values, remove_edges_means_times_C, 'o-', label="Algorithme Remove edges")
+plt.loglog(C_values, update_costs_means_times_C, 's-', label="Algorithme Update costs")
 plt.xlabel("C (coût par arête)")
 plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du coût C par arête")

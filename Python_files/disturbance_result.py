@@ -9,7 +9,7 @@ def compute_cost(G: nx.DiGraph, C: float) -> float:
     
     Retourne le coût total (float).
     """
-    return G.size(weight="weight") + C * len(G.nodes)
+    return G.size(weight="weight") + C * len(G.edges())
 
 
 def disturbance(G_reweighted: nx.DiGraph, random_subgraph: nx.DiGraph, trajets: list[tuple[str, str]], C: float, iterations: int = 1):

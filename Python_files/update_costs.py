@@ -81,7 +81,7 @@ def Update_costs(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: float,iterati
                     G_reweighted[path[i]][path[i+1]]['distance'] -= N*C
                 G_reweighted[path[i]][path[i+1]]['used'] += 1
         
-        if(total_length ==sum(length for _, length in shortest_paths.values())):
+        if(total_length == sum(length for _, length in shortest_paths.values())):
             print("converged")
             break
         

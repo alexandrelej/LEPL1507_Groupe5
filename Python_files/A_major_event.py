@@ -5,7 +5,7 @@ import numpy as np
 import json
 
 # Charger le fichier JSON du graphe
-with open("json/graph.json", "r") as f:
+with open("../json/all.json", "r") as f:
     graph_data = json.load(f)
 
 # Construire le graphe initial
@@ -13,18 +13,20 @@ G = nx.DiGraph()
 for link in graph_data["links"]:
     G.add_edge(link["source"], link["target"], distance=link["distance"])
 
+G.graph["destination_pairs"] = graph_data["graph"]["destination_pairs"]
+
 # Charger les capacités des aéroports
-df_airports = pd.read_csv("basic_datasets/capacities_airports.csv")  # Colonne: "airport", "capacity"
+df_airports = pd.read_csv("../basic_datasets/capacities_airports.csv")  # Colonne: "airport", "capacity"
 airport_capacities = dict(zip(df_airports["airportsID"], df_airports["capacity"]))
 
 # Charger les capacités des routes
-df_connections = pd.read_csv("basic_datasets/capacities_connexions.csv")  # Colonnes: "source", "target", "capacity"
+df_connections = pd.read_csv("../basic_datasets/capacities_connexions.csv")  # Colonnes: "source", "target", "capacity"
 for _, row in df_connections.iterrows():
     if G.has_edge(row["ID_start"], row["ID_end"]):
         G[row["ID_start"]][row["ID_end"]]["connexion capacity"] = row["connexion capacity"]
 
 
-def preprocess_and_max_flow(G, airport_capacities, J):
+def preprocess_and_max_flow(G, airport_capacities):
     """
     Transforme le graphe G en dédoublant les aéroports et applique l'algorithme de Ford-Fulkerson 
     sur chaque trajet de la liste J pour retourner le flot maximal de chaque trajet.
@@ -50,7 +52,7 @@ def preprocess_and_max_flow(G, airport_capacities, J):
 
     # Calcul du flot maximal pour chaque trajet
     max_flows = {}
-    for (start, end) in J:
+    for (start, end) in G.graph["destination_pairs"]:
         # Convertir les trajets pour correspondre aux nouveaux noms de nœuds
         source, sink = f"{start}_in", f"{end}_out"
 
@@ -60,11 +62,9 @@ def preprocess_and_max_flow(G, airport_capacities, J):
 
     return max_flows
 
-# Exemple de trajets à analyser
-J = [("YYZ", "BOS"), ("FRA", "ADD"), ("HND", "SFO"), ("BOM", "SIN"), ("MAD", "DOH")]
 
 # Calcul du flot maximal
-resultats = preprocess_and_max_flow(G, airport_capacities, J)
+resultats = preprocess_and_max_flow(G, airport_capacities)
 
 # Affichage des résultats
 for trajet, flot in resultats.items():
@@ -97,7 +97,7 @@ plt.legend(title=f"Min: {min_flow}, Max: {max_flow}, Écart-type: {std_dev:.2f}"
 plt.xlabel("Trajets")
 plt.ylabel("Flot Maximal (nombre de personnes simultanément sur le réseau)")
 plt.title("Histogramme des flots maximaux par trajet")
-plt.xticks(rotation=45)
+plt.xticks(rotation=90, fontsize=5)
 plt.grid(axis="y", linestyle="--", alpha=0.7)
 plt.tight_layout()
 
