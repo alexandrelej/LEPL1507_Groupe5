@@ -1,0 +1,225 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "name": "Charles de Gaulle International Airport",
+            "city": "Paris",
+            "country": "France",
+            "latitude": 49.012798,
+            "longitude": 2.55,
+            "id": "CDG"
+        },
+        {
+            "name": "Miami International Airport",
+            "city": "Miami",
+            "country": "United States",
+            "latitude": 25.79319953918457,
+            "longitude": -80.29060363769531,
+            "id": "MIA"
+        },
+        {
+            "name": "Frankfurt am Main Airport",
+            "city": "Frankfurt",
+            "country": "Germany",
+            "latitude": 50.033333,
+            "longitude": 8.570556,
+            "id": "FRA"
+        },
+        {
+            "name": "Indira Gandhi International Airport",
+            "city": "Delhi",
+            "country": "India",
+            "latitude": 28.5665,
+            "longitude": 77.103104,
+            "id": "DEL"
+        },
+        {
+            "name": "Guangzhou Baiyun International Airport",
+            "city": "Guangzhou",
+            "country": "China",
+            "latitude": 23.39240074157715,
+            "longitude": 113.29900360107422,
+            "id": "CAN"
+        },
+        {
+            "name": "Hangzhou Xiaoshan International Airport",
+            "city": "Hangzhou",
+            "country": "China",
+            "latitude": 30.22949981689453,
+            "longitude": 120.43399810791016,
+            "id": "HGH"
+        },
+        {
+            "name": "Chongqing Jiangbei International Airport",
+            "city": "Chongqing",
+            "country": "China",
+            "latitude": 29.719200134277344,
+            "longitude": 106.64199829101562,
+            "id": "CKG"
+        },
+        {
+            "name": "Suvarnabhumi Airport",
+            "city": "Bangkok",
+            "country": "Thailand",
+            "latitude": 13.681099891662598,
+            "longitude": 100.74700164794922,
+            "id": "BKK"
+        },
+        {
+            "name": "OR Tambo International Airport",
+            "city": "Johannesburg",
+            "country": "South Africa",
+            "latitude": -26.1392,
+            "longitude": 28.246,
+            "id": "JNB"
+        },
+        {
+            "name": "Cairo International Airport",
+            "city": "Cairo",
+            "country": "Egypt",
+            "latitude": 30.12190055847168,
+            "longitude": 31.40559959411621,
+            "id": "CAI"
+        },
+        {
+            "name": "Barcelona International Airport",
+            "city": "Barcelona",
+            "country": "Spain",
+            "latitude": 41.2971,
+            "longitude": 2.07846,
+            "id": "BCN"
+        },
+        {
+            "name": "John F Kennedy International Airport",
+            "city": "New York",
+            "country": "United States",
+            "latitude": 40.63980103,
+            "longitude": -73.77890015,
+            "id": "JFK"
+        },
+        {
+            "name": "Shanghai Pudong International Airport",
+            "city": "Shanghai",
+            "country": "China",
+            "latitude": 31.143400192260746,
+            "longitude": 121.80500030517578,
+            "id": "PVG"
+        },
+        {
+            "name": "Kunming Changshui International Airport",
+            "city": "Kunming",
+            "country": "China",
+            "latitude": 25.1019444,
+            "longitude": 102.9291667,
+            "id": "KMG"
+        },
+        {
+            "name": "Incheon International Airport",
+            "city": "Seoul",
+            "country": "South Korea",
+            "latitude": 37.46910095214844,
+            "longitude": 126.45099639892578,
+            "id": "ICN"
+        },
+        {
+            "name": "Sydney Kingsford Smith International Airport",
+            "city": "Sydney",
+            "country": "Australia",
+            "latitude": -33.94609832763672,
+            "longitude": 151.177001953125,
+            "id": "SYD"
+        },
+        {
+            "name": "Dallas Fort Worth International Airport",
+            "city": "Dallas-Fort Worth",
+            "country": "United States",
+            "latitude": 32.896801,
+            "longitude": -97.038002,
+            "id": "DFW"
+        },
+        {
+            "name": "Jorge Ch\u00e1vez International Airport",
+            "city": "Lima",
+            "country": "Peru",
+            "latitude": -12.0219,
+            "longitude": -77.114305,
+            "id": "LIM"
+        },
+        {
+            "name": "Amsterdam Airport Schiphol",
+            "city": "Amsterdam",
+            "country": "Netherlands",
+            "latitude": 52.308601,
+            "longitude": 4.76389,
+            "id": "AMS"
+        },
+        {
+            "name": "Chhatrapati Shivaji International Airport",
+            "city": "Mumbai",
+            "country": "India",
+            "latitude": 19.0886993408,
+            "longitude": 72.8678970337,
+            "id": "BOM"
+        }
+    ],
+    "links": [
+        {
+            "distance": 1093.6144443442427,
+            "used": 1,
+            "price": 187.6048547165644,
+            "time": 2.145146662436462,
+            "source": "FRA",
+            "target": "BCN"
+        },
+        {
+            "distance": 366.5732483892516,
+            "used": 2,
+            "price": 110.7109183048529,
+            "time": 1.2363451674927235,
+            "source": "FRA",
+            "target": "AMS"
+        },
+        {
+            "distance": 1328.879318344514,
+            "used": 2,
+            "price": 212.2358339269116,
+            "time": 3.8134282296687507,
+            "source": "HGH",
+            "target": "CKG"
+        },
+        {
+            "distance": 1461.2107347843466,
+            "used": 2,
+            "price": 240.848497914141,
+            "time": 4.795950056032491,
+            "source": "CKG",
+            "target": "PVG"
+        },
+        {
+            "distance": 8999.467855827323,
+            "used": 4,
+            "price": 861.6124166616299,
+            "time": 12.023218045634925,
+            "source": "BKK",
+            "target": "FRA"
+        },
+        {
+            "distance": 2897.1007986464174,
+            "used": 3,
+            "price": 380.93232678841264,
+            "time": 4.077882851214566,
+            "source": "PVG",
+            "target": "BKK"
+        },
+        {
+            "distance": 10276.031976268328,
+            "used": 1,
+            "price": 929.8453937817555,
+            "time": 13.806939663376719,
+            "source": "LIM",
+            "target": "CDG"
+        }
+    ]
+}
