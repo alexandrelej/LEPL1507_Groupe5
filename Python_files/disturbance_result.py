@@ -9,7 +9,7 @@ def compute_cost(G: nx.DiGraph, C: float) -> float:
     
     Retourne le coût total (float).
     """
-    return G.size(weight="weight") + C * len(G.nodes)
+    return G.size(weight="weight") + C * len(G.edges)
 
 
 def disturbance(G_reweighted: nx.DiGraph, random_subgraph: nx.DiGraph, trajets: list[tuple[str, str]], C: float, iterations: int = 1):
@@ -91,23 +91,47 @@ def multi_optimize_and_disturb(random_subgraph, trajets, C):
     
     print("→ Phase 1 : Exécution multiple de Update_costs")
     graphs = []
+    best_graph = None
+    best_cost = float("inf")
+
     for i in range(5):
         g, _ = Update_costs(random_subgraph, trajets, C)
+        cost = compute_cost(g, C)
         graphs.append(g)
-        print(f"  - Run {i+1} → Nodes: {len(g.nodes)}, Cost: {compute_cost(g, C):.2f}")
 
-    print("→ Phase 2 : Fusion des graphes")
+        print(f"  - Run {i+1} → Nodes: {len(g.nodes)}, Cost: {cost:.2f}")
+
+        if cost < best_cost:
+            best_cost = cost
+            best_graph = g
+
+    print(f"→ Meilleur graphe initial → Cost: {best_cost:.2f}, Nodes: {len(best_graph.nodes)}")
+
+    # ---------------------
+    print("\n→ Phase 2 : Fusion des graphes")
     fused_graph = nx.DiGraph()
     for g in graphs:
         fused_graph = nx.compose(fused_graph, g)
 
     print(f"  - Fused graph → Nodes: {len(fused_graph.nodes)}, Edges: {len(fused_graph.edges)}")
 
-    print("→ Phase 3 : Nouvelle optimisation sur graphe fusionné")
+    # ---------------------
+    print("\n→ Phase 3 : Nouvelle optimisation sur graphe fusionné")
     optimized_graph, _ = Update_costs(fused_graph, trajets, C)
-    print(f"  - Optimized → Nodes: {len(optimized_graph.nodes)}, Cost: {compute_cost(optimized_graph, C):.2f}")
+    optimized_cost = compute_cost(optimized_graph, C)
+    print(f"  - Optimized → Nodes: {len(optimized_graph.nodes)}, Cost: {optimized_cost:.2f}")
 
-    print("→ Phase 4 : Perturbation")
-    final_graph = test_disturbance(optimized_graph, fused_graph, trajets, C)
+    # ---------------------
+    print("\n→ Phase 4 : Comparaison avec le meilleur des exécutions initiales")
+    if optimized_cost < best_cost:
+        print(f"✅ Le graphe fusionné optimisé est meilleur ({optimized_cost:.2f} < {best_cost:.2f})")
+        best_graph = optimized_graph
+        best_cost = optimized_cost
+    else:
+        print(f"❌ Le meilleur graphe initial reste le plus performant ({best_cost:.2f})")
+
+
+    print("\n→ Phase 5 : Perturbation")
+    final_graph = test_disturbance(best_graph, fused_graph, trajets, C)
 
     return final_graph

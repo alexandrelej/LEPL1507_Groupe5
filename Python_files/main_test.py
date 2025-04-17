@@ -6,7 +6,7 @@ from create_graphs import add_prices, add_times, graph_to_json_file
 from update_costs import Update_costs
 from B_epidemie import *
 from C_robustesse import *
-from disturbance_result import test_disturbance
+from disturbance_result import test_disturbance, multi_optimize_and_disturb
 import networkx as nx
 import copy 
 
@@ -27,10 +27,10 @@ m_values = list(map(int, input("Liste des nombres d'arêtes (séparés par espac
 j = int(input("Nombre de chemins requis (paires de destinations) = "))
 C_values = list(map(int, input("Liste des différentes coûts pour une arête supplémentaire : ").split()))
 """
-n_values = [20]
-m_values = [50]
-j = 5
-C_values = [2000]
+n_values = [40]
+m_values = [150]
+j = 10
+C_values = [4000]
 
 
 remove_edges_costs = []
@@ -172,3 +172,5 @@ plt.tight_layout()
 plt.savefig("../graphs/robustesse_edge_removal.png")
 
 test_disturbance(G_reweighted,random_subgraph,destination_pairs,C)
+
+multi_optimize_and_disturb(random_subgraph,destination_pairs, C)
