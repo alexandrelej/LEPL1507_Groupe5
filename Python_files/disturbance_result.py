@@ -5,7 +5,7 @@ from update_costs import Update_costs
 def compute_cost(G: nx.DiGraph, C: float) -> float:
     """
     Calcule le coût total d’un graphe en combinant la somme pondérée des arêtes et une pénalité
-    proportionnelle au nombre de nœuds. 
+    proportionnelle au nombre d'arêtes. 
     
     Retourne le coût total (float).
     """

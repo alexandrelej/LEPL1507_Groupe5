@@ -31,7 +31,6 @@ def robustesse(G):
     n_edges = G.number_of_edges()
     average_degree = 2 * n_edges / n_nodes if n_nodes > 0 else 0
 
-    # Calcul de la valeur de Fiedler (deuxième plus petite valeur propre de la matrice laplacienne)
     try:
         # Utilisation de la fonction pour obtenir la matrice laplacienne (sous forme numpy array)
         L = nx.laplacian_matrix(G).todense()
@@ -44,8 +43,6 @@ def robustesse(G):
         fiedler_value = 0.0
 
     # On définit un indice de robustesse qui augmente avec le rayon spectral et diminue avec le degré moyen et la connectivité.
-    # Cette formule est indicative et peut être adaptée.
-    # Par exemple, si le graphe est dense et bien connecté, average_degree et fiedler_value seront élevés et l'indice sera faible.
     robustness_index = spectral_radius / (average_degree * (1 + fiedler_value)) if average_degree > 0 else np.inf
 
     # Définition d'une interprétation en "fourchettes" (ces seuils sont arbitraires et à ajuster)
@@ -84,7 +81,7 @@ def robustness_metrics(G):
     components = sorted(nx.strongly_connected_components(G), key=len, reverse=True)
     
     if not components:
-        return 0, 0, 0  # Graphe vide
+        return 0, 0, 0
 
     largest_scc = G.subgraph(components[0]).copy()
     size_gscc = largest_scc.number_of_nodes()
@@ -116,7 +113,7 @@ def simulate_edge_removal(G, record_interval=1):
         "num_components": [],
     }
 
-    # Mesure initiale
+
     gscc_size, avg_path, efficiency = robustness_metrics(G_copy)
     results["gscc_sizes"].append(gscc_size)
     results["avg_paths"].append(avg_path)
@@ -140,8 +137,6 @@ def simulate_edge_removal(G, record_interval=1):
             results["num_components"].append(nx.number_strongly_connected_components(G_copy))
 
     return results
-
-# Moyenne sur 10 itérations où il retire des arêtes dans un ordre random
 
 def average_simulations(G, num_simulations=10, record_interval=5, num_points=50):
     """
