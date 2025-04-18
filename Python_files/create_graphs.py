@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import json
 from networkx.readwrite import json_graph
 import pandas as pd
+import csv
+
 
 def haversine(lat1, lon1, lat2, lon2):
     """
@@ -131,28 +133,40 @@ def create_random_subgraph(G, n, m):
 
     return subgraph
 
-def generate_random_pairs(subgraph, j):
+def generate_random_pairs(graph, j, output_csv_path=None):
     """
-    Génère `j` paires de nœuds aléatoires dans un sous-graphe, où chaque paire est 
-    connectée par au moins un chemin.
+    Génère j paires de nœuds aléatoires connectés dans un graphe et les enregistre dans un CSV
 
-    Retourne une liste de tuples représentant les paires connectées.
+    Paramètres:
+        graph
+        j: Nombre de paires à générer.
+        output_csv_path : Chemin de sortie pour le fichier CSV
+    Retourne:
+        list[tuple[str, str]]: Liste des paires (noeud 1, noeud 2)
     """
+    nodes = list(graph.nodes)
+    pairs = set()
+    attempts = 0
+    max_attempts = j * 10
 
-    # Récupérer la liste des nœuds du sous-graphe
-    nodes = list(subgraph.nodes)
-    
-    # Liste pour stocker les paires de destinations
-    pairs = []
-    
-    while len(pairs) < j:
-        # Choisir deux nœuds différents parmi ceux du sous-graphe
-        node1, node2 = random.sample(nodes, 2)
-        
-        # Vérifier qu'il existe un chemin entre node1 et node2 dans le sous-graphe
-        if nx.has_path(subgraph, node1, node2):
-            pairs.append((node1, node2))
-    
+    while len(pairs) < j and attempts < max_attempts:
+        n1, n2 = random.sample(nodes, 2)
+        if nx.has_path(graph, n1, n2):
+            # éviter les doublons (A, B) et (B, A)
+            pair = tuple(sorted((n1, n2)))
+            if pair not in pairs:
+                pairs.add(pair)
+        attempts += 1
+
+    pairs = list(pairs)
+
+    if output_csv_path and pairs:
+        with open(output_csv_path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            writer.writerow(['start', 'end'])
+            for start, end in pairs:
+                writer.writerow([start, end])
+
     return pairs
 
 
