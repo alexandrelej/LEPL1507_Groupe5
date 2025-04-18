@@ -1,35 +1,45 @@
+import csv
 import networkx as nx
-import numpy as np
-import time
-import random
 from update_costs import Update_costs
-from create_graphs import create_airport_graph, create_random_subgraph, generate_random_pairs
+from create_graphs import create_airport_graph, create_random_subgraph, generate_random_pairs, add_prices, add_times, graph_to_json_file
+import copy
 
 
-def new_network(airports_csv, routes_csv, C, j=20):
+def new_network(airports_csv, routes_csv, C, j=100):
     """
-    Create a new network with the given parameters.
+    Crée un nouveau réseau avec les paramètres donnés.
 
-    Parameters:
-        airport_csv (str): Path to the airport.csv file.
-        routes_csv (str): Path to the pre_existing_routes.csv file.
-        C (int): Cost per route.
-        j (int): Number of destination pairs to generate.
+    Paramètres :
+        airport_csv (str) : Chemin vers le fichier airport.csv.
+        routes_csv (str) : Chemin vers le fichier pre_existing_routes.csv.
+        C (int) : Coût par trajet.
+        j (int) : Nombre de paires de destinations à générer.
 
-    Returns:
-        int: The cost of the objective function.
-        list: A list of selected routes + creation of a CSV file containing those selected routes.
+    Retourne :
+        int : Le coût de la fonction objectif.
+        list : Une liste des trajets sélectionnés + création d’un fichier CSV contenant ces trajets.
     """
     
     # Create the complete graph
     airport_graph = create_airport_graph(airports_csv, routes_csv)
-
+    print("Number of nodes in the graph:", len(airport_graph.nodes()))
+    print("Number of edges in the graph:", len(airport_graph.edges()))
+    
     # Generate a random subgraph
-    random_subgraph = create_random_subgraph(airport_graph, n=50, m=200) # to comment if we want the whole data to create the new network
-    destination_pairs = generate_random_pairs(random_subgraph, j)
+    #random_subgraph = create_random_subgraph(airport_graph, n=75, m=1500) # to comment if we want the whole data to create the new network
+
+    #destination_pairs = generate_random_pairs(random_subgraph, j)
+    destination_pairs = generate_random_pairs(airport_graph, j)
+    with open('../basic_datasets/destination_pairs.csv', 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['start', 'end'])  # en-têtes
+        for pair in destination_pairs:
+            writer.writerow(pair)
+        
 
     # Generate the new network
-    G_reweighted, rsubgraph = Update_costs(random_subgraph, destination_pairs, C)
+    #G_reweighted, rsubgraph = Update_costs(random_subgraph, destination_pairs, C)
+    G_reweighted, rsubgraph = Update_costs(airport_graph, destination_pairs, C)
     cost = sum([nx.shortest_path_length(G_reweighted, start, end) for start, end in destination_pairs]) / len(destination_pairs) + C * len(G_reweighted.edges())
 
     # Creation of a CSV file containing the selected routes
@@ -39,10 +49,19 @@ def new_network(airports_csv, routes_csv, C, j=20):
             distance = G_reweighted[start][end]['distance']
             f.write(f"{start},{end},{distance}\n")
 
+    # Save the graph to a json file
+    G_all = copy.deepcopy(G_reweighted)
+    # Ajout des paires de destinations au graphe (en les convertissant en liste de listes)
+    G_all.graph["destination_pairs"] = [tuple(pair) for pair in destination_pairs]
+    add_prices(G_all, "../basic_datasets/prices.csv")
+    add_times(G_all, "../basic_datasets/waiting_times.csv", average_speed=800)
+    graph_to_json_file(G_all, "../json/all.json")
+
     return cost, G_reweighted.edges()
 
 
-final_cost, new_routes = new_network("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv", C=2000)
+final_cost, new_routes = new_network("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv", C=4)
 print(final_cost)
 print(new_routes)
-print(len(new_routes))
+new_routes_list = list(new_routes)  # Conversion en liste pour compter
+print(len(new_routes_list))         # Impression du nombre d'arêtes

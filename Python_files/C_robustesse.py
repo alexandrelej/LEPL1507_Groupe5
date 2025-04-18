@@ -2,6 +2,28 @@ import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
 import random
+import json
+import pandas as pd
+
+# Charger le fichier JSON du graphe
+with open("json/all.json", "r") as f:
+    graph_data = json.load(f)
+
+# Construire le graphe initial
+G = nx.DiGraph()
+for link in graph_data["links"]:
+    G.add_edge(link["source"], link["target"], distance=link["distance"])
+
+# Charger les capacités des aéroports
+df_airports = pd.read_csv("basic_datasets/capacities_airports.csv")  # Colonne: "airport", "capacity"
+airport_capacities = dict(zip(df_airports["airportsID"], df_airports["capacity"]))
+
+# Charger les capacités des routes
+df_connections = pd.read_csv("basic_datasets/capacities_connexions.csv")  # Colonnes: "source", "target", "capacity"
+for _, row in df_connections.iterrows():
+    if G.has_edge(row["ID_start"], row["ID_end"]):
+        G[row["ID_start"]][row["ID_end"]]["connexion capacity"] = row["connexion capacity"]
+
 
 def robustesse(G):
     """
@@ -31,7 +53,6 @@ def robustesse(G):
     n_edges = G.number_of_edges()
     average_degree = 2 * n_edges / n_nodes if n_nodes > 0 else 0
 
-    # Calcul de la valeur de Fiedler (deuxième plus petite valeur propre de la matrice laplacienne)
     try:
         # Utilisation de la fonction pour obtenir la matrice laplacienne (sous forme numpy array)
         L = nx.laplacian_matrix(G).todense()
@@ -44,8 +65,6 @@ def robustesse(G):
         fiedler_value = 0.0
 
     # On définit un indice de robustesse qui augmente avec le rayon spectral et diminue avec le degré moyen et la connectivité.
-    # Cette formule est indicative et peut être adaptée.
-    # Par exemple, si le graphe est dense et bien connecté, average_degree et fiedler_value seront élevés et l'indice sera faible.
     robustness_index = spectral_radius / (average_degree * (1 + fiedler_value)) if average_degree > 0 else np.inf
 
     # Définition d'une interprétation en "fourchettes" (ces seuils sont arbitraires et à ajuster)
@@ -84,7 +103,7 @@ def robustness_metrics(G):
     components = sorted(nx.strongly_connected_components(G), key=len, reverse=True)
     
     if not components:
-        return 0, 0, 0  # Graphe vide
+        return 0, 0, 0
 
     largest_scc = G.subgraph(components[0]).copy()
     size_gscc = largest_scc.number_of_nodes()
@@ -116,7 +135,7 @@ def simulate_edge_removal(G, record_interval=1):
         "num_components": [],
     }
 
-    # Mesure initiale
+
     gscc_size, avg_path, efficiency = robustness_metrics(G_copy)
     results["gscc_sizes"].append(gscc_size)
     results["avg_paths"].append(avg_path)
@@ -141,8 +160,6 @@ def simulate_edge_removal(G, record_interval=1):
 
     return results
 
-# Moyenne sur 10 itérations où il retire des arêtes dans un ordre random
-
 def average_simulations(G, num_simulations=10, record_interval=5, num_points=50):
     """
     Exécute plusieurs simulations de suppression itérative d'arêtes et calcule la moyenne des résultats.
@@ -162,3 +179,43 @@ def average_simulations(G, num_simulations=10, record_interval=5, num_points=50)
         "efficiencies": interpolate("efficiencies"),
         "num_components": interpolate("num_components"),
     }
+
+G_robustesse = robustesse(G)
+
+    
+results = average_simulations(G, num_simulations=10, record_interval=5)
+
+common_fractions = results["fractions"]
+gcc_sizes = results["gscc_sizes"]
+avg_mean = results["avg_paths"]
+eff_mean = results["efficiencies"]
+n_comp_mean = results["num_components"]
+
+plt.figure(figsize=(16, 4))
+    
+plt.subplot(141)
+plt.plot(common_fractions, gcc_sizes, marker='o', color='blue')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Taille de la GCC")
+plt.title("Taille de la composante géante")
+
+plt.subplot(142)
+plt.plot(common_fractions, avg_mean, marker='o', color='green')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Longueur moyenne")
+plt.title("Longueur moyenne des chemins")
+
+plt.subplot(143)
+plt.plot(common_fractions, eff_mean, marker='o', color='red')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Efficacité globale")
+plt.title("Efficacité globale du réseau")
+    
+plt.subplot(144)
+plt.plot(common_fractions, n_comp_mean, marker='o', color='purple')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Nombre de composantes")
+plt.title("Nombre de composantes connexes")
+    
+plt.tight_layout()
+plt.savefig("graphs/robustesse_edge_removal.png")

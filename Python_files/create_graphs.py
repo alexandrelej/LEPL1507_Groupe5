@@ -3,8 +3,17 @@ import math
 import networkx as nx
 import pandas as pd
 import matplotlib.pyplot as plt
+import json
+from networkx.readwrite import json_graph
+import pandas as pd
 
 def haversine(lat1, lon1, lat2, lon2):
+    """
+    Calcule la distance en kilomètres sur une sphère entre deux points géographiques (latitude/longitude) 
+    à l'aide de la formule de Haversine.
+
+    Retourne un flottant correspondant à la distance en kilomètres.
+    """
     R = 6371
     phi1, phi2 = math.radians(lat1), math.radians(lat2)
     dphi = math.radians(lat2 - lat1)
@@ -14,6 +23,15 @@ def haversine(lat1, lon1, lat2, lon2):
     return 2 * R * math.asin(math.sqrt(a))
 
 def create_airport_graph(airports_csv, routes_csv):
+    """
+    Crée un graphe dirigé représentant un réseau d’aéroports à partir de deux fichiers CSV :
+    l’un contenant les informations des aéroports, l’autre les routes aériennes.
+
+    Les nœuds représentent les aéroports avec leurs coordonnées géographiques, 
+    et les arêtes représentent les vols avec une distance calculée en kilomètres.
+
+    Retourne un graphe `networkx.DiGraph` avec les attributs intégrés.
+    """
     # Charger les données des fichiers CSV
     airports = pd.read_csv(airports_csv)
     routes = pd.read_csv(routes_csv)
@@ -49,8 +67,14 @@ def create_airport_graph(airports_csv, routes_csv):
 
 def create_random_subgraph(G, n, m):
     """
-    Crée un sous-graphe aléatoire à partir d'un graphe existant avec des nœuds adjacents.
+    Crée un sous-graphe aléatoire connecté contenant `n` nœuds sélectionnés de manière adjacente 
+    dans le graphe d’origine `G`, et exactement `m` arêtes entre eux si possible.
+
+    Les attributs des nœuds et des arêtes (comme la distance) sont conservés.
+
+    Retourne un graphe `networkx.DiGraph` plus petit.
     """
+
     # Étape 1 : Sélectionner un nœud de départ
     start_node = random.choice(list(G.nodes))
     
@@ -109,8 +133,12 @@ def create_random_subgraph(G, n, m):
 
 def generate_random_pairs(subgraph, j):
     """
-    Génère j paires de destinations parmi les nœuds du sous-graphe, où chaque paire est reliée par un chemin.
+    Génère `j` paires de nœuds aléatoires dans un sous-graphe, où chaque paire est 
+    connectée par au moins un chemin.
+
+    Retourne une liste de tuples représentant les paires connectées.
     """
+
     # Récupérer la liste des nœuds du sous-graphe
     nodes = list(subgraph.nodes)
     
@@ -128,5 +156,47 @@ def generate_random_pairs(subgraph, j):
     return pairs
 
 
+def graph_to_json_file(G, file_path):
+    """
+    Convertit un graphe NetworkX en JSON (format node-link) et l'écrit dans un fichier.
+    
+    Paramètres:
+        G (networkx.Graph): Le graphe à convertir.
+        file_path (str): Le chemin du fichier dans lequel sauvegarder la représentation JSON.
+    """
+    data = json_graph.node_link_data(G)
+    with open(file_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=4)
 
+def add_prices(G, prices_csv):
+    """
+    Ajoute les prix des vols aux arêtes du graphe.
+    """
+    prices = pd.read_csv(prices_csv)
+    
+    for edge in G.edges:
+        start_node, end_node = edge
+        price = prices[(prices['ID_start'] == start_node) & (prices['ID_end'] == end_node)]['price_tag'].values
+        if price:
+            G.edges[start_node, end_node]['price'] = price[0]
+        else:
+            print(f"Prix non trouvé pour le vol de {start_node} à {end_node}.")
+
+
+def add_times(G, waiting_times_csv, average_speed=800):
+    """
+    Ajoute les temps de vol aux arêtes du graphe.
+    """
+    # waiting_times contain the waiting times at each airport
+    waiting_times = pd.read_csv(waiting_times_csv)
+    # 1) convertir les distances en temps de vol
+    # 2) ajouter les temps d'attentes aux temps de vol
+    for edge in G.edges:
+        start_node, end_node = edge
+        distance = G.edges[start_node, end_node]['distance']
+        speed = average_speed
+        time = distance / speed
+        # Add waiting time in hours at the start node
+        time += waiting_times[waiting_times['ID'] == start_node]['idle_time'].values[0] / 60
+        G.edges[edge]['time'] = time
 
