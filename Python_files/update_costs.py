@@ -31,7 +31,7 @@ def generate_order(G: nx.DiGraph, Trajets: list[tuple[str, str]], mode = "random
         return [Trajet for Trajet, _ in path_lengths]
 
 
-def Update_costs(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: float,iterations : int =1) -> nx.DiGraph:
+def Update_costs(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: float,iterations : int=10) -> nx.DiGraph:
     """
     Approche itérative pour approximer une solution optimale en utilisant A* et une pondération dynamique des arêtes.
 

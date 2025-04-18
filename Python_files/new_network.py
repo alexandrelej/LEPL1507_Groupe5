@@ -5,7 +5,7 @@ from create_graphs import create_airport_graph, create_random_subgraph, generate
 import copy
 
 
-def new_network(airports_csv, routes_csv, C, j=500):
+def new_network(airports_csv, routes_csv, C, j=100):
     """
     Crée un nouveau réseau avec les paramètres donnés.
 

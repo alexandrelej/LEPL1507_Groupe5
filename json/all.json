@@ -4,404 +4,404 @@
     "graph": {
         "destination_pairs": [
             [
-                "IST",
-                "IAH"
-            ],
-            [
-                "TUN",
-                "ICN"
-            ],
-            [
-                "PHX",
-                "SFO"
-            ],
-            [
-                "ADD",
-                "BKK"
-            ],
-            [
-                "KUL",
-                "MEL"
-            ],
-            [
-                "ICN",
-                "HND"
+                "CAI",
+                "BOG"
             ],
             [
                 "JFK",
-                "PHX"
+                "HKG"
             ],
             [
-                "IST",
-                "CAN"
+                "CGK",
+                "SHA"
             ],
             [
-                "SHA",
-                "BCN"
+                "CDG",
+                "AMS"
+            ],
+            [
+                "LHR",
+                "PEK"
+            ],
+            [
+                "BOM",
+                "ORD"
+            ],
+            [
+                "ORD",
+                "ATL"
+            ],
+            [
+                "NBO",
+                "CAI"
+            ],
+            [
+                "TPE",
+                "JNB"
+            ],
+            [
+                "BCN",
+                "MEX"
+            ],
+            [
+                "SDU",
+                "TUN"
             ],
             [
                 "MNL",
                 "DOH"
             ],
             [
-                "IAH",
-                "SFO"
+                "SEA",
+                "AMS"
             ],
             [
-                "LGW",
+                "JFK",
+                "MEL"
+            ],
+            [
+                "XIY",
+                "CAI"
+            ],
+            [
+                "KMG",
                 "DOH"
+            ],
+            [
+                "CDG",
+                "CLT"
+            ],
+            [
+                "PHX",
+                "CPT"
+            ],
+            [
+                "DOH",
+                "JNB"
+            ],
+            [
+                "DMK",
+                "EZE"
+            ],
+            [
+                "CGK",
+                "BOG"
             ],
             [
                 "MAD",
-                "HRG"
+                "FRA"
             ],
             [
-                "AKL",
-                "JED"
-            ],
-            [
-                "NBO",
-                "HGH"
-            ],
-            [
-                "JNB",
-                "IAH"
-            ],
-            [
-                "SEA",
+                "DMK",
                 "CDG"
             ],
             [
-                "HRG",
-                "CKG"
+                "SVO",
+                "CDG"
             ],
             [
-                "EZE",
-                "MEX"
+                "CBR",
+                "MIA"
             ],
             [
-                "BKK",
-                "DOH"
+                "CAN",
+                "SFO"
             ],
             [
-                "BSB",
+                "ADD",
+                "ATL"
+            ],
+            [
+                "SEA",
+                "LAS"
+            ],
+            [
+                "MEX",
                 "BKK"
             ],
             [
-                "DFW",
-                "IST"
+                "HRG",
+                "SZX"
+            ],
+            [
+                "CDG",
+                "HND"
+            ],
+            [
+                "SEA",
+                "ADL"
+            ],
+            [
+                "CMN",
+                "ALG"
+            ],
+            [
+                "LIM",
+                "BKK"
+            ],
+            [
+                "SGN",
+                "YYZ"
+            ],
+            [
+                "CKG",
+                "LHR"
             ],
             [
                 "DFW",
+                "HGH"
+            ],
+            [
+                "KUL",
+                "LIM"
+            ],
+            [
+                "TUN",
+                "MEX"
+            ],
+            [
+                "PEK",
+                "TPE"
+            ],
+            [
+                "BCN",
+                "DMK"
+            ],
+            [
+                "MEL",
+                "CLT"
+            ],
+            [
+                "BOS",
+                "FRA"
+            ],
+            [
+                "ALG",
+                "HRG"
+            ],
+            [
+                "CGK",
+                "ICN"
+            ],
+            [
+                "AKL",
+                "SDU"
+            ],
+            [
+                "LOS",
+                "ATL"
+            ],
+            [
+                "DEN",
+                "PHX"
+            ],
+            [
+                "HND",
+                "SEA"
+            ],
+            [
+                "SFO",
+                "EWR"
+            ],
+            [
+                "KUL",
+                "EWR"
+            ],
+            [
+                "MAD",
+                "ORD"
+            ],
+            [
+                "LHR",
+                "LGW"
+            ],
+            [
+                "PVG",
+                "BSB"
+            ],
+            [
+                "CDG",
+                "JFK"
+            ],
+            [
+                "ALG",
+                "MIA"
+            ],
+            [
+                "SYD",
                 "HKG"
             ],
             [
-                "CLO",
+                "HND",
+                "EWR"
+            ],
+            [
+                "MEX",
+                "SEA"
+            ],
+            [
+                "DEN",
+                "CDG"
+            ],
+            [
+                "FRA",
+                "NBO"
+            ],
+            [
+                "DFW",
+                "DEL"
+            ],
+            [
+                "ALG",
+                "MEX"
+            ],
+            [
+                "BOM",
+                "IAH"
+            ],
+            [
+                "KUL",
+                "SFO"
+            ],
+            [
+                "JNB",
+                "PEK"
+            ],
+            [
+                "DXB",
+                "CLT"
+            ],
+            [
+                "AKL",
                 "LIM"
+            ],
+            [
+                "LAS",
+                "CDG"
+            ],
+            [
+                "MEL",
+                "TPE"
+            ],
+            [
+                "ADD",
+                "HRG"
+            ],
+            [
+                "DXB",
+                "LGW"
+            ],
+            [
+                "IAH",
+                "EZE"
+            ],
+            [
+                "ADD",
+                "CGK"
+            ],
+            [
+                "SCL",
+                "EWR"
+            ],
+            [
+                "DEL",
+                "SCL"
+            ],
+            [
+                "HND",
+                "AMS"
+            ],
+            [
+                "MAD",
+                "ADL"
+            ],
+            [
+                "SFO",
+                "DEL"
+            ],
+            [
+                "LOS",
+                "MEX"
+            ],
+            [
+                "KMG",
+                "LIM"
+            ],
+            [
+                "ICN",
+                "ORD"
+            ],
+            [
+                "CDG",
+                "ADD"
+            ],
+            [
+                "SHA",
+                "MIA"
             ],
             [
                 "HND",
                 "CPT"
             ],
             [
-                "CLT",
-                "BCN"
-            ],
-            [
-                "MIA",
-                "AMS"
-            ],
-            [
-                "JFK",
-                "MAD"
-            ],
-            [
-                "ADD",
-                "CMN"
-            ],
-            [
-                "TPE",
-                "BSB"
-            ],
-            [
-                "KMG",
-                "HND"
-            ],
-            [
-                "KUL",
-                "IAH"
-            ],
-            [
-                "CPT",
-                "MNL"
-            ],
-            [
-                "ADL",
-                "SHA"
-            ],
-            [
-                "HND",
-                "FRA"
-            ],
-            [
-                "MEX",
-                "CLT"
-            ],
-            [
-                "FRA",
-                "CBR"
-            ],
-            [
-                "HKG",
-                "ICN"
-            ],
-            [
                 "DFW",
-                "ATL"
-            ],
-            [
-                "TPE",
-                "CLT"
-            ],
-            [
-                "CLT",
-                "CAN"
-            ],
-            [
-                "LAS",
-                "DXB"
-            ],
-            [
-                "TUN",
-                "MCO"
-            ],
-            [
-                "SHA",
-                "IAH"
-            ],
-            [
-                "SYD",
-                "HND"
-            ],
-            [
-                "PVG",
                 "SIN"
-            ],
-            [
-                "AMS",
-                "PHX"
-            ],
-            [
-                "BOG",
-                "SFO"
-            ],
-            [
-                "MAD",
-                "KMG"
-            ],
-            [
-                "ICN",
-                "SCL"
-            ],
-            [
-                "ICN",
-                "SYD"
-            ],
-            [
-                "KUL",
-                "CMN"
-            ],
-            [
-                "MNL",
-                "SCL"
-            ],
-            [
-                "HGH",
-                "AKL"
-            ],
-            [
-                "LOS",
-                "SCL"
             ],
             [
                 "BKK",
                 "LGW"
             ],
             [
-                "XIY",
-                "HGH"
-            ],
-            [
-                "HRG",
-                "KMG"
-            ],
-            [
-                "JNB",
-                "HKG"
-            ],
-            [
-                "MEL",
-                "BOM"
-            ],
-            [
-                "ADL",
-                "DEL"
-            ],
-            [
-                "SZX",
-                "SDU"
-            ],
-            [
                 "KUL",
-                "CDG"
-            ],
-            [
-                "ATL",
-                "BOG"
-            ],
-            [
-                "CPT",
-                "DEN"
-            ],
-            [
-                "LGW",
-                "CAN"
-            ],
-            [
-                "LAX",
-                "LOS"
-            ],
-            [
-                "CBR",
                 "TPE"
             ],
             [
-                "XIY",
-                "SFO"
-            ],
-            [
-                "DMK",
+                "YYZ",
                 "MEX"
             ],
             [
-                "LHR",
-                "LOS"
+                "HND",
+                "LIM"
             ],
             [
-                "BOM",
-                "ADL"
-            ],
-            [
-                "SIN",
-                "BCN"
-            ],
-            [
-                "BKK",
-                "DMK"
-            ],
-            [
-                "ATL",
-                "MIA"
-            ],
-            [
-                "LOS",
-                "ATL"
-            ],
-            [
-                "ATL",
-                "XIY"
-            ],
-            [
-                "KMG",
-                "ADD"
-            ],
-            [
-                "SYD",
-                "JED"
-            ],
-            [
-                "EZE",
-                "TUN"
-            ],
-            [
-                "ADL",
-                "TPE"
-            ],
-            [
-                "ORD",
-                "SVO"
-            ],
-            [
-                "SIN",
-                "EZE"
-            ],
-            [
-                "LAX",
-                "BOG"
-            ],
-            [
-                "CMN",
-                "NBO"
-            ],
-            [
-                "EWR",
-                "ADL"
-            ],
-            [
-                "CDG",
-                "MIA"
-            ],
-            [
-                "ICN",
+                "DOH",
                 "MAD"
             ],
             [
-                "KMG",
-                "MEL"
+                "HKG",
+                "MIA"
             ],
             [
                 "EZE",
-                "CAI"
-            ],
-            [
-                "DEL",
-                "DXB"
-            ],
-            [
-                "CLO",
-                "XIY"
-            ],
-            [
-                "CLT",
-                "ICN"
+                "MAD"
             ],
             [
                 "TUN",
-                "DEL"
+                "BOG"
             ],
             [
-                "CGK",
-                "BSB"
+                "ADL",
+                "AKL"
             ],
             [
-                "TPE",
-                "CLT"
+                "MEX",
+                "AKL"
             ],
             [
-                "SIN",
-                "CBR"
+                "CDG",
+                "HKG"
             ],
             [
-                "JED",
-                "SFO"
+                "CPT",
+                "SEA"
             ],
             [
-                "HGH",
-                "DXB"
+                "MAD",
+                "SHA"
             ],
             [
-                "PHX",
-                "PEK"
+                "CAN",
+                "CDG"
             ]
         ]
     },
@@ -903,12 +903,12 @@
             "id": "DFW"
         },
         {
-            "name": "Hurghada International Airport",
-            "city": "Hurghada",
-            "country": "Egypt",
-            "latitude": 27.178300857543945,
-            "longitude": 33.799400329589844,
-            "id": "HRG"
+            "name": "Hartsfield Jackson Atlanta International Airport",
+            "city": "Atlanta",
+            "country": "United States",
+            "latitude": 33.6367,
+            "longitude": -84.428101,
+            "id": "ATL"
         },
         {
             "name": "Denver International Airport",
@@ -1009,372 +1009,84 @@
     ],
     "links": [
         {
-            "distance": 4367.196381506626,
-            "used": 6,
-            "price": 524.0889701825009,
-            "time": 6.031965339901923,
+            "distance": 3246.665693331039,
+            "used": 1,
+            "price": 412.9474527521774,
+            "time": 4.63130197968244,
             "source": "YYZ",
-            "target": "BOG"
+            "target": "MEX"
         },
         {
-            "distance": 715.8841455141801,
-            "used": 5,
-            "price": 148.05628896536783,
-            "time": 1.4678250449113661,
-            "source": "YYZ",
-            "target": "BOS"
-        },
-        {
-            "distance": 6343.970431774902,
+            "distance": 1989.5062692031897,
             "used": 2,
-            "price": 690.2950238480837,
-            "time": 8.502932902737268,
-            "source": "YYZ",
-            "target": "FRA"
-        },
-        {
-            "distance": 8193.730270883045,
-            "used": 1,
-            "price": 816.7885475301862,
-            "time": 10.815132701622446,
-            "source": "YYZ",
-            "target": "GRU"
-        },
-        {
-            "distance": 3120.3096511247586,
-            "used": 1,
-            "price": 402.4371188548726,
-            "time": 4.473356926924589,
-            "source": "YYZ",
-            "target": "LAS"
-        },
-        {
-            "distance": 1989.5062692031902,
-            "used": 7,
             "price": 293.3694864593552,
-            "time": 3.059852699522629,
+            "time": 3.059852699522628,
             "source": "YYZ",
             "target": "MIA"
         },
         {
-            "distance": 10560.765035069962,
-            "used": 5,
-            "price": 954.6145935788966,
-            "time": 13.773926156856094,
-            "source": "YYZ",
-            "target": "PEK"
-        },
-        {
-            "distance": 2705.729528819531,
-            "used": 2,
+            "distance": 2705.7295288195314,
+            "used": 1,
             "price": 363.68546018472944,
             "time": 5.21796547488966,
             "source": "ALG",
             "target": "CAI"
         },
         {
-            "distance": 1050.2083369560441,
-            "used": 4,
-            "price": 183.22983810801256,
-            "time": 3.148563985060301,
+            "distance": 723.4309440134984,
+            "used": 2,
+            "price": 148.74315397825995,
+            "time": 2.7400922438821187,
             "source": "ALG",
-            "target": "CMN"
-        },
-        {
-            "distance": 1544.4412750834545,
-            "used": 5,
-            "price": 248.96931080328065,
-            "time": 3.766355157719564,
-            "source": "ALG",
-            "target": "FRA"
-        },
-        {
-            "distance": 3916.3130462975687,
-            "used": 2,
-            "price": 487.81846640549503,
-            "time": 6.344129033477595,
-            "source": "LOS",
-            "target": "ADD"
-        },
-        {
-            "distance": 8444.431755972579,
-            "used": 3,
-            "price": 832.3083286267972,
-            "time": 12.004277420571357,
-            "source": "LOS",
-            "target": "JFK"
-        },
-        {
-            "distance": 1487.91430385255,
-            "used": 6,
-            "price": 243.2462873683628,
-            "time": 2.3084652866949433,
-            "source": "TUN",
-            "target": "CDG"
-        },
-        {
-            "distance": 4444.468986309416,
-            "used": 3,
-            "price": 532.3086458586616,
-            "time": 6.004158639766026,
-            "source": "TUN",
-            "target": "DXB"
-        },
-        {
-            "distance": 1471.7982887627159,
-            "used": 2,
-            "price": 241.5223865886837,
-            "time": 2.288320267832651,
-            "source": "TUN",
-            "target": "FRA"
-        },
-        {
-            "distance": 3254.2324472302607,
-            "used": 1,
-            "price": 414.1743809250042,
-            "time": 4.516362965917082,
-            "source": "TUN",
-            "target": "JED"
-        },
-        {
-            "distance": 449.0028470450088,
-            "used": 9,
-            "price": 119.59600140389828,
-            "time": 1.3393821658124199,
-            "source": "FRA",
-            "target": "CDG"
-        },
-        {
-            "distance": 6120.6207966958,
-            "used": 5,
-            "price": 674.465613541069,
-            "time": 8.428904602875908,
-            "source": "FRA",
-            "target": "DEL"
-        },
-        {
-            "distance": 9360.828365049412,
-            "used": 2,
-            "price": 880.1947601474432,
-            "time": 12.479164063317924,
-            "source": "FRA",
-            "target": "HND"
-        },
-        {
-            "distance": 8402.588797094755,
-            "used": 1,
-            "price": 830.7626334063087,
-            "time": 11.281364603374604,
-            "source": "FRA",
-            "target": "IAH"
-        },
-        {
-            "distance": 4131.673917552305,
-            "used": 1,
-            "price": 505.64793950702176,
-            "time": 5.942721003946541,
-            "source": "FRA",
-            "target": "JED"
-        },
-        {
-            "distance": 9997.515344366191,
-            "used": 2,
-            "price": 909.09527121348,
-            "time": 13.275022787463898,
-            "source": "FRA",
-            "target": "KUL"
-        },
-        {
-            "distance": 1422.0506123137338,
-            "used": 4,
-            "price": 221.68679087803284,
-            "time": 2.5556918723983264,
-            "source": "FRA",
             "target": "MAD"
         },
         {
-            "distance": 9551.971691987905,
-            "used": 1,
-            "price": 888.974607250611,
-            "time": 12.71809322199104,
-            "source": "FRA",
-            "target": "MEX"
-        },
-        {
-            "distance": 6971.06433757961,
+            "distance": 9395.424715019219,
             "used": 2,
-            "price": 731.607121227465,
-            "time": 9.491959028980672,
-            "source": "FRA",
-            "target": "ORD"
+            "price": 881.1822709837296,
+            "time": 13.193018619379657,
+            "source": "LOS",
+            "target": "ATL"
         },
         {
-            "distance": 9655.916911018212,
-            "used": 1,
-            "price": 893.6071889790439,
-            "time": 12.848024745778925,
-            "source": "FRA",
-            "target": "SGN"
-        },
-        {
-            "distance": 9365.026898851667,
-            "used": 5,
-            "price": 880.1492033070964,
-            "time": 12.484412230570744,
-            "source": "FRA",
-            "target": "TPE"
-        },
-        {
-            "distance": 307.53977538291565,
-            "used": 21,
-            "price": 104.3549036808971,
-            "time": 1.2629419493308098,
-            "source": "LGW",
-            "target": "CDG"
-        },
-        {
-            "distance": 5473.12305515941,
-            "used": 1,
-            "price": 627.5822970017468,
-            "time": 7.719921049051428,
-            "source": "LGW",
-            "target": "DXB"
-        },
-        {
-            "distance": 1147.7128626922663,
-            "used": 3,
-            "price": 193.18283440644612,
-            "time": 2.4628551343600673,
-            "source": "LHR",
-            "target": "BCN"
-        },
-        {
-            "distance": 3532.6479720082525,
+            "distance": 1261.5845800650477,
             "used": 2,
-            "price": 454.2180876117776,
-            "time": 5.44402402100505,
-            "source": "LHR",
-            "target": "CAI"
-        },
-        {
-            "distance": 9680.893589605686,
-            "used": 3,
-            "price": 892.73165351729,
-            "time": 13.129331043001843,
-            "source": "LHR",
-            "target": "CPT"
-        },
-        {
-            "distance": 7762.980705029508,
-            "used": 2,
-            "price": 779.6822713760283,
-            "time": 10.731939937281618,
-            "source": "LHR",
-            "target": "IAH"
-        },
-        {
-            "distance": 8395.009616067942,
-            "used": 2,
-            "price": 830.507597097315,
-            "time": 11.521976076079662,
-            "source": "LHR",
-            "target": "LAS"
-        },
-        {
-            "distance": 8759.655640360264,
-            "used": 2,
-            "price": 849.8866693199809,
-            "time": 11.977783606445065,
-            "source": "LHR",
-            "target": "LAX"
-        },
-        {
-            "distance": 5004.059643807025,
-            "used": 3,
-            "price": 575.2627231652757,
-            "time": 7.283288610753516,
-            "source": "LHR",
-            "target": "LOS"
-        },
-        {
-            "distance": 1245.9502722815878,
-            "used": 7,
-            "price": 203.3674028320788,
-            "time": 2.585651896346719,
-            "source": "LHR",
+            "price": 205.28364869482425,
+            "time": 2.0255531319605655,
+            "source": "TUN",
             "target": "MAD"
         },
         {
-            "distance": 8462.885211967237,
+            "distance": 6316.598366556472,
             "used": 1,
-            "price": 834.1225916377664,
-            "time": 11.606820570953781,
-            "source": "LHR",
-            "target": "PHX"
-        },
-        {
-            "distance": 8615.998285349366,
-            "used": 2,
-            "price": 842.4136178437269,
-            "time": 11.798211912681442,
-            "source": "LHR",
-            "target": "SFO"
-        },
-        {
-            "distance": 2508.499737203996,
-            "used": 4,
-            "price": 345.22560191771964,
-            "time": 4.16383872749973,
-            "source": "LHR",
-            "target": "SVO"
-        },
-        {
-            "distance": 366.5732483892516,
-            "used": 9,
-            "price": 110.7109183048529,
-            "time": 1.5538863102961082,
-            "source": "AMS",
-            "target": "FRA"
-        },
-        {
-            "distance": 8551.981935056037,
-            "used": 1,
-            "price": 839.0067918738822,
-            "time": 11.78564716862959,
-            "source": "AMS",
-            "target": "ICN"
-        },
-        {
-            "distance": 5847.522914962934,
-            "used": 8,
-            "price": 655.5292469942004,
-            "time": 8.405073393513211,
-            "source": "AMS",
-            "target": "JFK"
-        },
-        {
-            "distance": 6677.440108755571,
-            "used": 1,
-            "price": 710.3834009393286,
-            "time": 9.442469885754006,
-            "source": "AMS",
+            "price": 686.1215875819519,
+            "time": 8.673876565201748,
+            "source": "FRA",
             "target": "NBO"
         },
         {
-            "distance": 7452.119578223237,
-            "used": 1,
-            "price": 758.7275205616928,
-            "time": 11.71550978274314,
-            "source": "CPT",
-            "target": "DOH"
+            "distance": 347.1675081044459,
+            "used": 3,
+            "price": 108.60889606337,
+            "time": 1.4621734411252918,
+            "source": "LHR",
+            "target": "CDG"
         },
         {
-            "distance": 1271.068069863978,
-            "used": 6,
-            "price": 205.95025317401243,
-            "time": 3.989195397294068,
-            "source": "CPT",
-            "target": "JNB"
+            "distance": 8153.295965289264,
+            "used": 1,
+            "price": 817.2610591412538,
+            "time": 11.219834012606315,
+            "source": "LHR",
+            "target": "PEK"
+        },
+        {
+            "distance": 7702.083240103776,
+            "used": 1,
+            "price": 776.5071231193782,
+            "time": 10.655818106124455,
+            "source": "LHR",
+            "target": "SEA"
         },
         {
             "distance": 9680.893589605686,
@@ -1385,120 +1097,48 @@
             "target": "LHR"
         },
         {
-            "distance": 4068.0066962728033,
-            "used": 1,
-            "price": 498.7907470614456,
-            "time": 8.222154191102508,
-            "source": "JNB",
-            "target": "ADD"
-        },
-        {
-            "distance": 8996.179527043949,
-            "used": 1,
-            "price": 860.8468420505716,
-            "time": 14.38237022956644,
-            "source": "JNB",
-            "target": "BKK"
-        },
-        {
             "distance": 6963.998618341468,
-            "used": 2,
+            "used": 1,
             "price": 729.0352771007692,
             "time": 11.842144093688338,
             "source": "JNB",
             "target": "BOM"
         },
         {
-            "distance": 6264.987901059445,
-            "used": 1,
-            "price": 681.6063323921557,
-            "time": 10.96838069708581,
-            "source": "JNB",
-            "target": "CAI"
-        },
-        {
-            "distance": 1271.068069863978,
-            "used": 3,
+            "distance": 1271.0680698639783,
+            "used": 2,
             "price": 205.95025317401243,
-            "time": 4.725980908091476,
+            "time": 4.7259809080914765,
             "source": "JNB",
             "target": "CPT"
         },
         {
-            "distance": 7439.224611206155,
-            "used": 5,
+            "distance": 7439.224611206156,
+            "used": 2,
             "price": 760.2204985526222,
-            "time": 12.436176584769196,
+            "time": 12.436176584769198,
             "source": "JNB",
             "target": "GRU"
         },
         {
-            "distance": 4524.094313990636,
-            "used": 4,
-            "price": 537.1963349340615,
-            "time": 8.792263713249799,
-            "source": "JNB",
-            "target": "LOS"
-        },
-        {
-            "distance": 2912.016665302467,
+            "distance": 1050.2083369560441,
             "used": 1,
-            "price": 381.42245207712006,
-            "time": 6.777166652389587,
-            "source": "JNB",
-            "target": "NBO"
+            "price": 183.22983810801256,
+            "time": 2.8836576876271987,
+            "source": "CMN",
+            "target": "ALG"
         },
         {
-            "distance": 8655.907806243404,
+            "distance": 1663.6437885055648,
             "used": 1,
-            "price": 843.5944309560101,
-            "time": 13.957030578565758,
-            "source": "JNB",
-            "target": "SIN"
-        },
-        {
-            "distance": 1226.5156377027934,
-            "used": 1,
-            "price": 201.41126669485905,
-            "time": 3.1040418135606354,
+            "price": 261.498911132235,
+            "time": 3.6504520020640996,
             "source": "CMN",
-            "target": "BCN"
-        },
-        {
-            "distance": 6080.497187689936,
-            "used": 1,
-            "price": 671.6536811682074,
-            "time": 9.171518751044564,
-            "source": "CMN",
-            "target": "DXB"
-        },
-        {
-            "distance": 2277.2443792299873,
-            "used": 1,
-            "price": 322.13814532920287,
-            "time": 4.417452740469628,
-            "source": "CMN",
-            "target": "FRA"
-        },
-        {
-            "distance": 7539.737923698818,
-            "used": 7,
-            "price": 764.1989012004327,
-            "time": 10.995569671055666,
-            "source": "CMN",
-            "target": "GRU"
-        },
-        {
-            "distance": 5794.96575163263,
-            "used": 6,
-            "price": 651.558803598722,
-            "time": 8.81460445597293,
-            "source": "CMN",
-            "target": "JFK"
+            "target": "TUN"
         },
         {
             "distance": 3834.695167082964,
-            "used": 2,
+            "used": 1,
             "price": 480.6624969400365,
             "time": 5.769187482004401,
             "source": "ADD",
@@ -1506,219 +1146,179 @@
         },
         {
             "distance": 2473.5406570394016,
-            "used": 4,
+            "used": 2,
             "price": 340.1952786789997,
             "time": 4.067744344449948,
             "source": "ADD",
             "target": "CAI"
         },
         {
-            "distance": 2262.520173360843,
-            "used": 2,
-            "price": 320.1309027681693,
-            "time": 3.8039687398517494,
-            "source": "ADD",
-            "target": "DOH"
-        },
-        {
-            "distance": 2518.9583517770607,
+            "distance": 2415.4452388281998,
             "used": 1,
-            "price": 345.0436594193586,
-            "time": 4.124516462872022,
-            "source": "ADD",
+            "price": 335.8748356766016,
+            "time": 5.513597904964352,
+            "source": "CAI",
             "target": "DXB"
         },
         {
-            "distance": 2473.5406570394016,
+            "distance": 402.08596905506636,
             "used": 2,
-            "price": 340.1952786789997,
-            "time": 5.586217177728354,
-            "source": "CAI",
-            "target": "ADD"
-        },
-        {
-            "distance": 3683.7331496901716,
-            "used": 5,
-            "price": 467.9181746739973,
-            "time": 7.0989577935418176,
-            "source": "CAI",
-            "target": "CMN"
-        },
-        {
-            "distance": 2057.565975467165,
-            "used": 1,
-            "price": 300.8636492774784,
-            "time": 5.06624882576306,
-            "source": "CAI",
-            "target": "DOH"
-        },
-        {
-            "distance": 402.08596905506647,
-            "used": 9,
             "price": 114.3732536418334,
             "time": 2.996898817747936,
             "source": "CAI",
             "target": "HRG"
         },
         {
-            "distance": 6264.987901059445,
+            "distance": 3349.6457093275535,
             "used": 3,
-            "price": 681.6063323921557,
-            "time": 10.325526232753408,
+            "price": 438.14045658156175,
+            "time": 6.681348493088545,
             "source": "CAI",
-            "target": "JNB"
+            "target": "MAD"
         },
         {
-            "distance": 3931.3756560331976,
-            "used": 3,
-            "price": 488.33303783700205,
-            "time": 7.4085109264705995,
-            "source": "CAI",
-            "target": "LOS"
-        },
-        {
-            "distance": 7532.887008156853,
-            "used": 4,
-            "price": 766.0527771109665,
-            "time": 11.91040011662517,
-            "source": "CAI",
-            "target": "PEK"
-        },
-        {
-            "distance": 2096.0918102871683,
-            "used": 2,
-            "price": 304.68293674532333,
-            "time": 5.114406119288063,
-            "source": "CAI",
-            "target": "TUN"
-        },
-        {
-            "distance": 402.08596905506647,
-            "used": 7,
+            "distance": 402.08596905506636,
+            "used": 1,
             "price": 114.3732536418334,
             "time": 1.1899452866309308,
             "source": "HRG",
             "target": "CAI"
         },
         {
-            "distance": 3900.049338838033,
-            "used": 3,
-            "price": 486.2257702629324,
-            "time": 5.562399498859639,
-            "source": "HRG",
-            "target": "LGW"
+            "distance": 5175.709081172941,
+            "used": 1,
+            "price": 590.2685909508151,
+            "time": 7.5345511651664605,
+            "source": "BCN",
+            "target": "DXB"
         },
         {
-            "distance": 8513.395195425124,
-            "used": 2,
-            "price": 835.9460019913166,
-            "time": 11.70665880798169,
+            "distance": 482.93021580816423,
+            "used": 1,
+            "price": 123.20720083851998,
+            "time": 1.6685775834604895,
             "source": "BCN",
+            "target": "MAD"
+        },
+        {
+            "distance": 6961.619005812714,
+            "used": 1,
+            "price": 730.7808377886197,
+            "time": 9.487394145924595,
+            "source": "MAD",
+            "target": "ATL"
+        },
+        {
+            "distance": 8031.377658475414,
+            "used": 2,
+            "price": 794.298559507804,
+            "time": 10.82459246175297,
+            "source": "MAD",
             "target": "BOG"
         },
         {
-            "distance": 1093.614444344243,
-            "used": 3,
-            "price": 187.6048547165644,
-            "time": 2.431932869130588,
-            "source": "BCN",
-            "target": "FRA"
-        },
-        {
-            "distance": 1147.7128626922663,
-            "used": 2,
-            "price": 193.18283440644612,
-            "time": 2.499555892065617,
-            "source": "BCN",
-            "target": "LHR"
-        },
-        {
-            "distance": 7544.851985531121,
-            "used": 1,
-            "price": 766.6660669943993,
-            "time": 10.495979795614184,
-            "source": "BCN",
-            "target": "MIA"
-        },
-        {
-            "distance": 723.4309440134984,
-            "used": 7,
-            "price": 148.74315397825995,
-            "time": 1.6896590686755748,
-            "source": "MAD",
-            "target": "ALG"
-        },
-        {
             "distance": 5648.830394020427,
-            "used": 3,
+            "used": 1,
             "price": 640.7175330685511,
             "time": 7.846408381184236,
             "source": "MAD",
             "target": "DXB"
         },
         {
-            "distance": 3420.3231202332972,
+            "distance": 1422.0506123137338,
             "used": 1,
-            "price": 444.6402491522944,
-            "time": 5.0607742889503236,
+            "price": 221.68679087803284,
+            "time": 2.562933654050869,
             "source": "MAD",
-            "target": "SVO"
+            "target": "FRA"
         },
         {
-            "distance": 398.26978308829575,
-            "used": 7,
+            "distance": 9066.888382151921,
+            "used": 3,
+            "price": 865.2592358299044,
+            "time": 12.118980866348604,
+            "source": "MAD",
+            "target": "MEX"
+        },
+        {
+            "distance": 7107.2521084037535,
+            "used": 1,
+            "price": 739.8175509769476,
+            "time": 9.669435524163394,
+            "source": "MAD",
+            "target": "MIA"
+        },
+        {
+            "distance": 6745.830342546646,
+            "used": 1,
+            "price": 716.9780673951292,
+            "time": 9.217658316842009,
+            "source": "MAD",
+            "target": "ORD"
+        },
+        {
+            "distance": 9205.340828831906,
+            "used": 1,
+            "price": 872.5619114468694,
+            "time": 12.292046424698585,
+            "source": "MAD",
+            "target": "PEK"
+        },
+        {
+            "distance": 5580.7260643624995,
+            "used": 1,
+            "price": 634.5318987429708,
+            "time": 8.125215568483384,
+            "source": "CDG",
+            "target": "ADD"
+        },
+        {
+            "distance": 398.26978308829587,
+            "used": 2,
             "price": 114.06640021676336,
-            "time": 1.6471452168906298,
+            "time": 1.64714521689063,
             "source": "CDG",
             "target": "AMS"
         },
         {
-            "distance": 9448.247270439173,
-            "used": 1,
-            "price": 883.8297276314921,
-            "time": 12.959617076079226,
-            "source": "CDG",
-            "target": "BKK"
-        },
-        {
-            "distance": 6993.626260418987,
-            "used": 4,
-            "price": 732.3098952801482,
-            "time": 9.891340813553994,
-            "source": "CDG",
-            "target": "BOM"
-        },
-        {
             "distance": 8756.301766176888,
-            "used": 4,
+            "used": 1,
             "price": 847.6335760356037,
             "time": 12.09468519575137,
             "source": "CDG",
             "target": "BSB"
         },
         {
-            "distance": 3210.4566574093205,
-            "used": 5,
-            "price": 410.259245241762,
-            "time": 5.16237880979191,
-            "source": "CDG",
-            "target": "CAI"
-        },
-        {
             "distance": 6701.083417404956,
-            "used": 4,
+            "used": 2,
             "price": 713.9825859563083,
             "time": 9.525662259786456,
             "source": "CDG",
             "target": "CLT"
         },
         {
-            "distance": 4969.188426810292,
-            "used": 3,
-            "price": 574.1285722808628,
-            "time": 7.360793521543126,
+            "distance": 9590.058175699627,
+            "used": 1,
+            "price": 890.8668511873973,
+            "time": 13.136880707654795,
             "source": "CDG",
-            "target": "DOH"
+            "target": "HKG"
+        },
+        {
+            "distance": 9706.82729602366,
+            "used": 1,
+            "price": 896.6596270851581,
+            "time": 13.282842108059837,
+            "source": "CDG",
+            "target": "HND"
+        },
+        {
+            "distance": 5833.649776425998,
+            "used": 1,
+            "price": 654.5261373430125,
+            "time": 8.441370208562757,
+            "source": "CDG",
+            "target": "JFK"
         },
         {
             "distance": 307.53977538291565,
@@ -1729,51 +1329,11 @@
             "target": "LGW"
         },
         {
-            "distance": 347.1675081044459,
-            "used": 12,
-            "price": 108.60889606337,
-            "time": 1.5832673731608176,
-            "source": "CDG",
-            "target": "LHR"
-        },
-        {
-            "distance": 10276.03197626833,
-            "used": 1,
-            "price": 929.8453937817555,
-            "time": 13.994347958365674,
-            "source": "CDG",
-            "target": "LIM"
-        },
-        {
-            "distance": 10104.878815055075,
-            "used": 1,
-            "price": 917.9688331624732,
-            "time": 13.780406506849104,
-            "source": "CDG",
-            "target": "SGN"
-        },
-        {
-            "distance": 9206.284950249841,
-            "used": 2,
-            "price": 872.1813819400015,
-            "time": 11.916099088924046,
-            "source": "MEX",
-            "target": "AMS"
-        },
-        {
-            "distance": 3028.4206604523524,
+            "distance": 2500.001534276036,
             "used": 3,
-            "price": 393.2476306470612,
-            "time": 4.1937687266771855,
+            "price": 343.5400428252466,
+            "time": 3.5332448189567907,
             "source": "MEX",
-            "target": "SFO"
-        },
-        {
-            "distance": 10486.556704448072,
-            "used": 2,
-            "price": 945.3524641113808,
-            "time": 14.567915581731262,
-            "source": "AKL",
             "target": "LAX"
         },
         {
@@ -1785,48 +1345,16 @@
             "target": "SCL"
         },
         {
-            "distance": 2159.5811360559856,
-            "used": 2,
-            "price": 311.06104889369385,
-            "time": 4.159196121241154,
-            "source": "AKL",
-            "target": "SYD"
-        },
-        {
-            "distance": 7526.113467346888,
-            "used": 1,
-            "price": 765.417679899611,
-            "time": 11.730882291631811,
-            "source": "JED",
-            "target": "CAN"
-        },
-        {
-            "distance": 10225.399718524302,
-            "used": 3,
-            "price": 927.9037104654758,
-            "time": 15.10499010560358,
-            "source": "JED",
-            "target": "JFK"
-        },
-        {
             "distance": 11006.461286984028,
-            "used": 3,
+            "used": 1,
             "price": 1001.576414424146,
             "time": 16.811493490234156,
             "source": "DXB",
             "target": "ADL"
         },
         {
-            "distance": 12209.38359947399,
-            "used": 1,
-            "price": 1097.4314917260513,
-            "time": 18.315146380846606,
-            "source": "DXB",
-            "target": "ATL"
-        },
-        {
             "distance": 5238.621327257623,
-            "used": 4,
+            "used": 2,
             "price": 594.9431456609674,
             "time": 9.60169354057615,
             "source": "DXB",
@@ -1834,7 +1362,7 @@
         },
         {
             "distance": 377.7326795134395,
-            "used": 5,
+            "used": 2,
             "price": 111.9017901093377,
             "time": 3.5255827308959193,
             "source": "DXB",
@@ -1842,263 +1370,135 @@
         },
         {
             "distance": 12217.062833885993,
-            "used": 7,
+            "used": 1,
             "price": 1096.511959926698,
             "time": 18.32474542386161,
             "source": "DXB",
             "target": "GRU"
         },
         {
-            "distance": 4760.198438235115,
-            "used": 3,
+            "distance": 4760.198438235114,
+            "used": 2,
             "price": 557.8741239672884,
-            "time": 9.003664929298013,
+            "time": 9.003664929298012,
             "source": "DXB",
             "target": "KMG"
         },
         {
-            "distance": 5497.925614650825,
-            "used": 3,
-            "price": 629.422772922941,
-            "time": 9.925823899817651,
-            "source": "DXB",
-            "target": "LHR"
-        },
-        {
-            "distance": 5895.905987157858,
-            "used": 1,
-            "price": 658.1187041573064,
-            "time": 10.423299365451442,
-            "source": "DXB",
-            "target": "LOS"
-        },
-        {
-            "distance": 13020.071234402798,
-            "used": 1,
-            "price": 1160.5011583435266,
-            "time": 19.328505924507617,
-            "source": "DXB",
-            "target": "SFO"
-        },
-        {
-            "distance": 5618.742370957008,
-            "used": 2,
-            "price": 638.2196708409967,
-            "time": 10.07684484520038,
-            "source": "DXB",
-            "target": "SGN"
-        },
-        {
-            "distance": 4444.468986309416,
-            "used": 1,
-            "price": 532.3086458586616,
-            "time": 8.609003114390891,
-            "source": "DXB",
-            "target": "TUN"
-        },
-        {
-            "distance": 2489.4047907704653,
-            "used": 3,
-            "price": 342.6128001455012,
-            "time": 4.445966900985982,
-            "source": "TPE",
-            "target": "BKK"
-        },
-        {
-            "distance": 578.2276316606631,
-            "used": 10,
-            "price": 133.0389616773417,
-            "time": 2.0569954520987297,
-            "source": "TPE",
-            "target": "HGH"
-        },
-        {
-            "distance": 676.8001661591188,
-            "used": 4,
-            "price": 143.48192323071788,
-            "time": 2.180211120221799,
-            "source": "TPE",
-            "target": "PVG"
-        },
-        {
             "distance": 10391.188548216825,
-            "used": 1,
+            "used": 2,
             "price": 940.916854602249,
             "time": 14.323196597793933,
             "source": "TPE",
             "target": "SFO"
         },
         {
-            "distance": 7285.423917552103,
+            "distance": 3222.382883729604,
             "used": 1,
-            "price": 748.4775267181453,
-            "time": 10.44099080946303,
+            "price": 410.2802922344467,
+            "time": 5.362189517184905,
             "source": "TPE",
-            "target": "SYD"
+            "target": "SIN"
+        },
+        {
+            "distance": 9706.82729602366,
+            "used": 1,
+            "price": 896.6596270851581,
+            "time": 12.423425255172928,
+            "source": "HND",
+            "target": "CDG"
         },
         {
             "distance": 8812.394810677893,
-            "used": 2,
+            "used": 1,
             "price": 852.5204645980829,
             "time": 11.305384648490719,
             "source": "HND",
             "target": "LAX"
         },
         {
-            "distance": 1776.7054647900404,
-            "used": 14,
-            "price": 272.88772713600724,
-            "time": 2.5107729661309026,
+            "distance": 7711.679889384241,
+            "used": 2,
+            "price": 776.8171024494889,
+            "time": 9.929490996873652,
             "source": "HND",
-            "target": "SHA"
+            "target": "SEA"
         },
         {
             "distance": 5299.7703639795,
-            "used": 2,
+            "used": 1,
             "price": 598.4815746834671,
             "time": 6.914604090117726,
             "source": "HND",
             "target": "SIN"
         },
         {
-            "distance": 1145.85809724487,
+            "distance": 7282.485461769443,
             "used": 1,
-            "price": 192.78037641367624,
-            "time": 3.069493972251934,
+            "price": 750.491517644932,
+            "time": 10.74027817790765,
             "source": "MNL",
-            "target": "HKG"
-        },
-        {
-            "distance": 2608.8493769060797,
-            "used": 1,
-            "price": 353.2062343051512,
-            "time": 4.898233071828447,
-            "source": "MNL",
-            "target": "ICN"
-        },
-        {
-            "distance": 2489.8810476274903,
-            "used": 4,
-            "price": 342.5274992165424,
-            "time": 4.74952266023021,
-            "source": "MNL",
-            "target": "KUL"
-        },
-        {
-            "distance": 2875.985392494569,
-            "used": 3,
-            "price": 378.339236849721,
-            "time": 5.232153091314058,
-            "source": "MNL",
-            "target": "PEK"
-        },
-        {
-            "distance": 8756.301766176888,
-            "used": 4,
-            "price": 847.6335760356037,
-            "time": 14.012929410571276,
-            "source": "BSB",
-            "target": "CDG"
-        },
-        {
-            "distance": 854.8675500978811,
-            "used": 2,
-            "price": 162.1662557815677,
-            "time": 4.136136640472517,
-            "source": "BSB",
-            "target": "GRU"
-        },
-        {
-            "distance": 5807.664974984493,
-            "used": 6,
-            "price": 650.3822297743843,
-            "time": 10.327133421580783,
-            "source": "BSB",
-            "target": "MIA"
-        },
-        {
-            "distance": 854.8675500978811,
-            "used": 7,
-            "price": 162.1662557815677,
-            "time": 2.1053798435229245,
-            "source": "GRU",
-            "target": "BSB"
-        },
-        {
-            "distance": 11858.321516242091,
-            "used": 9,
-            "price": 1068.5371246971663,
-            "time": 15.859697301203187,
-            "source": "GRU",
             "target": "DOH"
         },
         {
+            "distance": 1175.4407491065485,
+            "used": 1,
+            "price": 195.55403554820828,
+            "time": 3.1064722870790327,
+            "source": "MNL",
+            "target": "TPE"
+        },
+        {
+            "distance": 7539.737923698818,
+            "used": 1,
+            "price": 764.1989012004327,
+            "time": 10.461467810524097,
+            "source": "GRU",
+            "target": "CMN"
+        },
+        {
             "distance": 1722.1992250300855,
-            "used": 9,
+            "used": 1,
             "price": 266.93373138042745,
             "time": 3.18954443718818,
             "source": "GRU",
             "target": "EZE"
         },
         {
-            "distance": 10559.407182669735,
-            "used": 2,
-            "price": 951.4919330476245,
-            "time": 14.236054384237741,
+            "distance": 3474.656627719309,
+            "used": 1,
+            "price": 449.0089804644019,
+            "time": 5.3801161905497095,
             "source": "GRU",
-            "target": "IST"
-        },
-        {
-            "distance": 7663.979346071545,
-            "used": 2,
-            "price": 771.2617981225153,
-            "time": 10.616769588490005,
-            "source": "GRU",
-            "target": "JFK"
-        },
-        {
-            "distance": 7439.224611206155,
-            "used": 4,
-            "price": 760.2204985526222,
-            "time": 10.335826169908266,
-            "source": "GRU",
-            "target": "JNB"
-        },
-        {
-            "distance": 8377.585469876049,
-            "used": 3,
-            "price": 827.1484763883246,
-            "time": 11.508777243245634,
-            "source": "GRU",
-            "target": "MAD"
+            "target": "LIM"
         },
         {
             "distance": 2614.0788794281452,
-            "used": 6,
+            "used": 1,
             "price": 354.7730721427472,
             "time": 4.304394005185754,
             "source": "GRU",
             "target": "SCL"
         },
         {
-            "distance": 343.34736639724224,
-            "used": 7,
+            "distance": 343.34736639724247,
+            "used": 1,
             "price": 108.2017120946619,
-            "time": 1.4659796138971262,
+            "time": 1.4659796138971264,
             "source": "GRU",
             "target": "SDU"
         },
         {
-            "distance": 343.34736639724224,
-            "used": 10,
+            "distance": 343.34736639724247,
+            "used": 1,
             "price": 108.2017120946619,
-            "time": 1.0094449998920003,
+            "time": 1.0094449998920005,
             "source": "SDU",
             "target": "GRU"
         },
         {
             "distance": 2614.0788794281452,
-            "used": 5,
+            "used": 1,
             "price": 354.7730721427472,
             "time": 4.350984118664915,
             "source": "SCL",
@@ -2106,727 +1506,311 @@
         },
         {
             "distance": 2461.893077448355,
-            "used": 3,
+            "used": 2,
             "price": 339.1219768375736,
             "time": 4.160751866190177,
             "source": "SCL",
             "target": "LIM"
         },
         {
-            "distance": 10718.411226580609,
-            "used": 2,
-            "price": 963.3146211722648,
-            "time": 14.481399552605495,
-            "source": "SCL",
-            "target": "MAD"
-        },
-        {
-            "distance": 11340.343980158423,
-            "used": 7,
-            "price": 1029.9850017037652,
-            "time": 15.258815494577762,
-            "source": "SCL",
-            "target": "SYD"
-        },
-        {
-            "distance": 8644.694198851741,
-            "used": 6,
-            "price": 842.8290759023974,
-            "time": 12.122197751205952,
-            "source": "BOG",
-            "target": "CDG"
-        },
-        {
-            "distance": 279.31232849505204,
-            "used": 2,
-            "price": 101.26956799083617,
-            "time": 1.665470413260092,
-            "source": "BOG",
-            "target": "CLO"
-        },
-        {
-            "distance": 4002.0073091509257,
-            "used": 2,
-            "price": 493.4400908861618,
-            "time": 6.318839139079935,
-            "source": "BOG",
-            "target": "EWR"
-        },
-        {
-            "distance": 2509.0271092080384,
-            "used": 2,
-            "price": 343.383986071103,
-            "time": 3.4727063826349864,
-            "source": "CLO",
-            "target": "MIA"
-        },
-        {
-            "distance": 10519.912771397854,
-            "used": 3,
-            "price": 948.78259684945,
-            "time": 14.111790657288626,
-            "source": "LIM",
-            "target": "AMS"
-        },
-        {
-            "distance": 1732.6565353433944,
-            "used": 2,
-            "price": 267.182006770664,
-            "time": 3.127720362220551,
-            "source": "LIM",
-            "target": "CLO"
-        },
-        {
             "distance": 5869.416148584847,
-            "used": 4,
+            "used": 1,
             "price": 654.1331199026512,
             "time": 8.298669878772367,
             "source": "LIM",
             "target": "EWR"
         },
         {
-            "distance": 4218.884928488959,
+            "distance": 6720.59045166187,
             "used": 1,
-            "price": 511.2774512663631,
-            "time": 6.235505853652507,
+            "price": 713.2572009668459,
+            "time": 9.362637757618646,
             "source": "LIM",
-            "target": "MIA"
+            "target": "LAX"
         },
         {
-            "distance": 2461.893077448355,
-            "used": 4,
-            "price": 339.1219768375736,
-            "time": 4.039266039851752,
-            "source": "LIM",
-            "target": "SCL"
-        },
-        {
-            "distance": 7003.078080337047,
+            "distance": 2453.629846223241,
             "used": 1,
-            "price": 733.0253629589454,
-            "time": 9.657105531772778,
+            "price": 339.8888474855243,
+            "time": 3.9702952391305204,
             "source": "SVO",
-            "target": "CAN"
+            "target": "CDG"
         },
         {
-            "distance": 4243.419336469684,
-            "used": 4,
-            "price": 515.6597950010605,
-            "time": 6.207532101938574,
-            "source": "SVO",
-            "target": "CMN"
-        },
-        {
-            "distance": 7480.915139543486,
-            "used": 1,
-            "price": 763.2294830451762,
-            "time": 10.254401855780825,
-            "source": "SVO",
-            "target": "JFK"
-        },
-        {
-            "distance": 2508.499737203996,
-            "used": 9,
-            "price": 345.22560191771964,
-            "time": 4.038882602856464,
-            "source": "SVO",
-            "target": "LHR"
-        },
-        {
-            "distance": 6859.5142347,
-            "used": 1,
-            "price": 723.6553159804688,
-            "time": 8.930505740680863,
+            "distance": 1138.2301214058298,
+            "used": 3,
+            "price": 191.85335769385568,
+            "time": 1.778900599063149,
             "source": "BOM",
-            "target": "AMS"
+            "target": "DEL"
         },
         {
-            "distance": 2291.2615772595764,
-            "used": 2,
-            "price": 323.7167887779546,
-            "time": 3.2201899188803322,
-            "source": "BOM",
-            "target": "DOH"
-        },
-        {
-            "distance": 3624.3709096937837,
-            "used": 10,
+            "distance": 3624.370909693784,
+            "used": 1,
             "price": 461.9526219922551,
-            "time": 4.886576584423091,
+            "time": 4.886576584423092,
             "source": "BOM",
             "target": "KUL"
         },
         {
-            "distance": 9274.42511429256,
-            "used": 3,
-            "price": 875.6369644722389,
-            "time": 12.293111162391227,
-            "source": "HKG",
-            "target": "AMS"
-        },
-        {
-            "distance": 2069.7283105905162,
+            "distance": 1231.9986086240579,
             "used": 2,
-            "price": 301.4821890954364,
-            "time": 3.287240157763672,
+            "price": 201.75021419772835,
+            "time": 2.2400780303055994,
             "source": "HKG",
-            "target": "ICN"
-        },
-        {
-            "distance": 1145.85809724487,
-            "used": 2,
-            "price": 192.78037641367624,
-            "time": 2.132402391081614,
-            "source": "HKG",
-            "target": "MNL"
-        },
-        {
-            "distance": 7137.142485904013,
-            "used": 3,
-            "price": 741.4447423571679,
-            "time": 9.621507876905543,
-            "source": "HKG",
-            "target": "SVO"
+            "target": "SHA"
         },
         {
             "distance": 2183.598648378197,
-            "used": 8,
+            "used": 1,
             "price": 313.3171872203825,
             "time": 3.576034708368778,
             "source": "DEL",
             "target": "DXB"
         },
         {
-            "distance": 11754.483922665097,
+            "distance": 12021.275875182913,
+            "used": 2,
+            "price": 1082.9719974498926,
+            "time": 15.873131241874672,
+            "source": "DEL",
+            "target": "ORD"
+        },
+        {
+            "distance": 3808.938611804975,
             "used": 1,
-            "price": 1062.1994623320832,
-            "time": 15.539641301227402,
+            "price": 478.7244205679239,
+            "time": 5.60770966265225,
             "source": "DEL",
-            "target": "JFK"
-        },
-        {
-            "distance": 4363.349992299843,
-            "used": 2,
-            "price": 525.3547728965254,
-            "time": 6.300723888270834,
-            "source": "DEL",
-            "target": "SVO"
-        },
-        {
-            "distance": 4372.023760705483,
-            "used": 2,
-            "price": 526.4077168450636,
-            "time": 6.311566098777885,
-            "source": "DEL",
-            "target": "TPE"
+            "target": "PEK"
         },
         {
             "distance": 1700.8524991470472,
-            "used": 2,
+            "used": 1,
             "price": 264.78224336593894,
             "time": 2.9643844604495633,
             "source": "DMK",
             "target": "CAN"
         },
         {
-            "distance": 2326.001305903219,
+            "distance": 1445.6876177263512,
             "used": 1,
-            "price": 325.7469316121384,
-            "time": 3.745820468894778,
+            "price": 223.2412817964397,
+            "time": 2.645428358673693,
             "source": "DMK",
-            "target": "CGK"
+            "target": "SIN"
         },
         {
-            "distance": 2723.5718595757808,
-            "used": 5,
-            "price": 364.6714157298235,
-            "time": 4.24278366098548,
-            "source": "DMK",
-            "target": "HGH"
-        },
-        {
-            "distance": 1267.6783847852753,
-            "used": 6,
-            "price": 205.09749948030824,
-            "time": 2.4229168174973483,
-            "source": "DMK",
-            "target": "KMG"
-        },
-        {
-            "distance": 1565.612517049277,
-            "used": 2,
-            "price": 250.6671361113162,
-            "time": 4.897911658864613,
-            "source": "SGN",
-            "target": "CAN"
-        },
-        {
-            "distance": 1050.2940471406691,
-            "used": 2,
-            "price": 182.65580090951437,
-            "time": 4.253763571478854,
-            "source": "SGN",
-            "target": "KUL"
-        },
-        {
-            "distance": 7726.67087179637,
-            "used": 2,
-            "price": 776.6865477404118,
-            "time": 12.599234602298479,
-            "source": "SGN",
-            "target": "SVO"
-        },
-        {
-            "distance": 2208.0613507464204,
-            "used": 2,
-            "price": 314.99939107770854,
-            "time": 5.700972700986043,
-            "source": "SGN",
-            "target": "TPE"
-        },
-        {
-            "distance": 8948.870850674648,
+            "distance": 3397.6549997232537,
             "used": 1,
-            "price": 858.5984613206932,
-            "time": 11.85319387173391,
-            "source": "CGK",
-            "target": "CAI"
+            "price": 440.9750159184076,
+            "time": 7.187964762207084,
+            "source": "SGN",
+            "target": "PEK"
         },
         {
-            "distance": 3360.6237450480576,
-            "used": 3,
-            "price": 437.1457815435968,
-            "time": 4.867884989700672,
+            "distance": 3259.048186806006,
+            "used": 1,
+            "price": 413.02483451165256,
+            "time": 4.740915541898107,
             "source": "CGK",
-            "target": "CAN"
+            "target": "HKG"
         },
         {
-            "distance": 1128.997826217189,
-            "used": 3,
+            "distance": 5264.323366451559,
+            "used": 2,
+            "price": 594.9804690912496,
+            "time": 7.2475095164550485,
+            "source": "CGK",
+            "target": "ICN"
+        },
+        {
+            "distance": 1128.9978262171892,
+            "used": 1,
             "price": 190.79719510072064,
-            "time": 2.078352591162086,
-            "source": "CGK",
-            "target": "KUL"
-        },
-        {
-            "distance": 3811.1865868927016,
-            "used": 2,
-            "price": 477.05199685174097,
-            "time": 5.431088542006477,
-            "source": "CGK",
-            "target": "TPE"
-        },
-        {
-            "distance": 8703.353493321634,
-            "used": 1,
-            "price": 845.8322096049836,
-            "time": 11.228479288076194,
+            "time": 1.7605347041956374,
             "source": "KUL",
-            "target": "AKL"
-        },
-        {
-            "distance": 3876.904919884647,
-            "used": 8,
-            "price": 483.3942834852695,
-            "time": 5.195418571279959,
-            "source": "KUL",
-            "target": "DEL"
-        },
-        {
-            "distance": 1247.6119473988283,
-            "used": 13,
-            "price": 202.89355120816248,
-            "time": 1.9088023556726863,
-            "source": "KUL",
-            "target": "DMK"
-        },
-        {
-            "distance": 5350.312008218091,
-            "used": 1,
-            "price": 602.4219467964878,
-            "time": 7.037177431696765,
-            "source": "KUL",
-            "target": "HND"
-        },
-        {
-            "distance": 8387.160160622385,
-            "used": 9,
-            "price": 829.0205988948794,
-            "time": 10.833237622202132,
-            "source": "KUL",
-            "target": "IST"
-        },
-        {
-            "distance": 2489.8810476274903,
-            "used": 1,
-            "price": 342.5274992165424,
-            "time": 3.461638730958514,
-            "source": "KUL",
-            "target": "MNL"
-        },
-        {
-            "distance": 6584.881907401828,
-            "used": 1,
-            "price": 704.8823226245431,
-            "time": 8.580389805676436,
-            "source": "KUL",
-            "target": "SYD"
-        },
-        {
-            "distance": 882.237750673039,
-            "used": 1,
-            "price": 164.98613134120612,
-            "time": 3.0474498734196915,
-            "source": "SIN",
             "target": "CGK"
         },
         {
-            "distance": 5846.663255670451,
-            "used": 3,
-            "price": 654.3542980274558,
-            "time": 9.252981754666456,
-            "source": "SIN",
-            "target": "DXB"
+            "distance": 4413.474000679402,
+            "used": 1,
+            "price": 527.971143875794,
+            "time": 5.866129922273403,
+            "source": "KUL",
+            "target": "PEK"
+        },
+        {
+            "distance": 297.47222254317296,
+            "used": 1,
+            "price": 103.20495646891015,
+            "time": 0.7211276996031171,
+            "source": "KUL",
+            "target": "SIN"
+        },
+        {
+            "distance": 3246.0879230489163,
+            "used": 2,
+            "price": 412.5935601247812,
+            "time": 4.406897325235296,
+            "source": "KUL",
+            "target": "TPE"
         },
         {
             "distance": 8655.907806243404,
-            "used": 1,
+            "used": 4,
             "price": 843.5944309560101,
             "time": 12.764537442882647,
             "source": "SIN",
             "target": "JNB"
         },
         {
-            "distance": 3222.382883729604,
-            "used": 3,
-            "price": 410.2802922344467,
-            "time": 5.972631289740398,
-            "source": "SIN",
-            "target": "TPE"
-        },
-        {
-            "distance": 7412.500294801692,
-            "used": 5,
-            "price": 756.2967952029078,
-            "time": 9.61564692918008,
+            "distance": 6313.545129687331,
+            "used": 1,
+            "price": 685.4238497648595,
+            "time": 8.241952972787129,
             "source": "MEL",
-            "target": "HKG"
+            "target": "MNL"
         },
         {
-            "distance": 12757.896953595347,
-            "used": 3,
-            "price": 1137.7299300172226,
-            "time": 16.29739275267215,
+            "distance": 705.4017258143422,
+            "used": 1,
+            "price": 146.8089988782363,
+            "time": 1.2317737179458934,
             "source": "MEL",
-            "target": "LAX"
-        },
-        {
-            "distance": 5681.834011291357,
-            "used": 9,
-            "price": 641.6930633179544,
-            "time": 7.483690028823215,
-            "source": "ADL",
-            "target": "KUL"
-        },
-        {
-            "distance": 1164.1385075760945,
-            "used": 3,
-            "price": 195.1788522123196,
-            "time": 1.8365706491791371,
-            "source": "ADL",
             "target": "SYD"
         },
         {
-            "distance": 970.2054500167155,
-            "used": 7,
-            "price": 174.89924625699896,
-            "time": 2.558198777531644,
+            "distance": 3251.340543480222,
+            "used": 1,
+            "price": 414.41210007020914,
+            "time": 4.445573194059297,
+            "source": "ADL",
+            "target": "AKL"
+        },
+        {
+            "distance": 236.17677168617524,
+            "used": 1,
+            "price": 96.65346424404626,
+            "time": 1.6406629296184685,
             "source": "CBR",
+            "target": "SYD"
+        },
+        {
+            "distance": 1164.1385075760948,
+            "used": 1,
+            "price": 195.1788522123196,
+            "time": 2.833643901101506,
+            "source": "SYD",
             "target": "ADL"
         },
         {
-            "distance": 236.17677168617502,
+            "distance": 13808.178253814898,
             "used": 2,
-            "price": 96.65346424404626,
-            "time": 1.6406629296184683,
-            "source": "CBR",
-            "target": "SYD"
-        },
-        {
-            "distance": 236.17677168617502,
-            "used": 9,
-            "price": 96.65346424404626,
-            "time": 1.6736917312391066,
+            "price": 1234.9019782342127,
+            "time": 18.63869358390001,
             "source": "SYD",
-            "target": "CBR"
+            "target": "DFW"
         },
         {
-            "distance": 5518.921520003282,
-            "used": 4,
-            "price": 630.3624963064311,
-            "time": 8.27712266663549,
-            "source": "SYD",
-            "target": "CGK"
-        },
-        {
-            "distance": 7393.846174326241,
-            "used": 2,
+            "distance": 7393.8461743262405,
+            "used": 1,
             "price": 755.3608421089848,
             "time": 10.620778484539189,
             "source": "SYD",
             "target": "HKG"
         },
         {
-            "distance": 11023.823468292065,
-            "used": 2,
-            "price": 1005.1785676217056,
-            "time": 15.158250101996469,
-            "source": "SYD",
-            "target": "JNB"
-        },
-        {
-            "distance": 6584.881907401828,
-            "used": 2,
-            "price": 704.8823226245431,
-            "time": 9.609573150883673,
-            "source": "SYD",
-            "target": "KUL"
-        },
-        {
-            "distance": 12061.127845510531,
-            "used": 3,
-            "price": 1083.5039098937991,
-            "time": 16.454880573519553,
-            "source": "SYD",
-            "target": "LAX"
-        },
-        {
-            "distance": 11949.742776318677,
+            "distance": 3808.938611804975,
             "used": 1,
-            "price": 1074.6288673898252,
-            "time": 16.31564923702973,
-            "source": "SYD",
-            "target": "SFO"
-        },
-        {
-            "distance": 7285.423917552103,
-            "used": 1,
-            "price": 748.4775267181453,
-            "time": 10.485250663571517,
-            "source": "SYD",
-            "target": "TPE"
-        },
-        {
-            "distance": 7532.887008156853,
-            "used": 6,
-            "price": 766.0527771109665,
-            "time": 10.32728787850305,
+            "price": 478.7244205679239,
+            "time": 5.672352383063203,
             "source": "PEK",
-            "target": "CAI"
-        },
-        {
-            "distance": 1881.0350282686454,
-            "used": 3,
-            "price": 282.5254850707624,
-            "time": 3.2624729036427915,
-            "source": "PEK",
-            "target": "CAN"
-        },
-        {
-            "distance": 1464.0097081882323,
-            "used": 2,
-            "price": 240.76136633533216,
-            "time": 2.741191253542275,
-            "source": "PEK",
-            "target": "CKG"
+            "target": "DEL"
         },
         {
             "distance": 10967.876123098624,
-            "used": 3,
+            "used": 1,
             "price": 1001.2610511803044,
             "time": 14.621024272180264,
             "source": "PEK",
             "target": "EWR"
         },
         {
-            "distance": 10978.339946699254,
+            "distance": 10037.128929667691,
             "used": 1,
-            "price": 1002.074721372733,
-            "time": 14.634104051681051,
+            "price": 913.6123256183628,
+            "time": 13.4575902803916,
             "source": "PEK",
-            "target": "JFK"
+            "target": "LAX"
         },
         {
-            "distance": 8165.028959769268,
-            "used": 9,
-            "price": 817.9147416576358,
-            "time": 11.117465318018569,
-            "source": "PEK",
-            "target": "LGW"
-        },
-        {
-            "distance": 2875.985392494569,
+            "distance": 8153.295965289264,
             "used": 1,
-            "price": 378.339236849721,
-            "time": 4.506160858925196,
+            "price": 817.2610591412538,
+            "time": 11.102799074918565,
             "source": "PEK",
-            "target": "MNL"
+            "target": "LHR"
         },
         {
-            "distance": 10562.432484186444,
+            "distance": 1076.4858331694186,
             "used": 1,
-            "price": 954.7122541612484,
-            "time": 14.114219723540039,
+            "price": 185.625103234873,
+            "time": 2.256786409768758,
             "source": "PEK",
-            "target": "ORD"
+            "target": "SHA"
         },
         {
-            "distance": 8679.141327770605,
-            "used": 7,
-            "price": 845.7696953245025,
-            "time": 11.760105778020241,
+            "distance": 1723.3920361163064,
+            "used": 1,
+            "price": 266.7909756628441,
+            "time": 3.065419163452368,
             "source": "PEK",
-            "target": "SEA"
-        },
-        {
-            "distance": 4490.606170189185,
-            "used": 2,
-            "price": 534.1805914128392,
-            "time": 6.524436831043466,
-            "source": "PEK",
-            "target": "SIN"
-        },
-        {
-            "distance": 933.5407318235834,
-            "used": 11,
-            "price": 170.8682192736947,
-            "time": 2.078105033086464,
-            "source": "PEK",
-            "target": "XIY"
+            "target": "TPE"
         },
         {
             "distance": 10560.765035069962,
-            "used": 14,
+            "used": 3,
             "price": 954.6145935788966,
             "time": 14.112135412144438,
             "source": "PEK",
             "target": "YYZ"
         },
         {
-            "distance": 9300.091051647225,
+            "distance": 9456.204035972369,
             "used": 2,
-            "price": 875.3394024821154,
-            "time": 12.17886435662683,
+            "price": 884.5114579634073,
+            "time": 12.37400558703326,
             "source": "CAN",
-            "target": "AKL"
+            "target": "CDG"
         },
         {
-            "distance": 1700.8524991470472,
+            "distance": 825.8566749925317,
             "used": 1,
-            "price": 264.78224336593894,
-            "time": 2.679816166001609,
+            "price": 159.61255445987945,
+            "time": 1.5860713858084647,
             "source": "CAN",
-            "target": "DMK"
+            "target": "TPE"
         },
         {
-            "distance": 2612.7208537395245,
+            "distance": 1180.754319411404,
             "used": 1,
-            "price": 353.5276506721261,
-            "time": 3.8196516092422055,
-            "source": "CAN",
-            "target": "KUL"
-        },
-        {
-            "distance": 9495.835463940748,
-            "used": 1,
-            "price": 886.4099385613818,
-            "time": 12.423544871993734,
-            "source": "CAN",
-            "target": "LHR"
-        },
-        {
-            "distance": 7548.481349240203,
-            "used": 4,
-            "price": 764.4932521920118,
-            "time": 9.989352228618053,
-            "source": "CAN",
-            "target": "MEL"
-        },
-        {
-            "distance": 1175.5994647125094,
-            "used": 4,
-            "price": 195.9801683261675,
-            "time": 2.023249872958437,
-            "source": "CAN",
-            "target": "SHA"
-        },
-        {
-            "distance": 2648.420817398125,
-            "used": 1,
-            "price": 356.76773248023824,
-            "time": 3.8642765638154564,
-            "source": "CAN",
-            "target": "SIN"
-        },
-        {
-            "distance": 1306.0099789547621,
-            "used": 5,
-            "price": 209.2548705666496,
-            "time": 2.1862630157612526,
-            "source": "CAN",
-            "target": "XIY"
-        },
-        {
-            "distance": 1700.4363835998615,
-            "used": 7,
-            "price": 264.77734659321334,
-            "time": 2.435449958986558,
-            "source": "SZX",
-            "target": "BKK"
-        },
-        {
-            "distance": 1070.506891604702,
-            "used": 7,
-            "price": 184.99303104753847,
-            "time": 1.6480380939926085,
-            "source": "SZX",
-            "target": "HGH"
-        },
-        {
-            "distance": 1180.7543194114041,
-            "used": 4,
             "price": 196.40397489904728,
-            "time": 2.1821333180856852,
+            "time": 2.182133318085685,
             "source": "XIY",
             "target": "KMG"
         },
         {
-            "distance": 933.5407318235834,
-            "used": 12,
-            "price": 170.8682192736947,
-            "time": 1.8731163336009091,
-            "source": "XIY",
-            "target": "PEK"
-        },
-        {
-            "distance": 1590.2868688215121,
-            "used": 7,
-            "price": 253.69007731023788,
-            "time": 2.69404900484832,
-            "source": "XIY",
-            "target": "TPE"
-        },
-        {
-            "distance": 1068.0981305287532,
+            "distance": 1267.6783847852753,
             "used": 1,
-            "price": 185.0833979323671,
-            "time": 4.787683160041403,
+            "price": 205.09749948030824,
+            "time": 5.0371584778620555,
             "source": "KMG",
-            "target": "CAN"
+            "target": "DMK"
         },
         {
-            "distance": 4760.198438235115,
-            "used": 5,
+            "distance": 4760.198438235114,
+            "used": 2,
             "price": 557.8741239672884,
             "time": 9.402808544674354,
             "source": "KMG",
@@ -2834,275 +1818,99 @@
         },
         {
             "distance": 2094.6436276485633,
-            "used": 6,
+            "used": 1,
             "price": 304.03364643843923,
             "time": 6.070865031441166,
             "source": "KMG",
             "target": "PEK"
         },
         {
-            "distance": 1924.6351654294217,
+            "distance": 1139.4861454234965,
             "used": 1,
-            "price": 287.607458520372,
-            "time": 5.858354453667238,
+            "price": 192.5146728607037,
+            "time": 4.876918178659832,
             "source": "KMG",
-            "target": "SHA"
-        },
-        {
-            "distance": 2643.546459644882,
-            "used": 1,
-            "price": 356.1013333634781,
-            "time": 6.756993571436563,
-            "source": "KMG",
-            "target": "SIN"
-        },
-        {
-            "distance": 1841.8327652576163,
-            "used": 1,
-            "price": 279.42052763273296,
-            "time": 5.754851453452481,
-            "source": "KMG",
-            "target": "TPE"
-        },
-        {
-            "distance": 6692.579833764577,
-            "used": 5,
-            "price": 713.160110828179,
-            "time": 10.51805387394383,
-            "source": "HGH",
-            "target": "DOH"
-        },
-        {
-            "distance": 977.6182589323835,
-            "used": 19,
-            "price": 175.35004897151458,
-            "time": 3.374351905403587,
-            "source": "HGH",
-            "target": "ICN"
-        },
-        {
-            "distance": 1924.6351654294217,
-            "used": 1,
-            "price": 287.607458520372,
-            "time": 2.906135396048861,
-            "source": "SHA",
-            "target": "KMG"
+            "target": "SZX"
         },
         {
             "distance": 1076.4858331694186,
-            "used": 14,
+            "used": 2,
             "price": 185.625103234873,
             "time": 1.8459487307238573,
             "source": "SHA",
             "target": "PEK"
         },
         {
-            "distance": 1208.435773822846,
-            "used": 11,
-            "price": 199.3298226710349,
-            "time": 2.0108861565406415,
-            "source": "SHA",
-            "target": "SZX"
-        },
-        {
-            "distance": 5400.585309468155,
-            "used": 3,
-            "price": 622.3896342634424,
-            "time": 9.720168274387252,
-            "source": "CKG",
-            "target": "DOH"
-        },
-        {
-            "distance": 2021.5556615350679,
-            "used": 3,
-            "price": 297.2606346531371,
-            "time": 5.496381214470892,
-            "source": "CKG",
-            "target": "ICN"
-        },
-        {
-            "distance": 1416.9102595687991,
-            "used": 6,
-            "price": 221.29982898507464,
-            "time": 4.740574462013057,
-            "source": "CKG",
-            "target": "SHA"
-        },
-        {
-            "distance": 562.0029409151975,
-            "used": 5,
-            "price": 131.3870673888245,
-            "time": 3.6719403136960547,
-            "source": "CKG",
-            "target": "XIY"
-        },
-        {
-            "distance": 11859.990896203715,
-            "used": 4,
-            "price": 1070.4815540602228,
-            "time": 15.281495473161188,
-            "source": "PVG",
-            "target": "EWR"
-        },
-        {
-            "distance": 822.4251773395408,
-            "used": 2,
-            "price": 159.02760282420542,
-            "time": 1.4845383245809707,
-            "source": "PVG",
-            "target": "ICN"
-        },
-        {
-            "distance": 1851.4353236666839,
-            "used": 2,
-            "price": 279.3195185696369,
-            "time": 2.7708010074898994,
-            "source": "PVG",
-            "target": "MNL"
-        },
-        {
-            "distance": 6850.935250291805,
+            "distance": 1464.0097081882323,
             "used": 1,
-            "price": 723.5944123886247,
-            "time": 9.0201759157713,
-            "source": "PVG",
-            "target": "SVO"
+            "price": 240.76136633533216,
+            "time": 4.799448772787348,
+            "source": "CKG",
+            "target": "PEK"
         },
         {
-            "distance": 1233.0518668222153,
-            "used": 3,
-            "price": 201.8987772837754,
-            "time": 1.9978216864343137,
+            "distance": 9266.4398326366,
+            "used": 1,
+            "price": 875.4814857791815,
+            "time": 12.039556643702296,
             "source": "PVG",
-            "target": "SZX"
-        },
-        {
-            "distance": 5534.267913355654,
-            "used": 3,
-            "price": 632.7404877192204,
-            "time": 7.371309857242475,
-            "source": "BOS",
             "target": "CDG"
         },
         {
-            "distance": 968.5377565127928,
-            "used": 2,
-            "price": 174.49431993739168,
-            "time": 2.603742098292366,
-            "source": "PHX",
-            "target": "DEN"
-        },
-        {
-            "distance": 1393.8656724588768,
-            "used": 3,
-            "price": 218.9586657809336,
-            "time": 3.1354019932249706,
-            "source": "PHX",
-            "target": "DFW"
-        },
-        {
-            "distance": 3168.2684607563015,
-            "used": 4,
-            "price": 406.6465467182907,
-            "time": 5.353405478596751,
-            "source": "PHX",
-            "target": "MIA"
-        },
-        {
-            "distance": 1046.0387458714176,
-            "used": 7,
-            "price": 182.76122067822848,
-            "time": 2.7006183349906463,
-            "source": "PHX",
-            "target": "SFO"
-        },
-        {
-            "distance": 10508.95644116416,
-            "used": 2,
-            "price": 946.8807236963082,
-            "time": 13.551290552380838,
-            "source": "SFO",
-            "target": "AKL"
-        },
-        {
-            "distance": 8285.872853192555,
-            "used": 14,
-            "price": 824.4236552353693,
-            "time": 10.772436067416331,
-            "source": "SFO",
-            "target": "HND"
-        },
-        {
-            "distance": 2627.1864801729935,
+            "distance": 5889.312106674439,
             "used": 1,
-            "price": 356.2006005339406,
-            "time": 3.699078101141879,
-            "source": "SFO",
-            "target": "IAH"
+            "price": 658.5523431251332,
+            "time": 7.815115098890956,
+            "source": "BOS",
+            "target": "FRA"
         },
         {
-            "distance": 9085.265620185992,
+            "distance": 2549.081233958843,
             "used": 1,
-            "price": 866.5094176276373,
-            "time": 11.771677026158127,
+            "price": 348.86076865897195,
+            "time": 4.579421445099928,
+            "source": "PHX",
+            "target": "ATL"
+        },
+        {
+            "distance": 4118.400577733478,
+            "used": 1,
+            "price": 505.4669454828285,
+            "time": 5.563095723092484,
             "source": "SFO",
-            "target": "ICN"
+            "target": "EWR"
+        },
+        {
+            "distance": 9494.06804598209,
+            "used": 1,
+            "price": 886.5730095172574,
+            "time": 12.282680058403251,
+            "source": "SFO",
+            "target": "PEK"
         },
         {
             "distance": 11949.742776318677,
-            "used": 2,
+            "used": 1,
             "price": 1074.6288673898252,
             "time": 15.352273471323983,
             "source": "SFO",
             "target": "SYD"
         },
         {
-            "distance": 3627.296056535237,
+            "distance": 10486.556704448072,
             "used": 1,
-            "price": 463.0896171887775,
-            "time": 4.949215071594684,
-            "source": "SFO",
-            "target": "YYZ"
-        },
-        {
-            "distance": 3125.7765263601914,
-            "used": 3,
-            "price": 402.9242760216365,
-            "time": 4.684999656697819,
+            "price": 945.3524641113808,
+            "time": 13.885974879307671,
             "source": "LAX",
-            "target": "ATL"
+            "target": "AKL"
         },
         {
-            "distance": 4193.029087460071,
-            "used": 1,
-            "price": 511.6653793450762,
-            "time": 6.01906535807267,
-            "source": "LAX",
-            "target": "BOS"
-        },
-        {
-            "distance": 9102.505751277082,
+            "distance": 9625.473179444389,
             "used": 2,
-            "price": 867.4077023978866,
-            "time": 12.155911187843932,
+            "price": 892.7316749098183,
+            "time": 12.809620473053066,
             "source": "LAX",
-            "target": "CDG"
-        },
-        {
-            "distance": 1983.1744750180906,
-            "used": 1,
-            "price": 293.6124752008156,
-            "time": 3.2567470925201936,
-            "source": "LAX",
-            "target": "DFW"
-        },
-        {
-            "distance": 379.99427342364197,
-            "used": 10,
-            "price": 112.09281135503169,
-            "time": 1.2527718405271326,
-            "source": "LAX",
-            "target": "LAS"
+            "target": "ICN"
         },
         {
             "distance": 6720.59045166187,
@@ -3121,92 +1929,12 @@
             "target": "MEL"
         },
         {
-            "distance": 2802.1160076904816,
-            "used": 2,
-            "price": 372.8191651187183,
-            "time": 4.280424008360682,
+            "distance": 1536.9096838729724,
+            "used": 1,
+            "price": 248.11427916706336,
+            "time": 2.698916103588796,
             "source": "LAX",
-            "target": "ORD"
-        },
-        {
-            "distance": 12061.127845510531,
-            "used": 2,
-            "price": 1083.5039098937991,
-            "time": 15.854188805635744,
-            "source": "LAX",
-            "target": "SYD"
-        },
-        {
-            "distance": 5856.568130177757,
-            "used": 1,
-            "price": 656.1709290847507,
-            "time": 9.777348940040525,
-            "source": "EWR",
-            "target": "CDG"
-        },
-        {
-            "distance": 850.2863949538682,
-            "used": 2,
-            "price": 162.08862164597298,
-            "time": 3.5194967710106653,
-            "source": "EWR",
-            "target": "CLT"
-        },
-        {
-            "distance": 5561.647586029511,
-            "used": 2,
-            "price": 634.7324380874504,
-            "time": 9.40869825985522,
-            "source": "EWR",
-            "target": "LHR"
-        },
-        {
-            "distance": 1510.8818234426885,
-            "used": 1,
-            "price": 245.40639519494616,
-            "time": 4.34524105662169,
-            "source": "EWR",
-            "target": "MCO"
-        },
-        {
-            "distance": 1750.5962858975317,
-            "used": 1,
-            "price": 269.57821761070466,
-            "time": 4.644884134690244,
-            "source": "EWR",
-            "target": "MIA"
-        },
-        {
-            "distance": 11859.990896203715,
-            "used": 6,
-            "price": 1070.4815540602228,
-            "time": 17.281627397572972,
-            "source": "EWR",
-            "target": "PVG"
-        },
-        {
-            "distance": 8071.346224141211,
-            "used": 1,
-            "price": 812.4047800883545,
-            "time": 11.54800111115527,
-            "source": "IAH",
-            "target": "CDG"
-        },
-        {
-            "distance": 361.6206145445649,
-            "used": 1,
-            "price": 110.03263876193388,
-            "time": 1.910844099159462,
-            "source": "IAH",
-            "target": "DFW"
-        },
-        {
-            "distance": 12932.537856965042,
-            "used": 1,
-            "price": 1153.631019648447,
-            "time": 17.624490652185056,
-            "source": "IAH",
-            "target": "DOH"
+            "target": "SEA"
         },
         {
             "distance": 8173.312957671029,
@@ -3217,620 +1945,228 @@
             "target": "EZE"
         },
         {
-            "distance": 2215.0734828014647,
-            "used": 2,
-            "price": 316.44897792987547,
-            "time": 4.2276601844805874,
-            "source": "IAH",
-            "target": "LAX"
-        },
-        {
-            "distance": 5062.451489718175,
+            "distance": 7839.998609322036,
             "used": 1,
-            "price": 579.3711468937263,
-            "time": 7.786882693126476,
-            "source": "IAH",
-            "target": "LIM"
-        },
-        {
-            "distance": 1549.405548176232,
-            "used": 3,
-            "price": 249.7839810789318,
-            "time": 3.395575266199046,
-            "source": "IAH",
-            "target": "MIA"
-        },
-        {
-            "distance": 2509.0271092080384,
-            "used": 8,
-            "price": 343.383986071103,
-            "time": 4.295273818226919,
-            "source": "MIA",
-            "target": "CLO"
-        },
-        {
-            "distance": 1549.405548176232,
-            "used": 1,
-            "price": 249.7839810789318,
-            "time": 3.0957468669371604,
-            "source": "MIA",
-            "target": "IAH"
-        },
-        {
-            "distance": 1757.1215161369055,
-            "used": 4,
-            "price": 270.2438621530366,
-            "time": 3.355391826888002,
-            "source": "MIA",
-            "target": "JFK"
-        },
-        {
-            "distance": 7107.252108403754,
-            "used": 3,
-            "price": 739.8175509769476,
-            "time": 10.043055067221564,
-            "source": "MIA",
-            "target": "MAD"
-        },
-        {
-            "distance": 309.9731296300338,
-            "used": 4,
-            "price": 104.47060405841322,
-            "time": 1.5464563437544125,
-            "source": "MIA",
-            "target": "MCO"
-        },
-        {
-            "distance": 2050.7079202094415,
-            "used": 3,
-            "price": 300.0747468512203,
-            "time": 3.722374831978672,
-            "source": "MIA",
-            "target": "MEX"
-        },
-        {
-            "distance": 3168.2684607563015,
-            "used": 2,
-            "price": 406.6465467182907,
-            "time": 5.119325507662247,
-            "source": "MIA",
-            "target": "PHX"
-        },
-        {
-            "distance": 3013.4051415870726,
-            "used": 7,
-            "price": 392.1775774435609,
-            "time": 5.20872344749312,
+            "price": 784.5674760323395,
+            "time": 11.241965282161825,
             "source": "SEA",
-            "target": "IAH"
+            "target": "AMS"
         },
         {
-            "distance": 7702.083240103777,
-            "used": 4,
-            "price": 776.5071231193782,
-            "time": 11.069571070639,
+            "distance": 3854.814176826073,
+            "used": 1,
+            "price": 483.006809653561,
+            "time": 6.26048474154187,
             "source": "SEA",
-            "target": "LHR"
+            "target": "EWR"
         },
         {
-            "distance": 1781.8234816966542,
-            "used": 2,
-            "price": 273.003347032726,
-            "time": 3.669246372630097,
+            "distance": 1395.1092057509343,
+            "used": 1,
+            "price": 218.7172323807117,
+            "time": 3.185853527697947,
             "source": "SEA",
-            "target": "PHX"
+            "target": "LAS"
         },
         {
-            "distance": 3932.8709992115655,
+            "distance": 1093.0595602394144,
             "used": 1,
-            "price": 488.0984578065516,
-            "time": 5.34605274801491,
-            "source": "DFW",
-            "target": "BOG"
-        },
-        {
-            "distance": 8243.64423698915,
-            "used": 3,
-            "price": 820.0728372298554,
-            "time": 10.73451929523689,
-            "source": "DFW",
-            "target": "GRU"
-        },
-        {
-            "distance": 1983.1744750180906,
-            "used": 1,
-            "price": 293.6124752008156,
-            "time": 2.9089320927730666,
-            "source": "DFW",
-            "target": "LAX"
-        },
-        {
-            "distance": 1393.8656724588768,
-            "used": 5,
-            "price": 218.9586657809336,
-            "time": 2.1722960895740493,
-            "source": "DFW",
-            "target": "PHX"
-        },
-        {
-            "distance": 1521.5537657651757,
-            "used": 1,
-            "price": 246.83494229172769,
-            "time": 3.4290138408008968,
-            "source": "ATL",
-            "target": "BOS"
-        },
-        {
-            "distance": 1174.5318236036765,
-            "used": 6,
-            "price": 196.25530868525672,
-            "time": 2.9952364130990223,
-            "source": "ATL",
-            "target": "DFW"
-        },
-        {
-            "distance": 12209.38359947399,
-            "used": 1,
-            "price": 1097.4314917260513,
-            "time": 16.788801132936914,
-            "source": "ATL",
-            "target": "DXB"
-        },
-        {
-            "distance": 959.0645602676873,
-            "used": 4,
-            "price": 173.2794323302312,
-            "time": 2.725902333929036,
-            "source": "ATL",
-            "target": "MIA"
-        },
-        {
-            "distance": 976.3278291656197,
-            "used": 7,
-            "price": 175.17122101946114,
-            "time": 2.7474814200514515,
-            "source": "ATL",
-            "target": "ORD"
-        },
-        {
-            "distance": 3434.7180355672917,
-            "used": 5,
-            "price": 445.9215947474343,
-            "time": 5.820469178053542,
-            "source": "ATL",
+            "price": 187.40558783784672,
+            "time": 2.8082914708085474,
+            "source": "SEA",
             "target": "SFO"
         },
         {
-            "distance": 8088.740468127875,
-            "used": 6,
-            "price": 813.6238083830017,
-            "time": 11.33290856709602,
-            "source": "DEN",
-            "target": "FRA"
-        },
-        {
-            "distance": 1552.7748305694508,
-            "used": 3,
-            "price": 250.2775154165202,
-            "time": 3.162951520147989,
-            "source": "DEN",
-            "target": "SFO"
-        },
-        {
-            "distance": 1222.0934389187269,
-            "used": 16,
-            "price": 201.0100442358426,
-            "time": 2.2573693668864214,
-            "source": "JFK",
-            "target": "ATL"
-        },
-        {
-            "distance": 6150.227182054505,
-            "used": 2,
-            "price": 676.8341186180621,
-            "time": 8.417536545806144,
-            "source": "JFK",
-            "target": "BCN"
-        },
-        {
-            "distance": 5794.96575163263,
-            "used": 2,
-            "price": 651.558803598722,
-            "time": 7.9734597577788,
-            "source": "JFK",
-            "target": "CMN"
-        },
-        {
-            "distance": 11754.483922665097,
+            "distance": 1503.2069279565515,
             "used": 1,
-            "price": 1062.1994623320832,
-            "time": 15.422857471569383,
-            "source": "JFK",
-            "target": "DEL"
-        },
-        {
-            "distance": 11001.514516159175,
-            "used": 1,
-            "price": 1003.4797983218368,
-            "time": 14.481645713436983,
-            "source": "JFK",
-            "target": "DXB"
-        },
-        {
-            "distance": 8534.825011552457,
-            "used": 1,
-            "price": 835.0590648052108,
-            "time": 11.398283832678583,
-            "source": "JFK",
-            "target": "EZE"
-        },
-        {
-            "distance": 8026.797292587275,
-            "used": 1,
-            "price": 810.0529002086504,
-            "time": 10.763249183972105,
-            "source": "JFK",
-            "target": "IST"
-        },
-        {
-            "distance": 588.5961316237576,
-            "used": 9,
-            "price": 134.43605941752446,
-            "time": 1.4654977327677101,
-            "source": "JFK",
-            "target": "YYZ"
-        },
-        {
-            "distance": 6343.750642563715,
-            "used": 4,
-            "price": 690.2539760441027,
-            "time": 10.693763909077143,
-            "source": "ORD",
-            "target": "LHR"
-        },
-        {
-            "distance": 2718.707681406686,
-            "used": 1,
-            "price": 363.89423470797857,
-            "time": 6.162460207630858,
-            "source": "ORD",
-            "target": "MEX"
-        },
-        {
-            "distance": 10562.432484186444,
-            "used": 1,
-            "price": 954.7122541612484,
-            "time": 15.967116211105555,
-            "source": "ORD",
-            "target": "PEK"
-        },
-        {
-            "distance": 2148.2020906780535,
-            "used": 4,
-            "price": 309.937853802422,
-            "time": 3.2913536970002433,
-            "source": "CLT",
-            "target": "DEN"
-        },
-        {
-            "distance": 870.5292109233396,
-            "used": 5,
-            "price": 164.23397784090895,
-            "time": 1.6942625973068512,
-            "source": "CLT",
-            "target": "JFK"
-        },
-        {
-            "distance": 3660.405629332313,
-            "used": 1,
-            "price": 465.8879877805533,
-            "time": 5.181608120318067,
-            "source": "CLT",
-            "target": "SEA"
-        },
-        {
-            "distance": 3686.97098744257,
-            "used": 2,
-            "price": 468.2913718325463,
-            "time": 5.214814817955888,
-            "source": "CLT",
-            "target": "SFO"
-        },
-        {
-            "distance": 947.7522896582759,
-            "used": 2,
-            "price": 172.1706431360871,
-            "time": 1.7907914457255214,
-            "source": "CLT",
-            "target": "YYZ"
-        },
-        {
-            "distance": 3076.5876958001845,
-            "used": 5,
-            "price": 398.4323553784615,
-            "time": 4.486610732395586,
-            "source": "LAS",
+            "price": 245.16713049964872,
+            "time": 2.3089726589461423,
+            "source": "DFW",
             "target": "CLT"
         },
         {
-            "distance": 1009.36461886099,
-            "used": 7,
-            "price": 178.95154252616982,
-            "time": 1.902581886221593,
-            "source": "LAS",
-            "target": "DEN"
-        },
-        {
-            "distance": 9668.459000301986,
+            "distance": 10986.7021097334,
             "used": 2,
-            "price": 894.7781724008433,
-            "time": 12.726449863022838,
-            "source": "LAS",
+            "price": 1002.5041961661744,
+            "time": 14.163341636167203,
+            "source": "DFW",
             "target": "ICN"
         },
         {
-            "distance": 2427.469699063093,
-            "used": 4,
-            "price": 336.3895872213336,
-            "time": 3.675213236474222,
-            "source": "LAS",
-            "target": "MEX"
+            "distance": 1802.1686844376813,
+            "used": 1,
+            "price": 275.2978116078456,
+            "time": 2.682674854547555,
+            "source": "DFW",
+            "target": "MIA"
         },
         {
-            "distance": 2431.692848117438,
+            "distance": 1290.645304960658,
             "used": 1,
-            "price": 337.5779513216481,
-            "time": 3.6804921727921536,
-            "source": "LAS",
+            "price": 207.9935346804544,
+            "time": 2.0432706302012758,
+            "source": "DFW",
             "target": "ORD"
         },
         {
-            "distance": 410.8486569165907,
-            "used": 4,
-            "price": 115.37202594538326,
-            "time": 1.154436933791094,
-            "source": "LAS",
-            "target": "PHX"
-        },
-        {
-            "distance": 1521.3886141530447,
-            "used": 2,
-            "price": 246.48926386850823,
-            "time": 2.290904815174801,
-            "source": "MCO",
-            "target": "JFK"
-        },
-        {
-            "distance": 3276.0929710750715,
+            "distance": 3388.732191073988,
             "used": 1,
-            "price": 431.5083842354682,
-            "time": 4.484285261327335,
-            "source": "MCO",
-            "target": "LAS"
+            "price": 439.992470037136,
+            "time": 5.762986872436912,
+            "source": "ATL",
+            "target": "BOG"
         },
         {
-            "distance": 9555.37914526676,
+            "distance": 13582.587877772714,
             "used": 1,
-            "price": 888.1266279349043,
-            "time": 12.718107157434222,
-            "source": "BKK",
-            "target": "AKL"
-        },
-        {
-            "distance": 10193.409567286586,
-            "used": 1,
-            "price": 925.0891193826704,
-            "time": 13.515645184959006,
-            "source": "BKK",
-            "target": "MAD"
-        },
-        {
-            "distance": 7224.087189878021,
-            "used": 3,
-            "price": 746.6488488477044,
-            "time": 9.803992213198297,
-            "source": "BKK",
-            "target": "NBO"
-        },
-        {
-            "distance": 716.1744739165024,
-            "used": 6,
-            "price": 147.89565614152866,
-            "time": 1.6691013182464007,
-            "source": "BKK",
-            "target": "SGN"
-        },
-        {
-            "distance": 1209.079051201788,
-            "used": 3,
-            "price": 199.85612604058207,
-            "time": 1.9839159726019366,
-            "source": "ICN",
-            "target": "HND"
-        },
-        {
-            "distance": 9668.459000301986,
-            "used": 6,
-            "price": 894.7781724008433,
-            "time": 12.558140908977185,
-            "source": "ICN",
-            "target": "LAS"
-        },
-        {
-            "distance": 9625.473179444389,
-            "used": 2,
-            "price": 892.7316749098183,
-            "time": 12.504408632905188,
-            "source": "ICN",
-            "target": "LAX"
-        },
-        {
-            "distance": 902.6115904271378,
-            "used": 14,
-            "price": 167.766353981853,
-            "time": 1.600831646633624,
-            "source": "ICN",
-            "target": "PEK"
-        },
-        {
-            "distance": 3562.689667358606,
-            "used": 1,
-            "price": 455.96516373021615,
-            "time": 4.9259292427979595,
-            "source": "ICN",
-            "target": "SGN"
-        },
-        {
-            "distance": 8342.753253633262,
-            "used": 4,
-            "price": 824.7644146407803,
-            "time": 10.90100872564128,
-            "source": "ICN",
-            "target": "SYD"
-        },
-        {
-            "distance": 11502.557307471594,
-            "used": 1,
-            "price": 1039.048220904963,
-            "time": 16.071343700774655,
-            "source": "EZE",
-            "target": "FRA"
-        },
-        {
-            "distance": 1722.1992250300855,
-            "used": 6,
-            "price": 266.93373138042745,
-            "time": 3.8458960977227687,
-            "source": "EZE",
-            "target": "GRU"
-        },
-        {
-            "distance": 7397.37294618005,
-            "used": 1,
-            "price": 755.7200180671971,
-            "time": 10.939863249160226,
-            "source": "EZE",
-            "target": "MEX"
-        },
-        {
-            "distance": 5416.302297116759,
-            "used": 1,
-            "price": 622.4528154435797,
-            "time": 8.494816075943323,
-            "source": "NBO",
-            "target": "DEL"
-        },
-        {
-            "distance": 2262.520173360843,
-            "used": 3,
-            "price": 320.1309027681693,
-            "time": 4.04765906937798,
-            "source": "DOH",
-            "target": "ADD"
-        },
-        {
-            "distance": 5400.585309468155,
-            "used": 9,
-            "price": 622.3896342634424,
-            "time": 7.970240489512121,
-            "source": "DOH",
-            "target": "CKG"
-        },
-        {
-            "distance": 11858.321516242091,
-            "used": 7,
-            "price": 1068.5371246971663,
-            "time": 16.04241074797954,
-            "source": "DOH",
-            "target": "GRU"
-        },
-        {
-            "distance": 6290.738487895749,
-            "used": 2,
-            "price": 686.1411129397673,
-            "time": 9.082931962546613,
-            "source": "DOH",
-            "target": "HKG"
-        },
-        {
-            "distance": 1330.6296548769074,
-            "used": 3,
-            "price": 212.3063888972935,
-            "time": 2.8827959212730607,
-            "source": "DOH",
-            "target": "JED"
-        },
-        {
-            "distance": 6242.532870902858,
-            "used": 2,
-            "price": 680.4386604867233,
-            "time": 9.0226749413055,
-            "source": "DOH",
+            "price": 1217.5885541508658,
+            "time": 18.50530648081032,
+            "source": "ATL",
             "target": "JNB"
         },
         {
-            "distance": 11957.514059721112,
+            "distance": 2143.394505722193,
             "used": 1,
-            "price": 1075.6905728307029,
-            "time": 16.166401427328317,
-            "source": "DOH",
-            "target": "MEL"
+            "price": 308.78526737821767,
+            "time": 4.206314765747168,
+            "source": "ATL",
+            "target": "MEX"
         },
         {
-            "distance": 3352.6715116236965,
+            "distance": 7496.471554549001,
             "used": 1,
-            "price": 436.8156019635395,
-            "time": 5.410348242206547,
-            "source": "DOH",
-            "target": "NBO"
+            "price": 764.1294425488911,
+            "time": 10.592572425122427,
+            "source": "DEN",
+            "target": "LHR"
         },
         {
-            "distance": 4110.443320240215,
-            "used": 3,
-            "price": 504.48336432142975,
-            "time": 6.357563002977195,
-            "source": "DOH",
-            "target": "TUN"
+            "distance": 968.5377565127928,
+            "used": 1,
+            "price": 174.49431993739168,
+            "time": 2.4326551775771668,
+            "source": "DEN",
+            "target": "PHX"
         },
         {
-            "distance": 3305.3739255395412,
+            "distance": 12970.381055977292,
+            "used": 1,
+            "price": 1156.580030649813,
+            "time": 16.94272888820963,
+            "source": "JFK",
+            "target": "HKG"
+        },
+        {
+            "distance": 3974.196710879194,
+            "used": 1,
+            "price": 493.1330464924341,
+            "time": 5.697498456837005,
+            "source": "JFK",
+            "target": "LAX"
+        },
+        {
+            "distance": 976.3278291656197,
             "used": 2,
-            "price": 434.247401297958,
-            "time": 6.421351178174696,
-            "source": "IST",
-            "target": "CMN"
+            "price": 175.17122101946114,
+            "time": 3.9844853923295247,
+            "source": "ORD",
+            "target": "ATL"
         },
         {
-            "distance": 1633.9498895019997,
+            "distance": 12021.275875182913,
             "used": 1,
-            "price": 257.8206398610177,
-            "time": 4.332071133127769,
-            "source": "IST",
-            "target": "HRG"
+            "price": 1082.9719974498926,
+            "time": 17.79067044985114,
+            "source": "ORD",
+            "target": "DEL"
         },
         {
-            "distance": 2461.1068859606294,
-            "used": 4,
-            "price": 340.4304170058238,
-            "time": 5.3660173787010566,
-            "source": "IST",
-            "target": "LGW"
+            "distance": 1490.6518827216923,
+            "used": 1,
+            "price": 243.3835724719022,
+            "time": 4.627390459274615,
+            "source": "ORD",
+            "target": "IAH"
         },
         {
-            "distance": 2702.755854205154,
-            "used": 3,
-            "price": 363.5974257555772,
-            "time": 5.668078589006711,
-            "source": "IST",
+            "distance": 8395.009616067942,
+            "used": 1,
+            "price": 830.507597097315,
+            "time": 11.134638132730283,
+            "source": "LAS",
+            "target": "LHR"
+        },
+        {
+            "distance": 9448.247270439175,
+            "used": 1,
+            "price": 883.8297276314921,
+            "time": 12.584192313899742,
+            "source": "BKK",
+            "target": "CDG"
+        },
+        {
+            "distance": 3668.677122221509,
+            "used": 2,
+            "price": 465.62038836462943,
+            "time": 5.058413561376588,
+            "source": "ICN",
+            "target": "BKK"
+        },
+        {
+            "distance": 977.6182589323832,
+            "used": 1,
+            "price": 175.35004897151458,
+            "time": 1.6945899822651809,
+            "source": "ICN",
+            "target": "HGH"
+        },
+        {
+            "distance": 10519.07050564216,
+            "used": 2,
+            "price": 951.2735445247392,
+            "time": 13.621405290652401,
+            "source": "ICN",
+            "target": "ORD"
+        },
+        {
+            "distance": 4627.3749736380805,
+            "used": 1,
+            "price": 545.5428350823572,
+            "time": 6.256785875647303,
+            "source": "ICN",
+            "target": "SIN"
+        },
+        {
+            "distance": 10085.301404207969,
+            "used": 1,
+            "price": 913.7226207178388,
+            "time": 14.299773821695123,
+            "source": "EZE",
             "target": "MAD"
         },
         {
-            "distance": 7058.856558336585,
+            "distance": 3544.807979262831,
+            "used": 1,
+            "price": 453.6049528581988,
+            "time": 6.155448178625912,
+            "source": "NBO",
+            "target": "CAI"
+        },
+        {
+            "distance": 2057.565975467165,
             "used": 2,
-            "price": 737.0661635627145,
-            "time": 11.113204469171,
-            "source": "IST",
-            "target": "PEK"
+            "price": 300.8636492774784,
+            "time": 3.7914663220108826,
+            "source": "DOH",
+            "target": "CAI"
+        },
+        {
+            "distance": 6242.532870902857,
+            "used": 1,
+            "price": 680.4386604867233,
+            "time": 9.022674941305498,
+            "source": "DOH",
+            "target": "JNB"
         }
     ]
 }

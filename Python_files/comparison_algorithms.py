@@ -15,8 +15,8 @@ airport_graph = create_airport_graph(airports_csv, routes_csv)
 
 # Paramètres fixes
 j = 20  # Nombre de paires de destinations
-C = 2000  # Coût d'ajout d'une arête supplémentaire
-num_runs = 10 # Nombre d'exécutions pour la moyenne
+C = 100  # Coût d'ajout d'une arête supplémentaire
+num_runs = 5 # Nombre d'exécutions pour la moyenne
 
 
 
@@ -28,7 +28,7 @@ remove_edges_means_times_nodes = []
 update_costs_means_times_nodes = []
 remove_edges_means_costs_nodes = []
 update_costs_means_costs_nodes = []
-"""
+
 for n in n_values:
     remove_edges_times = []
     update_costs_times = []
@@ -106,8 +106,9 @@ for m in m_values:
 
 
 # Comparaison en fonction du nombre de trajets requis
-j_values = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100] 
-m_fixed_for_j = 200  # Nombre d'arêtes constant
+j_values = [10, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500] 
+C = 10 
+m_fixed_for_j = 800  # Nombre d'arêtes constant
 n_fixed_for_j = 50  # Nombre de nœuds constant
 
 remove_edges_means_times_j = []
@@ -151,10 +152,10 @@ for j in j_values:
     update_costs_means_times_j.append(np.mean(update_costs_times))
     remove_edges_means_costs_j.append(np.mean(remove_edges_costs))
     update_costs_means_costs_j.append(np.mean(update_costs_costs))
-"""
+
 
 # Comparaison en fonction du cout C
-C_values = [500, 1000, 1500, 2000, 2500]
+C_values = [1, 10, 25, 50, 75, 100, 125, 150, 175, 200]
 m_fixed_for_C = 200  # Nombre d'arêtes constant
 n_fixed_for_C = 50  # Nombre de nœuds constant
 
@@ -201,14 +202,14 @@ for c in C_values:
     update_costs_means_costs_C.append(np.mean(update_costs_costs))
 
 
-"""
-###### Tracé des résultats en fonction du nombre de nœuds et d'arêtes #####
-plt.figure(figsize=(10, 8))
+
+###### Tracé des résultats en fonction du nombre de nœuds #####
+plt.figure(figsize=(10, 4))
 
 # Coût en fonction du nombre de nœuds
-plt.subplot(2, 2, 1)
-plt.plot(n_values, remove_edges_means_costs_nodes, 's-', label="Algorithme Remove edges")
-plt.plot(n_values, update_costs_means_costs_nodes, 'o-', label="Algorithme Update costs")
+plt.subplot(1, 2, 1)
+plt.plot(n_values, remove_edges_means_costs_nodes, 's-', color="blue",  label="Algorithme Remove edges")
+plt.plot(n_values, update_costs_means_costs_nodes, 's-', color="red", label="Algorithme Update costs")
 plt.xlabel("Nombre de nœuds")
 plt.ylabel("Coût total du réseau")
 plt.title("Coût du réseau en fonction du nombre de nœuds")
@@ -222,9 +223,23 @@ plt.annotate(info_text, xy=(0.05, 0.95), xycoords='axes fraction',
 
 
 # Temps d'exécution en fonction du nombre de nœuds
-plt.subplot(2, 2, 2)
-plt.loglog(n_values, remove_edges_means_times_nodes, 'o-', label="Algorithme Remove edges")
-plt.loglog(n_values, update_costs_means_times_nodes, 's-', label="Algorithme Update costs")
+log_n_values = np.log(n_values)
+log_remove_edges_times = np.log(remove_edges_means_times_nodes)
+log_update_costs_times = np.log(update_costs_means_times_nodes)
+
+coeffs_remove_edges_times = np.polyfit(log_n_values, log_remove_edges_times, 1)
+coeffs_update_costs_times = np.polyfit(log_n_values, log_update_costs_times, 1)
+slope_remove_edges, intercept_remove_edges = coeffs_remove_edges_times
+slope_update_costs, intercept_update_costs = coeffs_update_costs_times
+
+fit_times_remove_edges = np.exp(intercept_remove_edges) * n_values ** slope_remove_edges
+fit_times_update_costs = np.exp(intercept_update_costs) * n_values ** slope_update_costs
+
+plt.subplot(1, 2, 2)
+plt.loglog(n_values, remove_edges_means_times_nodes, 'o', color="blue", label="Algorithme Remove edges")
+plt.loglog(n_values, fit_times_remove_edges, '--', color="blue", label=f"Ajustement Remove edges (pente = {slope_remove_edges:.2f})")
+plt.loglog(n_values, update_costs_means_times_nodes, 's', color="red", label="Algorithme Update costs")
+plt.loglog(n_values, fit_times_update_costs, '--', color="red", label=f"Ajustement Update costs (pente = {slope_update_costs:.2f})")
 plt.xlabel("Nombre de nœuds")
 plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre de nœuds")
@@ -234,11 +249,20 @@ info_text = "Paramètres fixes :\n- |E| = {m_fixed}\n- |J| = {j}\n- C = {C}".for
 plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
              fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
+plt.tight_layout()
+plt.savefig("../graphs/comparison_N.png")
+plt.show()
 
-# Coût en fonction du nombre d'arêtes
-plt.subplot(2, 2, 3)
-plt.plot(m_values, remove_edges_means_costs_edges, 's-', label="Algorithme Remove edges")
-plt.plot(m_values, update_costs_means_costs_edges, 'o-', label="Algorithme Update costs")
+
+
+
+##### Tracé des résultats en fonction du nombre d'arêtes #####
+# Tracé Coût en fonction du nombre d'arêtes
+plt.figure(figsize=(10, 4))
+
+plt.subplot(1, 2, 1)
+plt.plot(m_values, remove_edges_means_costs_edges, 's-', color="blue", label="Algorithme Remove edges")
+plt.plot(m_values, update_costs_means_costs_edges, 's-', color="red", label="Algorithme Update costs")
 plt.xlabel("Nombre d'arêtes")
 plt.ylabel("Coût total du réseau")
 plt.title("Coût total du réseau en fonction du nombre d'arêtes")
@@ -250,9 +274,23 @@ plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
 
 
 # Temps d'exécution en fonction du nombre d'arêtes
-plt.subplot(2, 2, 4)
-plt.loglog(m_values, remove_edges_means_times_edges, 'o-', label="Algorithme Remove edges")
-plt.loglog(m_values, update_costs_means_times_edges, 's-', label="Algorithme Update costs")
+log_m_values = np.log(m_values)
+log_remove_edges_times = np.log(remove_edges_means_times_edges)
+log_update_costs_times = np.log(update_costs_means_times_edges)
+
+coeffs_remove_edges_times = np.polyfit(log_m_values, log_remove_edges_times, 1)
+coeffs_update_costs_times = np.polyfit(log_m_values, log_update_costs_times, 1)
+slope_remove_edges, intercept_remove_edges = coeffs_remove_edges_times
+slope_update_costs, intercept_update_costs = coeffs_update_costs_times
+
+fit_times_remove_edges = np.exp(intercept_remove_edges) * m_values ** slope_remove_edges
+fit_times_update_costs = np.exp(intercept_update_costs) * m_values ** slope_update_costs
+
+plt.subplot(1, 2, 2)
+plt.loglog(m_values, remove_edges_means_times_edges, 'o', color="blue", label="Algorithme Remove edges")
+plt.loglog(m_values, fit_times_remove_edges, '--', color="blue", label=f"Ajustement Remove edges (pente = {slope_remove_edges:.2f})")
+plt.loglog(m_values, update_costs_means_times_edges, 's', color="red", label="Algorithme Update costs")
+plt.loglog(m_values, fit_times_update_costs, '--', color="red", label=f"Ajustement Update costs (pente = {slope_update_costs:.2f})")
 plt.xlabel("Nombre d'arêtes")
 plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre d'arêtes")
@@ -264,7 +302,7 @@ plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
 
 
 plt.tight_layout()
-plt.savefig("../graphs/comparison_N_M.png")
+plt.savefig("../graphs/comparison_M.png")
 plt.show()
 
 
@@ -274,8 +312,8 @@ plt.figure(figsize=(10, 4))
 
 # Coût en fonction du nombre de trajets
 plt.subplot(1, 2, 1)
-plt.plot(j_values, remove_edges_means_costs_j, 's-', label="Algorithme Remove edges")
-plt.plot(j_values, update_costs_means_costs_j, 'o-', label="Algorithme Update costs")
+plt.plot(j_values, remove_edges_means_costs_j, 's-', color="blue", label="Algorithme Remove edges")
+plt.plot(j_values, update_costs_means_costs_j, 's-', color="red", label="Algorithme Update costs")
 plt.xlabel("Nombre de trajets")
 plt.ylabel("Coût total du réseau")
 plt.title("Coût total du réseau en fonction du nombre de trajets")
@@ -287,9 +325,23 @@ plt.annotate(info_text, xy=(0.1, 0.1), xycoords='axes fraction',
 
 
 # Temps d'exécution en fonction du nombre de trajets    
+log_j_values = np.log(j_values)
+log_remove_edges_times = np.log(remove_edges_means_times_j)
+log_update_costs_times = np.log(update_costs_means_times_j)
+
+coeffs_remove_edges_times = np.polyfit(log_j_values, log_remove_edges_times, 1)
+coeffs_update_costs_times = np.polyfit(log_j_values, log_update_costs_times, 1)
+slope_remove_edges, intercept_remove_edges = coeffs_remove_edges_times
+slope_update_costs, intercept_update_costs = coeffs_update_costs_times
+
+fit_times_remove_edges = np.exp(intercept_remove_edges) * j_values ** slope_remove_edges
+fit_times_update_costs = np.exp(intercept_update_costs) * j_values ** slope_update_costs
+
 plt.subplot(1, 2, 2)
-plt.loglog(j_values, remove_edges_means_times_j, 'o-', label="Algorithme Remove edges")
-plt.loglog(j_values, update_costs_means_times_j, 's-', label="Algorithme Update costs")
+plt.loglog(j_values, remove_edges_means_times_j, 'o', color="blue", label="Algorithme Remove edges")
+plt.loglog(j_values, fit_times_remove_edges, '--', color="blue", label=f"Ajustement Remove edges (pente = {slope_remove_edges:.2f})")
+plt.loglog(j_values, update_costs_means_times_j, 's', color="red", label="Algorithme Update costs")
+plt.loglog(j_values, fit_times_update_costs, '--', color="red", label=f"Ajustement Update costs (pente = {slope_update_costs:.2f})")
 plt.xlabel("Nombre de trajets")
 plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du nombre de trajets")
@@ -303,15 +355,30 @@ plt.tight_layout()
 plt.savefig("../graphs/comparison_J.png")
 plt.show()
 
-"""
+
 
 ##### Tracé des résultats en fonction du coût C #####
 plt.figure(figsize=(10, 8))
 
 # Coût en fonction du coût C
+log_c_values = np.log(C_values)
+log_remove_edges_cost = np.log(remove_edges_means_costs_C)
+log_update_costs_cost = np.log(update_costs_means_costs_C)
+
+coeffs_remove_edges_cost = np.polyfit(log_c_values, log_remove_edges_cost, 1)
+coeffs_update_costs_cost = np.polyfit(log_c_values, log_update_costs_cost, 1)
+slope_remove_edges, intercept_remove_edges = coeffs_remove_edges_cost
+slope_update_costs, intercept_update_costs = coeffs_update_costs_cost
+
+fit_cost_remove_edges = np.exp(intercept_remove_edges) * C_values ** slope_remove_edges
+fit_cost_update_costs = np.exp(intercept_update_costs) * C_values ** slope_update_costs
+
+
 plt.subplot(2, 1, 1)
-plt.plot(C_values, remove_edges_means_costs_C, 'o-', label="Algorithme Remove edges")
-plt.plot(C_values, update_costs_means_costs_C, 's-', label="Algorithme Update costs")
+plt.plot(C_values, remove_edges_means_costs_C, 'o', color="blue", label="Algorithme Remove edges")
+plt.plot(C_values, fit_cost_remove_edges, '--', color="blue", label=f"Ajustement Remove edges (pente = {slope_remove_edges:.2f})")
+plt.plot(C_values, update_costs_means_costs_C, 's', color="red", label="Algorithme Update costs")
+plt.plot(C_values, fit_cost_update_costs, '--', color="red", label=f"Ajustement Update costs (pente = {slope_update_costs:.2f})")
 plt.xlabel("C (coût par arête)")
 plt.ylabel("Coût total du réseau")
 plt.title("Coût total du réseau en fonction du côut C par arête")
@@ -322,9 +389,23 @@ plt.annotate(info_text, xy=(0.05, 0.05), xycoords='axes fraction',
              fontsize=10, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
 
 # Comparaison des temps d'exécution
+log_c_values = np.log(C_values)
+log_remove_edges_times = np.log(remove_edges_means_times_C)
+log_update_costs_times = np.log(update_costs_means_times_C)
+
+coeffs_remove_edges_times = np.polyfit(log_c_values, log_remove_edges_times, 1)
+coeffs_update_costs_times = np.polyfit(log_c_values, log_update_costs_times, 1)
+slope_remove_edges, intercept_remove_edges = coeffs_remove_edges_times
+slope_update_costs, intercept_update_costs = coeffs_update_costs_times
+
+fit_times_remove_edges = np.exp(intercept_remove_edges) * C_values ** slope_remove_edges
+fit_times_update_costs = np.exp(intercept_update_costs) * C_values ** slope_update_costs
+
 plt.subplot(2, 1, 2)
-plt.loglog(C_values, remove_edges_means_times_C, 'o-', label="Algorithme Remove edges")
-plt.loglog(C_values, update_costs_means_times_C, 's-', label="Algorithme Update costs")
+plt.loglog(C_values, remove_edges_means_times_C, 'o', color="blue", label="Algorithme Remove edges")
+plt.loglog(C_values, fit_times_remove_edges, '--', color="blue", label=f"Ajustement Remove edges (pente = {slope_remove_edges:.2f})")
+plt.loglog(C_values, update_costs_means_times_C, 's', color="red",  label="Algorithme Update costs")
+plt.loglog(C_values, fit_times_update_costs, '--', color="red", label=f"Ajustement Update costs (pente = {slope_update_costs:.2f})")
 plt.xlabel("C (coût par arête)")
 plt.ylabel("Temps d'exécution (s)")
 plt.title("Temps d'exécution en fonction du coût C par arête")
