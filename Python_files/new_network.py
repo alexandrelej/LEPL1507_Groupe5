@@ -5,7 +5,7 @@ from create_graphs import create_airport_graph, create_random_subgraph, generate
 import copy
 
 
-def new_network(airports_csv, routes_csv, C, j=100):
+def new_network(airports_csv, routes_csv, C,  wanted_journeys_csv):
     """
     Crée un nouveau réseau avec les paramètres donnés.
 
@@ -29,13 +29,13 @@ def new_network(airports_csv, routes_csv, C, j=100):
     #random_subgraph = create_random_subgraph(airport_graph, n=75, m=1500) # to comment if we want the whole data to create the new network
 
     #destination_pairs = generate_random_pairs(random_subgraph, j)
-    destination_pairs = generate_random_pairs(airport_graph, j)
-    with open('../basic_datasets/destination_pairs.csv', 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(['start', 'end'])  # en-têtes
-        for pair in destination_pairs:
-            writer.writerow(pair)
-        
+    destination_pairs = []
+    with open('wanted_journeys_csv', newline='', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile)
+        next(reader)  # saute l’en‑tête
+        for row in reader:
+            start, end = row
+            destination_pairs.append((start, end))
 
     # Generate the new network
     #G_reweighted, rsubgraph = Update_costs(random_subgraph, destination_pairs, C)
