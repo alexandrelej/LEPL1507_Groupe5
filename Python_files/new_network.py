@@ -30,7 +30,7 @@ def new_network(airports_csv, routes_csv, C,  wanted_journeys_csv):
 
     #destination_pairs = generate_random_pairs(random_subgraph, j)
     destination_pairs = []
-    with open('wanted_journeys_csv', newline='', encoding='utf-8') as csvfile:
+    with open(wanted_journeys_csv, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
         next(reader)  # saute l’en‑tête
         for row in reader:
@@ -60,7 +60,7 @@ def new_network(airports_csv, routes_csv, C,  wanted_journeys_csv):
     return cost, G_reweighted.edges()
 
 
-final_cost, new_routes = new_network("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv", C=4)
+final_cost, new_routes = new_network("../basic_datasets/airports.csv", "../basic_datasets/pre_existing_routes.csv", C=4, wanted_journeys_csv="../basic_datasets/wanted_journeys.csv")
 print(final_cost)
 print(new_routes)
 new_routes_list = list(new_routes)  # Conversion en liste pour compter
