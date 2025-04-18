@@ -83,10 +83,10 @@ Ces fichiers influencent directement :
 ---
 
 ### Paramètres personnalisables :
-- **C** (*coût d’une arête*) : représente le coût d'ajouter une connexion au réseau.  
-  - Plage typique : entre **500** et **3000**.  
-  - **500** favorise les trajets les plus courts possibles.  
-  - **3000** privilégie la réduction du nombre total de connexions.
+- **C** (*coût d’une arête*) : représente le coût d'ajouter une connexion au réseau. Longueur de J * C est de l'ordre de grandeur d'une distance dans l'implémentation de Update Costs  
+  - Plage typique : entre **5** et **2O**.  
+  - **5** favorise les trajets les plus courts possibles.  
+  - **30** privilégie la réduction du nombre total de connexions.
   
 - **|J|** (*nombre de trajets à assurer*) :  
   Correspond au nombre de voyages qui doivent pouvoir être réalisés dans le réseau final.  
