@@ -4,8 +4,6 @@ import numpy as np
 from create_graphs import create_airport_graph, create_random_subgraph, generate_random_pairs
 from create_graphs import add_prices, add_times, graph_to_json_file
 from update_costs import Update_costs
-from B_epidemie import *
-from C_robustesse import *
 from disturbance_result import test_disturbance, multi_optimize_and_disturb
 import networkx as nx
 import copy 
@@ -127,49 +125,6 @@ plt.grid()
 plt.tight_layout()
 plt.savefig("../graphs/resultats.png")  # Enregistre le graphique dans un fichier
 
-# --- Test sur la propagation d'épidémie sur le graphe complet ---
-print("\n=== Test de l'épidémie sur le graphe complet ===")
-# On utilise ici le graphe complet airport_graph
-G_after_epidemic = epidemic(random_subgraph)
-G_robustesse = robustesse(random_subgraph)
-
-    
-results = average_simulations(random_subgraph, num_simulations=10, record_interval=5)
-
-common_fractions = results["fractions"]
-gcc_sizes = results["gscc_sizes"]
-avg_mean = results["avg_paths"]
-eff_mean = results["efficiencies"]
-n_comp_mean = results["num_components"]
-
-plt.figure(figsize=(16, 4))
-    
-plt.subplot(141)
-plt.plot(common_fractions, gcc_sizes, marker='o', color='blue')
-plt.xlabel("Fraction d'arêtes retirées")
-plt.ylabel("Taille de la GCC")
-plt.title("Taille de la composante géante (moyenne)")
-
-plt.subplot(142)
-plt.plot(common_fractions, avg_mean, marker='o', color='green')
-plt.xlabel("Fraction d'arêtes retirées")
-plt.ylabel("Longueur moyenne")
-plt.title("Longueur moyenne des chemins (moyenne)")
-
-plt.subplot(143)
-plt.plot(common_fractions, eff_mean, marker='o', color='red')
-plt.xlabel("Fraction d'arêtes retirées")
-plt.ylabel("Efficacité globale")
-plt.title("Efficacité globale du réseau (moyenne)")
-    
-plt.subplot(144)
-plt.plot(common_fractions, n_comp_mean, marker='o', color='purple')
-plt.xlabel("Fraction d'arêtes retirées")
-plt.ylabel("Nombre de composantes")
-plt.title("Nombre de composantes connexes (moyenne)")
-    
-plt.tight_layout()
-plt.savefig("../graphs/robustesse_edge_removal.png")
 
 test_disturbance(G_reweighted,random_subgraph,destination_pairs,C)
 

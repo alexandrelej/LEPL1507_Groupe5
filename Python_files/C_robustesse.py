@@ -2,6 +2,28 @@ import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
 import random
+import json
+import pandas as pd
+
+# Charger le fichier JSON du graphe
+with open("json/all.json", "r") as f:
+    graph_data = json.load(f)
+
+# Construire le graphe initial
+G = nx.DiGraph()
+for link in graph_data["links"]:
+    G.add_edge(link["source"], link["target"], distance=link["distance"])
+
+# Charger les capacités des aéroports
+df_airports = pd.read_csv("basic_datasets/capacities_airports.csv")  # Colonne: "airport", "capacity"
+airport_capacities = dict(zip(df_airports["airportsID"], df_airports["capacity"]))
+
+# Charger les capacités des routes
+df_connections = pd.read_csv("basic_datasets/capacities_connexions.csv")  # Colonnes: "source", "target", "capacity"
+for _, row in df_connections.iterrows():
+    if G.has_edge(row["ID_start"], row["ID_end"]):
+        G[row["ID_start"]][row["ID_end"]]["connexion capacity"] = row["connexion capacity"]
+
 
 def robustesse(G):
     """
@@ -157,3 +179,43 @@ def average_simulations(G, num_simulations=10, record_interval=5, num_points=50)
         "efficiencies": interpolate("efficiencies"),
         "num_components": interpolate("num_components"),
     }
+
+G_robustesse = robustesse(G)
+
+    
+results = average_simulations(G, num_simulations=10, record_interval=5)
+
+common_fractions = results["fractions"]
+gcc_sizes = results["gscc_sizes"]
+avg_mean = results["avg_paths"]
+eff_mean = results["efficiencies"]
+n_comp_mean = results["num_components"]
+
+plt.figure(figsize=(16, 4))
+    
+plt.subplot(141)
+plt.plot(common_fractions, gcc_sizes, marker='o', color='blue')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Taille de la GCC")
+plt.title("Taille de la composante géante")
+
+plt.subplot(142)
+plt.plot(common_fractions, avg_mean, marker='o', color='green')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Longueur moyenne")
+plt.title("Longueur moyenne des chemins")
+
+plt.subplot(143)
+plt.plot(common_fractions, eff_mean, marker='o', color='red')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Efficacité globale")
+plt.title("Efficacité globale du réseau")
+    
+plt.subplot(144)
+plt.plot(common_fractions, n_comp_mean, marker='o', color='purple')
+plt.xlabel("Fraction d'arêtes retirées")
+plt.ylabel("Nombre de composantes")
+plt.title("Nombre de composantes connexes")
+    
+plt.tight_layout()
+plt.savefig("graphs/robustesse_edge_removal.png")

@@ -1,7 +1,30 @@
+import pandas as pd
 import networkx as nx
-import numpy as np
 import matplotlib.pyplot as plt
-import random
+import numpy as np
+import json
+
+# Charger le fichier JSON du graphe
+with open("json/all.json", "r") as f:
+    graph_data = json.load(f)
+
+# Construire le graphe initial
+G = nx.DiGraph()
+for link in graph_data["links"]:
+    G.add_edge(link["source"], link["target"], distance=link["distance"])
+
+# Charger les capacités des aéroports
+df_airports = pd.read_csv("basic_datasets/capacities_airports.csv")  # Colonne: "airport", "capacity"
+airport_capacities = dict(zip(df_airports["airportsID"], df_airports["capacity"]))
+
+# Charger les capacités des routes
+df_connections = pd.read_csv("basic_datasets/capacities_connexions.csv")  # Colonnes: "source", "target", "capacity"
+for _, row in df_connections.iterrows():
+    if G.has_edge(row["ID_start"], row["ID_end"]):
+        G[row["ID_start"]][row["ID_end"]]["connexion capacity"] = row["connexion capacity"]
+
+
+
 
 def epidemic(G):
     """
@@ -39,3 +62,7 @@ def epidemic(G):
 
     return G_removed
 
+# --- Test sur la propagation d'épidémie sur le graphe complet ---
+print("\n=== Test de l'épidémie sur le graphe complet ===")
+# On utilise ici le graphe complet airport_graph
+G_after_epidemic = epidemic(G)

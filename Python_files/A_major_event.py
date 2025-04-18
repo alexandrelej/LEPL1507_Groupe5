@@ -5,7 +5,7 @@ import numpy as np
 import json
 
 # Charger le fichier JSON du graphe
-with open("../json/all.json", "r") as f:
+with open("json/all.json", "r") as f:
     graph_data = json.load(f)
 
 # Construire le graphe initial
@@ -109,8 +109,7 @@ plt.grid(axis="y", linestyle="--", alpha=0.7)
 plt.tight_layout()
 
 # Sauvegarder l'histogramme
-plt.savefig("../graphs/major_event.png")
-plt.show()
+plt.savefig("./graphs/major_event.png")
 
 
 
