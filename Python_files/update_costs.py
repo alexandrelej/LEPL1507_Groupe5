@@ -68,6 +68,8 @@ def Update_costs(G: nx.DiGraph, Trajets: list[tuple[str, str]], C: float,iterati
     for u, v in list(G_reweighted.edges()):
         if G_reweighted[u][v]['used'] == 0:
             G_reweighted.remove_edge(u, v)
-    
+    # Remove the used attribute from the graph
+    for u, v in G_reweighted.edges():
+        del G_reweighted[u][v]['used']
     return G_reweighted, G
 
